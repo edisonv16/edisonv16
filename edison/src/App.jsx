@@ -1,5 +1,3 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
 import './App.css'
 import './assets/style/default.css'
 import './assets/style/layout.css'
@@ -18,8 +16,6 @@ import Contact from './components/contact/Contact'
 import Footer from './components/footer/Footer'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <div className="App">
       <Header />
