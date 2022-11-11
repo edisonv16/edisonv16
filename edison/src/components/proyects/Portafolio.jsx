@@ -1,21 +1,23 @@
 const Portafolio = () => {
+    const images = 'src/assets/img/'
+    const urlImagenes = images;
     return (
         <section id="portfolio">
             <div className="row">
                 <div className="twelve columns collapsed">
                     <h1>Diseños y publicidad</h1>
                     <section className="disenos">
-                        <img className="img-uno" src="images/bufalo.png" alt="bufalo" />
-                        <img className="img-dos" src="images/img-dos.png" alt="bufalo" />
-                        <img className="img-tres" src="images/img-tres.png" alt="bufalo" />
-                        <img className="img-cuatro" src="images/img-cuatro.jpg" alt="bufalo" />
+                        <img className="img-uno" src={urlImagenes + "bufalo.png" } alt="bufalo" />
+                        <img className="img-dos" src={urlImagenes + "img-dos.png"} alt="dos" />
+                        <img className="img-tres" src={urlImagenes + "img-tres.png"} alt="tres" />
+                        <img className="img-cuatro" src={urlImagenes + "img-cuatro.jpg"} alt="cuatro" />
                     </section>
                     <h1>Sitios web</h1>
                     <div id="portfolio-wrapper" className="bgrid-quarters s-bgrid-thirds cf">
                         <div className="columns portfolio-item">
                             <div className="item-wrap">
                                 <a href="#modal-01" title="">
-                                    <img alt="" src="images/portfolio/img-a.png" />
+                                    <img alt="" src={urlImagenes + "/portfolio/img-a.png"} />
                                     <div className="overlay">
                                         <div className="portfolio-item-meta">
                                             <h5>Aulas sin fronteras</h5>

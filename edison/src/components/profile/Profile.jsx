@@ -1,9 +1,10 @@
+import profile from '../../assets/img/profilepic.png';
 const Profile = () => {
     return (
         <section id="about">
             <div className="row">
                 <div className="three columns">
-                    <img className="profile-pic" src="images/profilepic.png" alt="" />
+                    <img className="profile-pic" src={profile} alt="" />
                 </div>
                 <div className="nine columns main-col">
                     <h2>Perfil profesional</h2>
