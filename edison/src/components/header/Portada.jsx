@@ -1,10 +1,10 @@
-import Info from '../../data/Info.jsx';
 import { useState } from 'react';
+import Info from '../../data/Info.jsx';
 
 const Portada = () => {
     const [info, setInfo] = useState(Info);
     const { profile } = info;
-    const { name, tel, email, wellcomome, profileProfession, habilidades } = profile;
+    const { name, wellcomome } = profile;
 
     return (
     <>
