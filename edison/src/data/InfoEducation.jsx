@@ -134,7 +134,7 @@ const InfoEducation = {
                     id:5,
                     curso:'ilustrator',
                 },
-            ]
+            ],
         },
         {
             id:9,
@@ -146,8 +146,8 @@ const InfoEducation = {
                 },
                 {
                     id:2,
-                    curso2:'Técnico Profesional en Diseño Gráfico',
-                }
+                    curso:'Técnico Profesional en Diseño Gráfico',
+                },
             ]
         },
         {
@@ -156,9 +156,9 @@ const InfoEducation = {
             curso:[
                 {
                     id:1,
-                    curso1:'Bachiller académico',
+                    curso:'Bachiller académico',
                 },
-            ]
+            ],
         },
     ]
 };

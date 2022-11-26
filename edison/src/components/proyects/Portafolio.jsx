@@ -5,13 +5,7 @@ const Portafolio = () => {
         <section id="portfolio">
             <div className="row">
                 <div className="twelve columns collapsed">
-                    <h1>Diseños y publicidad</h1>
-                    <section className="disenos">
-                        <img className="img-uno" src={urlImagenes + "bufalo.png" } alt="bufalo" />
-                        <img className="img-dos" src={urlImagenes + "img-dos.png"} alt="dos" />
-                        <img className="img-tres" src={urlImagenes + "img-tres.png"} alt="tres" />
-                        <img className="img-cuatro" src={urlImagenes + "img-cuatro.jpg"} alt="cuatro" />
-                    </section>
+                    
                     <h1>Sitios web</h1>
                     <div id="portfolio-wrapper" className="bgrid-quarters s-bgrid-thirds cf">
                         <div className="columns portfolio-item">
@@ -31,7 +25,7 @@ const Portafolio = () => {
                         <div className="columns portfolio-item">
                             <div className="item-wrap">
                                 <a href="#modal-02" title="">
-                                    <img alt="" src="images/portfolio/img-b.png" />
+                                    <img alt="" src={urlImagenes + "/portfolio/img-b.png" } />
                                     <div className="overlay">
                                         <div className="portfolio-item-meta">
                                             <h5>La tv en Colombia</h5>
@@ -46,7 +40,7 @@ const Portafolio = () => {
                             <div className="item-wrap">
 
                                 <a href="#modal-03" title="">
-                                    <img alt="" src="images/portfolio/img-c.png" />
+                                    <img alt="" src={urlImagenes + "/portfolio/img-c.png"} />
                                     <div className="overlay">
                                         <div className="portfolio-item-meta">
                                             <h5>Cerrando brechas</h5>
@@ -63,7 +57,7 @@ const Portafolio = () => {
                             <div className="item-wrap">
 
                                 <a href="#modal-04" title="">
-                                    <img alt="" src="images/portfolio/img-d.png" />
+                                    <img alt="" src={urlImagenes + "/portfolio/img-d.png"} />
                                     <div className="overlay">
                                         <div className="portfolio-item-meta">
                                             <h5>Comisión de regulación de comunicaciones</h5>
@@ -80,7 +74,7 @@ const Portafolio = () => {
                             <div className="item-wrap">
 
                                 <a href="#modal-05" title="">
-                                    <img alt="" src="images/portfolio/img-e.png" />
+                                    <img alt="" src={urlImagenes + "/portfolio/img-e.png"} />
                                     <div className="overlay">
                                         <div className="portfolio-item-meta">
                                             <h5>Azul Total</h5>
@@ -97,7 +91,7 @@ const Portafolio = () => {
                             <div className="item-wrap">
 
                                 <a href="#modal-06" title="">
-                                    <img alt="" src="images/portfolio/img-f.png" />
+                                    <img alt="" src={urlImagenes + "/portfolio/img-f.png"} />
                                     <div className="overlay">
                                         <div className="portfolio-item-meta">
                                             <h5>Destinos (Ministerio de turismo)</h5>
@@ -114,7 +108,7 @@ const Portafolio = () => {
                             <div className="item-wrap">
 
                                 <a href="#modal-07" title="">
-                                    <img alt="" src="images/portfolio/img-g.png" />
+                                    <img alt="" src={urlImagenes + "/portfolio/img-g.png"} />
                                     <div className="overlay">
                                         <div className="portfolio-item-meta">
                                             <h5>Conciliación</h5>
@@ -131,7 +125,7 @@ const Portafolio = () => {
                             <div className="item-wrap">
 
                                 <a href="#modal-08" title="">
-                                    <img alt="" src="images/portfolio/img-h.png" />
+                                    <img alt="" src={urlImagenes + "/portfolio/img-h.png"} />
                                     <div className="overlay">
                                         <div className="portfolio-item-meta">
                                             <h5>Dirección Maritima de Colombia</h5>
@@ -148,7 +142,7 @@ const Portafolio = () => {
                             <div className="item-wrap">
 
                                 <a href="#modal-09" title="">
-                                    <img alt="" src="images/portfolio/img-i.png" />
+                                    <img alt="" src={urlImagenes + "/portfolio/img-i.png" } />
                                     <div className="overlay">
                                         <div className="portfolio-item-meta">
                                             <h5>Ejecutorga</h5>
@@ -165,7 +159,7 @@ const Portafolio = () => {
                             <div className="item-wrap">
 
                                 <a href="#modal-10" title="">
-                                    <img alt="" src="images/portfolio/img-j.png" />
+                                    <img alt="" src={urlImagenes + "/portfolio/img-j.png" } />
                                     <div className="overlay">
                                         <div className="portfolio-item-meta">
                                             <h5>Info hotel</h5>
@@ -182,7 +176,7 @@ const Portafolio = () => {
                             <div className="item-wrap">
 
                                 <a href="#modal-11" title="">
-                                    <img alt="" src="images/portfolio/img-k.png" />
+                                    <img alt="" src={urlImagenes + "/portfolio/img-k.png"} />
                                     <div className="overlay">
                                         <div className="portfolio-item-meta">
                                             <h5>Ser pilo paga dos</h5>
@@ -199,7 +193,7 @@ const Portafolio = () => {
                             <div className="item-wrap">
 
                                 <a href="#modal-12" title="">
-                                    <img alt="" src="images/portfolio/img-l.png" />
+                                    <img alt="" src={urlImagenes + "/portfolio/img-l.png"}/>
                                     <div className="overlay">
                                         <div className="portfolio-item-meta">
                                             <h5>Mi canola</h5>
@@ -216,7 +210,7 @@ const Portafolio = () => {
                             <div className="item-wrap">
 
                                 <a href="#modal-13" title="">
-                                    <img alt="" src="images/portfolio/img-m.png" />
+                                    <img alt="" src={urlImagenes + "/portfolio/img-m.png"} />
                                     <div className="overlay">
                                         <div className="portfolio-item-meta">
                                             <h5>Spanihs in Colombia</h5>
@@ -232,7 +226,7 @@ const Portafolio = () => {
                             <div className="item-wrap">
 
                                 <a href="#modal-14" title="">
-                                    <img alt="" src="images/portfolio/img-n.png" />
+                                    <img alt="" src={urlImagenes + "/portfolio/img-n.png"}/>
                                     <div className="overlay">
                                         <div className="portfolio-item-meta">
                                             <h5>Tolima ecoturística</h5>
@@ -248,7 +242,7 @@ const Portafolio = () => {
                         <div className="columns portfolio-item">
                             <div className="item-wrap">
                                 <a href="#modal-15" title="">
-                                    <img alt="" src="images/portfolio/img-o.png" />
+                                    <img alt="" src={urlImagenes + "/portfolio/img-o.png"}/>
                                     <div className="overlay">
                                         <div className="portfolio-item-meta">
                                             <h5>Tolima kids</h5>
@@ -259,11 +253,15 @@ const Portafolio = () => {
                                 </a>
                             </div>
                         </div>
-
                     </div>
+                    <h1>Diseños y publicidad</h1>
+                    <section className="disenos">
+                        <img className="img-uno" src={urlImagenes + "bufalo.png" } alt="bufalo" />
+                        <img className="img-dos" src={urlImagenes + "img-dos.png"} alt="dos" />
+                        <img className="img-tres" src={urlImagenes + "img-tres.png"} alt="tres" />
+                        <img className="img-cuatro" src={urlImagenes + "img-cuatro.jpg"} alt="cuatro" />
+                    </section>
                 </div>
-
-
                 <div id="modal-01" className="popup-modal mfp-hide">
 
                     <img className="scale-with-grid" src="images/portfolio/modals/img-a.png" alt="" />

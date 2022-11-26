@@ -20,12 +20,12 @@ function App() {
     <div className="App">
       <Header />
       <Profile />
-      <Skill />
-      <section id="resume">
-        <Education />
-        <Work />
-      </section>
+      <Work />
       <Portafolio />
+      <section id="resume">
+        <Skill />
+        <Education />
+      </section>
       {/* <Contact /> */}
       <Footer />
     </div>
