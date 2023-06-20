@@ -8,10 +8,10 @@ const Portada = () => {
 
     return (
     <>
-        <div className="row banner">
+        <div className="container-xxl banner">
             <div className="banner-text">
-                <h1 className="responsive-headline">¡Hola! Soy <br/>{name}</h1>
-                <h3>{wellcomome}</h3>
+                <h1 className="responsive-headline">¡Bienvenido! Soy <br/>{name}</h1>
+                <p>{wellcomome}</p>
                 <hr />
                 <ul className="social">
                     <li><a href="https://www.facebook.com/edison.ospina.940" target="_blank"><i className="fa fa-facebook"></i></a></li>

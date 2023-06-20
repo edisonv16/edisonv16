@@ -1,3 +1,4 @@
+import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
 import './assets/style/default.css'
 import './assets/style/layout.css'
@@ -5,6 +6,10 @@ import './assets/style/animate.css'
 import './assets/style/metricstyle.css'
 import './assets/style/media-queries.css'
 import './assets/style/magnific-popup.css'
+import './assets/style/portafolio.css'
+import './assets/style/work.css'
+import './assets/style/skill.css'
+import './assets/style/galeria.css'
 
 import Header from './components/header/Header'
 import Profile from './components/profile/Profile'
@@ -20,10 +25,10 @@ function App() {
     <div className="App">
       <Header />
       <Profile />
-      <Work />
       <Portafolio />
+      <Work />
+      <Skill />
       <section id="resume">
-        <Skill />
         <Education />
       </section>
       {/* <Contact /> */}

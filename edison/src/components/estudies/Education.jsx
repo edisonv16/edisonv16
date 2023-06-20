@@ -7,37 +7,23 @@ const Education = () => {
 
 
     return (
-        <div className="row education">
-            <div className="three columns header-col">
-                <h1><span>Formación Academica, Cursos, Enfasis y Diplmados</span></h1>
-            </div>
-            <div className="nine columns main-col">
+        <div className="container-xxl education pb-5 pt-5">
+            <h1 className='text-center mb-5'><span>Formación Academica, Cursos, Enfasis y Diplmados</span></h1>
+            <div className="row">
                 {education.education.map((item, index) => {
                     return (
-                        <div className="row item" key={index}>
-                            <div className="twelve columns">
-                                <h3>{item.institucion}</h3>
-                                {item.curso.map((item, index) => {
-                                    return (
-                                        <p className="info" key={index}>
-                                            <span>&bull;</span>{item.curso}
-                                        </p>
-                                        )
-                                    })}
-                            </div>
+                        <div className='card-education' key={index}>
+                            <h3>{item.institucion}</h3>
+                            {item.curso.map((item, index) => {
+                                return (
+                                    <p className="info" key={index}>
+                                        <span>&bull;</span>{item.curso}
+                                    </p>
+                                    )
+                                })}
                         </div>
                     )
                 })}
-
-                {/* <div className="row item">
-                    <div className="twelve columns">
-                        <h3>Vivilab bogotá</h3>
-                        <p className="info">
-                            Taller de usabilidad<span>&bull;</span> <em className="date">Noviembre 2015</em>
-                            <br />Taller de Lean y Ux<span>&bull;</span> <em className="date">Noviembre 2014</em>
-                        </p>
-                    </div>
-                </div> */}
             </div>
         </div>
     );

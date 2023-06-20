@@ -1,8 +1,8 @@
 const Footer = () => {
     return (
         <footer>
-            <div className="row">
-                <div className="twelve columns">
+            <div className="container-xxl">
+                <div className="twelve">
                     <ul className="social-links">
                         <li><a href="https://www.facebook.com/edison.ospina.940" target="_blank"><i className="fa fa-facebook"></i></a></li>
                         <li><a href="https://twitter.com/edisonv16" target="_blank"><i className="fa fa-twitter"></i></a></li>
@@ -10,7 +10,7 @@ const Footer = () => {
                     </ul>
 
                     <ul className="copyright">
-                        <li>&copy; Copyright 2016 Edison Vidal Ospina Corredor</li>
+                        <li>&copy; Copyright 2023 Edison Vidal Ospina Corredor</li>
                         <li>Diseñador:<a title="Styleshout" href="http://www.styleshout.com/"> Edison V. Ospina Corredor</a></li>
                     </ul>
                 </div>

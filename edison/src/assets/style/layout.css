@@ -11,6 +11,11 @@ header {
    text-align: center;
    overflow: hidden;
 }
+@media (min-width: 1px) and (max-width:768px){
+   header{
+      height: auto;
+   }
+}
 
 
 header:before {
@@ -30,18 +35,16 @@ header .banner {
 
 header .banner-text { width: 100%; }
 header .banner-text h1 {
-   font: 90px/1.1em 'opensans-bold', sans-serif;
    color: #fff;
-   letter-spacing: -2px;
-   margin: 0 auto 18px auto;
-   text-shadow: 0px 1px 3px rgba(0, 0, 0, .8);
+   font-size: 70px;
 }
 header .banner-text h3 {
-   font: 18px/1.9em 'librebaskerville-regular', serif;
-   color: #A8A8A8;
+   font-size: 16px;
+   font-family: 'librebaskerville-regular', serif;
+   line-height: normal;
+   color: rgba(255,255,255,0.7);
    margin: 0 auto;
-   width: 70%;
-   text-shadow: 0px 1px 2px rgba(0, 0, 0, .5);
+   width: 80%;
 }
 header .banner-text h3 span,
 header .banner-text h3 a {
@@ -53,8 +56,6 @@ header .banner-text hr {
    border-color: #2F2D2E;
    border-color: rgba(150, 150, 150, .1);
 }
-
-/* header social links */
 header .social {
    margin: 24px 0;
    padding: 0;
@@ -68,8 +69,6 @@ header .social li {
 }
 header .social li a { color: #fff; }
 header .social li a:hover { color: #11ABB0; }
-
-/* scrolldown link */
 header .scrolldown a {
    position: absolute;
    bottom: 30px;
@@ -91,8 +90,6 @@ header .scrolldown a {
 }
 header .scrolldown a:hover { color: #11ABB0; }
 
-/* primary navigation
---------------------------------------------------------------------- */
 #nav-wrap ul, #nav-wrap li, #nav-wrap a {
 	 margin: 0;
 	 padding: 0;
@@ -100,7 +97,7 @@ header .scrolldown a:hover { color: #11ABB0; }
 	 outline: none;
 }
 
-/* nav-wrap */
+
 #nav-wrap {
    font: 12px 'opensans-bold', sans-serif;
    width: 100%;
@@ -114,16 +111,12 @@ header .scrolldown a:hover { color: #11ABB0; }
 }
 .opaque { background-color: #333; }
 
-/* hide toggle button */
+
 #nav-wrap > a.mobile-btn { display: none; }
-
-ul#nav {
-   min-height: 48px;
-   width: auto;
-
-   /* center align the menu */
-   text-align: center;
+ul#nav{
+   display: block;
 }
+
 ul#nav li {
    position: relative;
    list-style: none;
@@ -131,7 +124,7 @@ ul#nav li {
    display: inline-block;
 }
 
-/* Links */
+
 ul#nav li a {
    display: inline-block;
    padding: 8px 13px;
@@ -151,10 +144,6 @@ ul#nav li a:active { background-color: transparent !important; }
 ul#nav li.current a { color: #F06000; }
 
 
-/* ------------------------------------------------------------------ */
-/* c. About Section
-/* ------------------------------------------------------------------ */
-
 #about {
    background: #2B2B2B;
    padding-top: 96px;
@@ -173,12 +162,6 @@ ul#nav li.current a { color: #F06000; }
 #about p {
    line-height: 30px;
    color: #7A7A7A;
-}
-#about .profile-pic {
-   position: relative;
-   width: 120px;
-   height: 120px;
-   border-radius: 100%;
 }
 #about .contact-details { width: 41.66667%; }
 #about .download {
@@ -200,15 +183,9 @@ ul#nav li.current a { color: #F06000; }
 }
 
 
-/* ------------------------------------------------------------------ */
-/* d. Resume Section
-/* ------------------------------------------------------------------ */
 
 #resume {
-   background: #fff;
-   padding-top: 90px;
-   padding-bottom: 72px;
-   overflow: hidden;
+   background: black;
 }
 
 #resume a, #resume a:visited  { color: #11ABB0; }
@@ -218,28 +195,23 @@ ul#nav li.current a { color: #F06000; }
    font: 18px/24px 'opensans-bold', sans-serif;
    text-transform: uppercase;
    letter-spacing: 1px;
+   color: #F06000;
 }
 #resume h1 span {
    border-bottom: 3px solid #11ABB0;
    padding-bottom: 6px;
 }
 #resume h3 {
-   font: 25px/30px 'opensans-bold', sans-serif;
+   font: 14px/22px 'opensans-bold', sans-serif;
+   margin: 5px 0;
+   line-height: normal;
+   color: #11ABB0;
 }
 
-#resume .header-col { padding-top: 9px; }
-#resume .main-col { padding-right: 10%; }
-
-.education, .work {
-   margin-bottom: 48px;
-   padding-bottom: 24px;
-   border-bottom: 1px solid #E8E8E8;
-}
 #resume .info {
-   font: 16px/24px 'librebaskerville-italic', serif;
+   font: 12px/20px 'librebaskerville-italic', serif;
    color: #6E7881;
-   margin-bottom: 18px;
-   margin-top: 9px;
+   margin: 0;
 }
 #resume .info span {
    margin-right: 5px;
@@ -249,10 +221,21 @@ ul#nav li.current a { color: #F06000; }
    font: 15px/24px 'opensans-regular', sans-serif;
    margin-top: 6px;
 }
-
-/*----------------------------------------------*/
-/*	Skill Bars
-/*----------------------------------------------*/
+.card-education{
+   background-color: #ebeeee;
+   width: 22%;
+   float: left;
+   margin: 10px 1.5%;
+   padding: 10px;
+   border-radius: 5px;
+   box-shadow: 0 5px 5px rgba(255, 255, 255, .4);
+}
+@media (min-width:1px) and (max-width:768px){
+   .card-education{
+      width: 48%;
+      margin: 10px 1%;
+   }
+}
 
 .bars {
 	width: 95%;
@@ -375,9 +358,6 @@ ul#nav li.current a { color: #F06000; }
   100% { width: 80%;  }
 }
 
-/* ------------------------------------------------------------------ */
-/* e. Portfolio Section
-/* ------------------------------------------------------------------ */
 
 #portfolio {
    background: #ebeeee;
@@ -411,7 +391,6 @@ ul#nav li.current a { color: #F06000; }
    cursor: pointer;
 }
 
-/* overlay */
 .portfolio-item .item-wrap .overlay {
    position: absolute;
    left: 0;
@@ -468,7 +447,7 @@ ul#nav li.current a { color: #F06000; }
    margin-bottom: 0;
 }
 
-/* on hover */
+
 .portfolio-item:hover .overlay {
 	opacity: 1;
 	-moz-opacity: 1;
@@ -480,7 +459,7 @@ ul#nav li.current a { color: #F06000; }
 	filter:alpha(opacity=100);
 }
 
-/* popup modal */
+
 .popup-modal {
 	max-width: 550px;
 	background: #fff;
@@ -525,10 +504,6 @@ ul#nav li.current a { color: #F06000; }
 .popup-modal a.popup-modal-dismiss { margin-left: 24px; }
 
 
-/* fadein/fadeout effect for modal popup
-/* ------------------------------------------------------------------ */
-
-/* content at start */
 .mfp-fade.mfp-wrap .mfp-content .popup-modal {
    opacity: 0;
    -webkit-transition: all 200ms ease-in-out;
@@ -537,18 +512,14 @@ ul#nav li.current a { color: #F06000; }
 	-ms-transition: all 200ms ease-in-out;
    transition: all 200ms ease-in-out;
 }
-/* content fadein */
+
 .mfp-fade.mfp-wrap.mfp-ready .mfp-content .popup-modal {
    opacity: 1;
 }
-/* content fadeout */
+
 .mfp-fade.mfp-wrap.mfp-removing .mfp-content .popup-modal {
    opacity: 0;
 }
-
-/* ------------------------------------------------------------------ */
-/* f. Call To Action Section
-/* ------------------------------------------------------------------ */
 
 #call-to-action {
    background: #212121;
@@ -587,12 +558,7 @@ ul#nav li.current a { color: #F06000; }
    color: #636363;
    font-size: 17px;
 }
-/*#
-call-to-action .button {
-	color:#fff;
-   background: #0D0D0D;
-}
-*/
+
 #call-to-action .button:hover,
 #call-to-action .button:active {
    background: #FFFFFF;
@@ -602,10 +568,6 @@ call-to-action .button {
 	font-family: 'opensans-semibold', sans-serif; 
 	color: #D8D8D8;
 }
-
-/* ------------------------------------------------------------------
-/* g. Testimonials
-/* ------------------------------------------------------------------ */
 
 #testimonials {
    background: #1F1F1F url(../img/testimonials-bg.jpg) no-repeat center center;
@@ -641,7 +603,7 @@ call-to-action .button {
    color: #fff;
 }
 
-/*	Blockquotes */
+
 #testimonials blockquote {
    margin: 0 0px 30px 0px;
    padding-left: 0;
@@ -667,10 +629,7 @@ call-to-action .button {
 #testimonials blockquote cite a,
 #testimonials blockquote cite a:visited { color: #8B9798; border: none }
 
-/* Flex Slider
-/* ------------------------------------------------------------------ */
 
-/* Reset */
 .flexslider a:active,
 .flexslider a:focus  { outline: none; }
 .slides,
@@ -678,7 +637,6 @@ call-to-action .button {
 .flex-direction-nav { margin: 0; padding: 0; list-style: none; }
 .slides li { margin: 0; padding: 0;}
 
-/* Necessary Styles */
 .flexslider {
    position: relative;
    zoom: 1;
@@ -688,12 +646,11 @@ call-to-action .button {
 .flexslider .slides { zoom: 1; }
 .flexslider .slides > li { position: relative; }
 
-/* Hide the slides before the JS is loaded. Avoids image jumping */
+
 .flexslider .slides > li { display: none; -webkit-backface-visibility: hidden; }
-/* Suggested container for slide animation setups. Can replace this with your own */
 .flex-container { zoom: 1; position: relative; }
 
-/* Clearfix for .slides */
+
 .slides:before,
 .slides:after {
    content: " ";
@@ -703,19 +660,17 @@ call-to-action .button {
    clear: both;
 }
 
-/* No JavaScript Fallback */
-/* If you are not using another script, such as Modernizr, make sure you
- * include js that eliminates this class on page load */
+
 .no-js .slides > li:first-child { display: block; }
 
-/* Slider Styles */
+
 .slides { zoom: 1; }
 .slides > li {
-   /*margin-right: 5px; */
+
    overflow: hidden;
 }
 
-/* Control Nav */
+
 .flex-control-nav {
     width: 100%;
     position: absolute;
@@ -752,9 +707,6 @@ call-to-action .button {
     cursor: default;
 }
 
-/* ------------------------------------------------------------------ */
-/* h. Contact Section
-/* ------------------------------------------------------------------ */
 
 #contact {
    background: #191919;
@@ -798,7 +750,7 @@ call-to-action .button {
 #contact .header-col { padding-top: 6px; }
 
 
-/* contact form */
+
 #contact form { margin-bottom: 30px; }
 #contact label {
    font: 15px/24px 'opensans-bold', sans-serif;
@@ -869,8 +821,6 @@ call-to-action .button {
    top: 17px;
 }
 
-
-/* Twitter Feed */
 #twitter {
    margin-top: 12px;
    padding: 0;
@@ -889,10 +839,6 @@ call-to-action .button {
 }
 
 
-/* ------------------------------------------------------------------ */
-/* i. Footer
-/* ------------------------------------------------------------------ */
-
 footer {
    padding-top: 48px;
    margin-bottom: 48px;
@@ -905,7 +851,7 @@ footer {
 footer a, footer a:visited { color: #525252; }
 footer a:hover, footer a:focus { color: #fff; }
 
-/* copyright */
+
 footer .copyright {
     margin: 0;
     padding: 0;
@@ -929,7 +875,6 @@ footer .copyright  li:first-child:before {
     display: none;
 }
 
-/* social links */
 footer .social-links {
    margin: 18px 0 30px 0;
    padding: 0;
@@ -945,7 +890,6 @@ footer .social-links li {
 
 footer .social-links li:first-child { margin-left: 0; }
 
-/* Go To Top Button */
 #go-top {
 	position: absolute;
 	top: -24px;
