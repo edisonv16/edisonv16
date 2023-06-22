@@ -1,16 +1,18 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Info from '../../data/Info.jsx';
 
-const Portada = () => {
+const Portada = (props) => {
     const [info, setInfo] = useState(Info);
     const { profile } = info;
     const { name, wellcomome } = profile;
 
+
     return (
     <>
         <div className="container-xxl banner">
-            <div className="banner-text">
-                <h1 className="responsive-headline">¡Bienvenido! Soy <br/>{name}</h1>
+            <p className='fecha'>{props.fechaActual}</p>
+            <div className='banner-text'>
+                <h1 className="responsive-headline">{props.mensaje} <br/> Soy {' ' + name}</h1>
                 <p>{wellcomome}</p>
                 <hr />
                 <ul className="social">
@@ -19,6 +21,7 @@ const Portada = () => {
                     <li><a href="https://plus.google.com/u/0/114659983859149474982" target="_blank"><i className="fa fa-google-plus"></i></a></li>
                 </ul>
             </div>
+            
         </div>
 
         <p className="scrolldown">

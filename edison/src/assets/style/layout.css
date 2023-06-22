@@ -1,21 +1,26 @@
-body { background: #0f0f0f; }
-
 header {
+   background: #0f0f0f;
    position: relative;
    height: 800px;
    min-height: 500px;
    width: 100%;
-   background: #161415 url(../img/bg.jpg) no-repeat top center;
-   background-size: cover !important;
-	-webkit-background-size: cover !important;
+   background-size: cover ;
    text-align: center;
    overflow: hidden;
 }
-@media (min-width: 1px) and (max-width:768px){
-   header{
-      height: auto;
-   }
+.estilo-manana{
+   background: url(../img/manana.jpg) no-repeat;
+   background-size: cover;
 }
+.estilo-tarde{
+   background: url(../img/tarde.jpg) no-repeat top center;
+   background-size: cover;
+}
+.estilo-noche{
+   background: url(../img/noche.jpg) no-repeat;
+   background-size: cover;
+}
+
 
 
 header:before {
@@ -33,10 +38,23 @@ header .banner {
    text-align: center;
 }
 
-header .banner-text { width: 100%; }
+header .banner-text {
+   width: 70%;
+   margin:0 auto ;
+   padding: 30px 10%;
+   background-color: rgba(0, 0, 0, 0.3);
+   box-shadow: 2px 2px 5px rgba(0, 0, 0, .2);
+   border-radius: 10px;
+   display: block;
+}
+
 header .banner-text h1 {
    color: #fff;
-   font-size: 70px;
+   text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.5);
+   font-size: 40px;
+   margin: 0 0 30px;
+   display: block;
+   clear: both;
 }
 header .banner-text h3 {
    font-size: 16px;
@@ -54,7 +72,11 @@ header .banner-text hr {
    width: 60%;
    margin: 18px auto 24px auto;
    border-color: #2F2D2E;
-   border-color: rgba(150, 150, 150, .1);
+   border-color: rgba(255, 255, 255, .7);
+}
+header .banner-text p{
+   color: white;
+   text-shadow: 0 0 1px;
 }
 header .social {
    margin: 24px 0;
@@ -89,7 +111,32 @@ header .scrolldown a {
    transition: all .3s ease-in-out;
 }
 header .scrolldown a:hover { color: #11ABB0; }
-
+.fecha{
+   color: white;
+   font-weight:800;
+   font-size: 14px;
+   text-shadow: 2px 2px 5px rgba(255, 255, 255, 1);
+   position: absolute;
+   bottom: 5px;
+   right: 20px;
+}
+@media (min-width: 1px) and (max-width:768px){
+   header{
+      height: auto;
+   }
+   header .banner{
+      width: 100%;
+   }
+   header .banner-text {
+      width: 90%;
+   }
+   .fecha{
+      width: 100%;
+      right: auto;
+      bottom: 0;
+      text-align: center;
+   }
+}
 #nav-wrap ul, #nav-wrap li, #nav-wrap a {
 	 margin: 0;
 	 padding: 0;
