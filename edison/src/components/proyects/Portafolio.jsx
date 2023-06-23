@@ -39,7 +39,6 @@ const Portafolio = () => {
                         <div className="galeria__item">
                             <img className="galeria__img" src={urlImagenes + "doritos.jpg"} alt="tres" />
                         </div>
-                        
                         <div className="galeria__item">
                             <img className="galeria__img" src={urlImagenes + "img-tres.png"} alt="tres" />
                         </div>
@@ -52,6 +51,20 @@ const Portafolio = () => {
                         <div className="galeria__item">
                             <img className="galeria__img" src={urlImagenes + "movil1.png"} alt="seis" />
                         </div>
+                        <div className="galeria__item">
+                            <img className="galeria__img" src={urlImagenes + "ilustracion1.jpg"} alt="familia" />
+                        </div>
+                        <div className="galeria__item">
+                            <img className="galeria__img" src={urlImagenes + "ilustracion2.jpg"} alt="Arquera" />
+                        </div>
+                        <div className="galeria__item">
+                            <img className="galeria__img" src={urlImagenes + "ilustracion3.jpg"} alt="Spiderman" />
+                        </div>
+                        <div className="galeria__item">
+                            <img className="galeria__img" src={urlImagenes + "ilustracion4.jpg"} alt="mujer" />
+                        </div>
+
+
                         <div className="galeria__item">
                             <img className="galeria__img" src={urlImagenes + "movil2.png"} alt="siente" />
                         </div>

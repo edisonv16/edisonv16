@@ -10,8 +10,7 @@ const Footer = () => {
                     </ul>
 
                     <ul className="copyright">
-                        <li>&copy; Copyright 2023 Edison Vidal Ospina Corredor</li>
-                        <li>Diseñador:<a title="Styleshout" href="http://www.styleshout.com/"> Edison V. Ospina Corredor</a></li>
+                        <li>&copy; Copyright 2023 Diseñador:<a title="Styleshout" href="http://www.styleshout.com/"> Edison V. Ospina Corredor</a></li>
                     </ul>
                 </div>
                 <div id="go-top"><a className="smoothscroll" title="Back to Top" href="#home"><i className="icon-up-open"></i></a></div>
