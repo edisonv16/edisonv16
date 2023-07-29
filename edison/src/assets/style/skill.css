@@ -3,3 +3,7 @@
     display: block;
     width: 100%;
 }
+.twitter-timeline{
+    height: 750px;
+    overflow: scroll;
+}

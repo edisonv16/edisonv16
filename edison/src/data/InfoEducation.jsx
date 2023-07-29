@@ -20,7 +20,7 @@ const InfoEducation = {
             curso:[
                 {
                     id:1,
-                    curso:'Scrum',
+                    curso:'Scrum Master Profesional',
                 },
             ]
         },

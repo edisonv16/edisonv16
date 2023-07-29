@@ -33,9 +33,8 @@ const Profile = () => {
          
           </div>
           <div className="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
-      <a className="twitter-timeline" href="https://twitter.com/edisonv16?ref_src=twsrc%5Etfw">Tweets by edisonv16</a>
-      <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
-    </div>
+            <a className="twitter-timeline" href="https://twitter.com/edisonv16?ref_src=twsrc%5Etfw">Tweets by edisonv16</a>
+          </div>
         </div>
       </div>
     </section>
