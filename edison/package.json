@@ -28,5 +28,10 @@
     "babel-jest": "^30.3.0",
     "jest": "^30.3.0",
     "jest-environment-jsdom": "^30.3.0"
+  },
+  "overrides": {
+    "@tootallnate/once": "^3.0.1",
+    "http-proxy-agent": "^7.0.2",
+    "jsdom": "^26.1.0"
   }
 }
