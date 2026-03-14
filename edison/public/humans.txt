@@ -1,0 +1,12 @@
+/* TEAM */
+Developer: Edison Ospina
+Role: Scrum Master, Front-End Senior y Líder de Proyectos Digitales
+Contact: edisonv16@gmail.com
+Location: Colombia
+
+/* SITE */
+Last update: 2026-03-14
+Language: Español
+Doctype: HTML5
+Standards: HTML5, CSS3, JavaScript (React + Vite)
+Components: UX/UI, Portafolio, Aplicaciones móviles y sitios web
