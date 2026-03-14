@@ -112,7 +112,7 @@ const InfoPortafolio = {
         },
         {
             id:12,
-            title:'Spanihs in Colombia',
+            title:'Spanish in Colombia',
             work:'Diseño IU',
             tipo:'Sitio Web',
             img:'web_spanisincolombia.png',
