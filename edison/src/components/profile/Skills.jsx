@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Info from "../../data/Info";
+import Info from "../../data/Info.jsx";
 const Skill = () => {
     const [info, setInfo] = useState(Info);
     const { profile } = info;
