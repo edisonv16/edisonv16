@@ -4,13 +4,11 @@ const Footer = () => {
             <div className="container-xxl">
                 <div className="twelve">
                     <ul className="social-links">
-                        <li><a href="https://www.facebook.com/edison.ospina.940" target="_blank"><i className="fa fa-facebook"></i></a></li>
-                        <li><a href="https://twitter.com/edisonv16" target="_blank"><i className="fa fa-twitter"></i></a></li>
-                        <li><a href="https://plus.google.com/u/0/114659983859149474982" target="_blank"><i className="fa fa-google-plus"></i></a></li>
+                        <li><a href="https://www.linkedin.com/in/edison-ospina" target="_blank" rel="noreferrer" aria-label="Perfil de LinkedIn"><i className="fa fa-linkedin"></i></a></li>
                     </ul>
 
                     <ul className="copyright">
-                        <li>&copy; Copyright 2023 Diseñador:<a title="Styleshout" href="http://www.styleshout.com/"> Edison V. Ospina Corredor</a></li>
+                        <li>&copy; {new Date().getFullYear()} Edison Vidal Ospina Corredor</li>
                     </ul>
                 </div>
                 <div id="go-top"><a className="smoothscroll" title="Back to Top" href="#home"><i className="icon-up-open"></i></a></div>

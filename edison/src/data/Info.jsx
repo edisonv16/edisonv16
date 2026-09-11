@@ -1,24 +1,20 @@
 const Info = {
-    profile:{
-        name: 'Edison Ospina',
-        tel: '3185735382',
-        email: 'edisonv16@gmail.com',
-        wellcomome: 'Como Scrum Master y líder en dirección de arte y gráfico, me he enfocado en la gerencia de sitios web y aplicaciones móviles con énfasis en UX y UI. Con 9 años de experiencia en metodologías Scrum y Lean, y 3 años como líder en proyectos de IT, me he destacado en la creación de propuestas, desarrollo, diseño e implementación de proyectos digitales. Como Front End Senior, tengo un interés particular en adquirir habilidades en gestión de proyectos IT y continuar liderando equipos para lograr proyectos de calidad.',
-        profileProfession: 'Como líder de proyectos digitales, me encargo de la gestión del presupuesto de pauta en medios digitales ATL y redes sociales, así como del aumento de leads, ventas y conversiones digitales a través del análisis de KPI. Además, lidero y administro los equipos y agencias digitales afiliadas a las marcas, desarrollando investigaciones UX y estimando tiempos, organizando proyectos y tareas. También me encargo de capacitar a nuevos integrantes del equipo y de informar oportunamente sobre cualquier dificultad o contratiempo en los proyectos, buscando siempre una solución y compromiso propio por la calidad en las entregas. En cuanto al desarrollo de aplicaciones nativas, he liderado proyectos con metodologías ágiles como Lean UX, Scrum o Canvas, y me gusta diseñar interfaces UX y UI, tanto en software empresarial como en proyectos digitales, siempre aplicando buenas prácticas de desarrollo Front. También tengo experiencia en la implementación de SEO, agregando microformatos y analizando datos, y en investigar el modelo de negocio de los proyectos digitales, integrándolos al negocio y asegurando que los usuarios tengan una experiencia satisfactoria, buscando siempre resultados cuantificables para cumplir con las metas del proyecto.',
-        habilidades: 'Tengo interés de adquirir más habilidades en lo laboral y en lo personal, me destaco diseñador y desarrollador móvil y web en front end, he trabajado en los siguientes lenguajes, frameworks y estándares de diseño. HTML, HTML5 (Avanzando), bootstrap, foundation, Svg, animaciones con Css, Css3, Preprocesadores css (Less, Sass y Stylus) Acccion Scrip2, Javascript, Jquery, Jquery UI, aplicaciones no nativas (JQuery Movile, Phonegap phone.js, ionic(Básico) y Xamarin; implementado o desarrollando diseños), aplicaciones nativas (xml ANDROID STUDIO, StoryBoard aplicaciones IOS XCODE, implementado o desarrollando interfaz móvil), CMS (Drupal y wordpress), php(Básico) Bases de datos MySql(Básico) con PhpMyAdmin, subida de archivos ftp y no menos importante Github. Diseño mockups, wireframes, diseños web y móviles (Diseños en Android con Material Design y diseños iOS 7, y diseños a la medida), artes finales y prototipos móviles y web. Trabajo con Illustrator, Photoshop, Fireworks, InDesign y sketch. Buenas prácticas de usabilidad, Diseño de Interfaces (UI), experiencia de usuario (UX) y diseño de Interacción (IxD). Más de 20 proyectos web y más de 8 aplicaciones móviles, 6 ediciones editoriales de la revista la nota económica'
-    },
-    seo: {
-        siteUrl: 'https://edisonv16.github.io/portfolio/',
-        title: 'PORTAFOLIO EDISON OSPINA',
-        description: 'Hoja de vida y portafolio profesional de Edison Ospina.',
-        image: 'https://edisonv16.github.io/portfolio/edisonospina.jpg',
-        jobTitle: 'Front End Senior y Líder de Proyectos Digitales',
-        sameAs: [
-            'https://www.facebook.com/edison.ospina.940',
-            'https://twitter.com/edisonv16',
-            'https://plus.google.com/u/0/114659983859149474982'
-        ]
-    }
+  profile: {
+    name: 'Edison Vidal Ospina Corredor',
+    tel: '+57 318 573 5382',
+    email: 'edisonv16@gmail.com',
+    wellcomome: 'Senior Frontend Engineer y UI Architect con más de 11 años de experiencia liderando la conceptualización, arquitectura y modernización de plataformas web corporativas de misión crítica y alta escala.',
+    profileProfession: 'Especialista en Angular (v14–17+), TypeScript estricto y programación reactiva con RxJS. Integro una formación sólida en diseño gráfico y UX/UI con ingeniería de software para transformar procesos de negocio complejos en productos digitales fluidos, accesibles y de alto rendimiento. Cuento con experiencia en APIs empresariales, Azure AD y MSAL, Microsoft Graph API, Node.js, Express, Oracle PL/SQL y automatización CI/CD. Como Scrum Master certificado, promuevo la calidad de código, las pruebas unitarias, la accesibilidad y el trabajo colaborativo.',
+    habilidades: 'Frontend y arquitectura: Angular (v14–17+), TypeScript estricto, RxJS, JavaScript ES6+, React, Vue, HTML5, SCSS/Sass, arquitectura modular y ChangeDetectionStrategy.OnPush. UX/UI y diseño de sistemas: Figma, Adobe Creative Cloud, wireframing, prototipado, design systems, WCAG/a11y, heurísticas de usabilidad y Lean UX. Backend, cloud y seguridad: Node.js, Express, APIs REST, Azure AD, MSAL, Microsoft Graph API, Docker, Azure DevOps, OpenShift, Oracle Database, PL/SQL y MySQL. Calidad y liderazgo: Jest, Jasmine, Karma, SonarQube, Git/GitFlow, Scrum, Kanban, code reviews y mentoría técnica.'
+  },
+  seo: {
+    siteUrl: 'https://edisonospina.netlify.app',
+    title: 'Edison Vidal Ospina Corredor | Senior Frontend Engineer & UI Architect',
+    description: 'Portafolio de Edison Vidal Ospina Corredor, Senior Frontend Engineer, UI Architect y Technical Lead.',
+    image: 'https://edisonospina.netlify.app/edisonospina.jpg',
+    jobTitle: 'Senior Frontend Engineer & UI Architect | Technical Lead',
+    sameAs: ['https://www.linkedin.com/in/edison-ospina']
+  }
 };
 
 export default Info;

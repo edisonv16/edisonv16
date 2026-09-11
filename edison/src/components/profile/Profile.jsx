@@ -1,6 +1,5 @@
 import { useState } from "react";
 import imgprofile from "../../assets/img/edisonospina.jpg";
-import cvedison from "../../assets/pdf/EDISON_CV_2023.pdf";
 import Info from "../../data/Info.jsx";
 const Profile = () => {
   const [info, setInfo] = useState(Info);
@@ -19,21 +18,10 @@ const Profile = () => {
             <h2>Detalles de contacto</h2>
             <p className="address">
                 <span>{name}</span> <br />
-                <span> Teléfonos:{tel}</span>
+                <span>Teléfono: {tel}</span>
                 <br />
                 <span>{email}</span>
             </p>
-                <div className="download">
-                  <p>
-                    <a href={cvedison} target="_blank" className="button">
-                      <i className="fa fa-download"></i>Descarga mi H.V
-                    </a>
-                  </p>
-                </div>
-         
-          </div>
-          <div className="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
-            <a className="twitter-timeline" href="https://twitter.com/edisonv16?ref_src=twsrc%5Etfw">Tweets by edisonv16</a>
           </div>
         </div>
       </div>

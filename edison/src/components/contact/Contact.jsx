@@ -61,10 +61,9 @@ const Contact = () => {
                     <h4>Información de contacto</h4>
                     <p className="address">
                         Edison Vidal Ospina Corredor<br/>
-                            Ciudad Bogotá Carrera 20 # 35-23<br/>
-                                Barrio la Soledad<br/>
-                                    <span>(318) 796-0278</span><br/>
-                                        edisonv16@hotmail.com edisonv16@gmail.com
+                        Bogotá D.C., Colombia<br/>
+                        <span>(+57) 318 573 5382</span><br/>
+                        edisonv16@gmail.com
                     </p>
                 </div>
             </aside>

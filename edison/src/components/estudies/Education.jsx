@@ -8,17 +8,25 @@ const Education = () => {
 
     return (
         <div className="container-xxl education pb-5 pt-5">
-            <h1 className='text-center mb-5'><span>Formación Academica, Cursos, Enfasis y Diplmados</span></h1>
+            <h1 className='text-center mb-5'><span>Educación, certificaciones y reconocimientos</span></h1>
             <div className="row">
-                {education.education.map((item, index) => {
+                {education.education.map((item) => {
                     return (
-                        <div className='card-education' key={index}>
+                        <div className='card-education' key={item.id}>
                             <h3>{item.institucion}</h3>
-                            {item.curso.map((item, index) => {
+                            {item.curso.map((course) => {
+                                const details = [
+                                    course.institucion,
+                                    course.fecha,
+                                    course.credencial && `Credencial: ${course.credencial}`,
+                                    course.aptitudes && `Aptitudes: ${course.aptitudes}`
+                                ].filter(Boolean)
+
                                 return (
-                                    <p className="info" key={index}>
-                                        <span>&bull;</span>{item.curso}
-                                    </p>
+                                    <div className="info" key={course.id}>
+                                        <p><span>&bull;</span>{course.curso}</p>
+                                        {details.length > 0 && <small>{details.join(' · ')}</small>}
+                                    </div>
                                     )
                                 })}
                         </div>
