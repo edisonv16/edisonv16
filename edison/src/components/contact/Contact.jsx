@@ -15,7 +15,7 @@ const Contact = () => {
             </div>
             <div className="row">
                 <div className="eight columns">
-                    <div id="container" itemscope itemtype="http://www.data-vocabulary.org/Person">
+                    <div id="container" itemScope itemType="http://www.data-vocabulary.org/Person">
                         <div id="contenido">
                             <form action="php/enviarmail.php" method="post">
                                 <table border="0">

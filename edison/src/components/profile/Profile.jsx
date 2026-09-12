@@ -9,12 +9,12 @@ const Profile = () => {
     <section id="about">
       <div className="container-xxl">
         <div className="row">
-          <div className="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+          <div className="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4">
             <img className="profile-pic" src={imgprofile} alt="Imagen de portada"/>
           </div>
-          <div className="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+          <div className="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 col-xxl-8">
             <h2>Perfil profesional</h2>
-            <p>{profileProfession}</p>
+            {profileProfession.map((paragraph, index) => <p key={index}>{paragraph}</p>)}
             <h2>Detalles de contacto</h2>
             <p className="address">
                 <span>{name}</span> <br />

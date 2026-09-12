@@ -1,0 +1,115 @@
+.side-nav {
+    position: fixed;
+    top: 50%;
+    left: 1.25rem;
+    z-index: 1000;
+    width: 4.5rem;
+    padding: .5rem;
+    transform: translateY(-50%);
+    background: rgba(249, 252, 255, .94);
+    border: 1px solid rgba(20, 45, 75, .1);
+    border-radius: 1.25rem;
+    box-shadow: 0 .75rem 2rem rgba(0, 0, 0, .18);
+    backdrop-filter: blur(.5rem);
+}
+
+.side-nav ul {
+    display: grid;
+    gap: .35rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.side-nav a {
+    position: relative;
+    display: grid;
+    width: 3.5rem;
+    height: 3.5rem;
+    place-items: center;
+    color: #496178;
+    border-radius: .9rem;
+    font-size: 1.25rem;
+    text-decoration: none;
+    transition: background-color .2s ease, color .2s ease, transform .2s ease;
+}
+
+.side-nav a:hover,
+.side-nav a:focus-visible {
+    color: #ffffff;
+    background: #11abb0;
+    outline: none;
+    transform: translateX(.15rem);
+}
+
+.side-nav a::after {
+    position: absolute;
+    left: calc(100% + .9rem);
+    top: 50%;
+    width: max-content;
+    max-width: 15rem;
+    padding: .55rem .75rem;
+    color: #ffffff;
+    background: #17212b;
+    border-radius: .45rem;
+    content: attr(data-tooltip);
+    font: 600 .78rem/1.2 'opensans-bold', sans-serif;
+    letter-spacing: .02em;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-.35rem, -50%);
+    transition: opacity .2s ease, transform .2s ease;
+    visibility: hidden;
+}
+
+.side-nav a:hover::after,
+.side-nav a:focus-visible::after {
+    opacity: 1;
+    transform: translate(0, -50%);
+    visibility: visible;
+}
+
+@media only screen and (max-width: 767px) {
+    body {
+        padding-bottom: 6rem;
+    }
+
+    .side-nav {
+        top: auto;
+        bottom: .75rem;
+        left: 50%;
+        width: calc(100% - 1.5rem);
+        max-width: 31rem;
+        padding: .4rem;
+        transform: translateX(-50%);
+    }
+
+    .side-nav ul {
+        display: flex;
+        justify-content: space-around;
+        gap: 0;
+    }
+
+    .side-nav a {
+        width: 2.9rem;
+        height: 2.9rem;
+        font-size: 1.1rem;
+    }
+
+    .side-nav a:hover,
+    .side-nav a:focus-visible {
+        transform: translateY(-.1rem);
+    }
+
+    .side-nav a::after {
+        top: auto;
+        bottom: calc(100% + .75rem);
+        left: 50%;
+        transform: translate(-50%, .35rem);
+    }
+
+    .side-nav a:hover::after,
+    .side-nav a:focus-visible::after {
+        transform: translate(-50%, 0);
+    }
+}

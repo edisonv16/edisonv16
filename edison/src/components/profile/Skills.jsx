@@ -5,16 +5,23 @@ const Skill = () => {
     const { profile } = info;
     const { habilidades } = profile;
     return (
-        <div className="skill">
+        <section id="skills">
             <div className='container-xxl pt-5 pb-5'>
                 <div className="col-12">
-                    <h1><span>Competencias técnicas</span></h1>
+                    <h1 className="mt-5">Competencias Técnicas</h1>
                 </div>
-                <div className="col-12">
-                    <p>{habilidades}</p>
+                <div className="row g-4 mt-1">
+                    {habilidades.map((skill) => (
+                        <article className="col-12 col-md-6" key={skill.categoria}>
+                            <div className="skill-category">
+                                <h2>{skill.categoria}</h2>
+                                <p>{skill.tecnologias}</p>
+                            </div>
+                        </article>
+                    ))}
                 </div>
             </div>
-        </div>
+        </section>
     );
 }
 

@@ -3,7 +3,7 @@ import InfoWork from "../../data/InfoWork";
 const Work = () => {
     const [work, setWork] = useState(InfoWork);
     return (
-        <div className="container-xxl mb-5">
+        <section id="work" className="container-xxl mb-5">
             <div className="row mt-5 mb-5">
                 <div className="col-12">
                     <h1 className="text-center work-title-principal"><span>Trabajo</span></h1>
@@ -21,7 +21,7 @@ const Work = () => {
                         </div>
                     ))}
             </div>
-        </div>
+        </section>
     );
 }
 

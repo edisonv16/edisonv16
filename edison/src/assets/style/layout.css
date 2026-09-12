@@ -239,7 +239,7 @@ ul#nav li.current a { color: #F06000; }
 #resume a:hover, #resume a:focus { color: #313131; }
 
 #resume h1 {
-   font: 18px/24px 'opensans-bold', sans-serif;
+   font: 18px 'opensans-bold', sans-serif;
    text-transform: uppercase;
    letter-spacing: 1px;
    color: #F06000;
@@ -249,23 +249,35 @@ ul#nav li.current a { color: #F06000; }
    padding-bottom: 6px;
 }
 #resume h3 {
-   font: 14px/22px 'opensans-bold', sans-serif;
+   font: 14px 'opensans-bold', sans-serif;
    margin: 5px 0;
    line-height: normal;
    color: #11ABB0;
 }
 
 #resume .info {
-   font: 12px/20px 'librebaskerville-italic', serif;
+   font: 10px;
    color: #6E7881;
-   margin: 0;
+   margin:0;
+}
+#resume .info p{
+   font: 10px 'librebaskerville-italic', sans-serif;
+   font-weight: bold;
+   color: black;
+   margin: 5px 0;
+}
+#resume .info small{
+   font: 10px 'opensans-regular', sans-serif;
+   font-weight: bold;
+   color: black;
+   line-height: 0%;
 }
 #resume .info span {
    margin-right: 5px;
    margin-left: 5px;
 }
 #resume .date {
-   font: 15px/24px 'opensans-regular', sans-serif;
+   font: 15px 'opensans-regular', sans-serif;
    margin-top: 6px;
 }
 .card-education{
@@ -1002,3 +1014,15 @@ footer .social-links li:first-child { margin-left: 0; }
 	}	
 }
 
+#skills {
+    background: #ebeeee;
+    padding-bottom: 60px;
+}
+#skills h1 {
+   font: 15px/24px 'opensans-semibold', sans-serif;
+   text-transform: uppercase;
+   letter-spacing: 1px;
+   text-align: center;
+   margin-bottom: 48px;
+   color: #95A3A3;
+}

@@ -98,7 +98,7 @@ const Portafolio = () => {
                                         {/* <source type="image/webp" srcset="assets/imgs/flower1.webp"/> */}
                                         <source type="image/jpeg" srcSet={imagesweb + item.img} />
                                         <img src={imagesweb + item.img} alt={item.img} />
-                                        <a href={item.url} target='_blank'><p>{item.tipo}</p></a>
+                                        <a href={item.url} target='_blank' rel='noreferrer'><p>{item.tipo}</p></a>
                                     </picture>
                                     <p className='portafolio-company'>{item.compani}</p>
                                     <p className='portafolio-description'>{item.description}</p>

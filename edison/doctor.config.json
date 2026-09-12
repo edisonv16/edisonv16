@@ -1,0 +1,13 @@
+{
+  "ignore": {
+    "files": [
+      "dist/**",
+      "node_modules/**",
+      "coverage/**",
+      "__mocks__/**",
+      "babel.config.cjs",
+      "jest.config.cjs",
+      "vite.config.js"
+    ]
+  }
+}

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import Info from '../../data/Info.jsx';
+import HomeStatus from './HomeStatus';
 
 const Portada = (props) => {
     const [info, setInfo] = useState(Info);
@@ -10,7 +11,7 @@ const Portada = (props) => {
     return (
     <>
         <div className="container-xxl banner">
-            <p className='fecha'>{props.fechaActual}</p>
+            <HomeStatus />
             <div className='banner-text'>
                 <h1 className="responsive-headline">{props.mensaje} <br/> Soy {' ' + name}</h1>
                 <p>{wellcomome}</p>

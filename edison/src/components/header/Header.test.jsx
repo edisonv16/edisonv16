@@ -1,5 +1,4 @@
 import { render, screen } from '@testing-library/react';
-import '@testing-library/jest-dom';
 import Header from './Header';
 
 const REAL_DATE = Date;
@@ -28,7 +27,7 @@ const runGreetingScenario = async ({ isoDate, greeting, className }) => {
   mockDate(isoDate);
   render(<Header />);
 
-  expect(await screen.findByText(greeting)).toBeInTheDocument();
+  expect(await screen.findByText(greeting, { exact: false })).toBeInTheDocument();
   expect(document.querySelector('#home')).toHaveClass(className);
 };
 

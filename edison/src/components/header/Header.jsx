@@ -1,50 +1,31 @@
-import { useState, useEffect } from 'react';
 import Portada from './Portada';
 
-const Header = () => {
-    const [mensaje, setMensaje] = useState('');
-    const [nombreEstilo, setNombreEstilo] = useState('');
-    const [fechaActual, setFechaActual] = useState('');
-    useEffect(()=>{
-        const fecha = new Date();
-        const opciones = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-        const fechaFormateada = fecha.toLocaleDateString(undefined, opciones);
-        const hora = new Date().getHours();
-        let mensaje;
-        let nombreEstilo;
-    
-        if (hora < 12) {
-            mensaje = 'Buenos Días';
-            nombreEstilo = 'estilo-manana';
-        }
-        else if (hora < 18){
-            mensaje = 'Buenas Tardes';
-            nombreEstilo = 'estilo-tarde';
-        } 
-        else if (hora < 24){
-            mensaje = 'Buenas Noches';
-            nombreEstilo = 'estilo-noche';
-        } 
+const getSaludo = () => {
+    const hora = new Date().getHours();
+    if (hora < 12) {
+        return { mensaje: 'Buenos Días', nombreEstilo: 'estilo-manana' };
+    } else if (hora < 18) {
+        return { mensaje: 'Buenas Tardes', nombreEstilo: 'estilo-tarde' };
+    }
+    return { mensaje: 'Buenas Noches', nombreEstilo: 'estilo-noche' };
+};
 
-        setFechaActual(fechaFormateada);
-        setMensaje(mensaje);
-        setNombreEstilo(nombreEstilo);
-    }, [])
+const Header = () => {
+    const { mensaje, nombreEstilo } = getSaludo();
     return (
         <header id="home" className={nombreEstilo + ' ' + 'text-center'}>
-            <nav id="nav-wrap">
-                <a className="mobile-btn" href="#nav-wrap" title="Show navigation">Show navigation</a>
-                <a className="mobile-btn" href="#" title="Hide navigation">Hide navigation</a>
-                <ul id="nav" className=" nav">
-                    <li className="current"><a className="smoothscroll" href="#home">Inicio</a></li>
-                    <li><a className="smoothscroll" href="#about">¿Quién soy?</a></li>
-                    <li><a className="smoothscroll" href="#resume">Estudios</a></li>
-                    <li><a className="smoothscroll" href="#portfolio">Proyectos</a></li>
+            <nav className="side-nav" aria-label="Navegación principal">
+                <ul>
+                    <li><a className="smoothscroll" href="#home" data-tooltip="Inicio" aria-label="Ir a inicio"><i className="fa fa-home" aria-hidden="true"></i></a></li>
+                    <li><a className="smoothscroll" href="#about" data-tooltip="Perfil profesional" aria-label="Ir al perfil profesional"><i className="fa fa-user" aria-hidden="true"></i></a></li>
+                    <li><a className="smoothscroll" href="#skills" data-tooltip="Habilidades" aria-label="Ir a habilidades"><i className="fa fa-code" aria-hidden="true"></i></a></li>
+                    <li><a className="smoothscroll" href="#portfolio" data-tooltip="Proyectos" aria-label="Ir a proyectos"><i className="fa fa-folder-open" aria-hidden="true"></i></a></li>
+                    <li><a className="smoothscroll" href="#work" data-tooltip="Trayectoria profesional" aria-label="Ir a trayectoria profesional"><i className="fa fa-briefcase" aria-hidden="true"></i></a></li>
+                    <li><a className="smoothscroll" href="#resume" data-tooltip="Formación y certificaciones" aria-label="Ir a formación y certificaciones"><i className="fa fa-graduation-cap" aria-hidden="true"></i></a></li>
                 </ul>
             </nav>
             <Portada 
             mensaje = {mensaje}
-            fechaActual = {fechaActual}
             />
         </header>
     );

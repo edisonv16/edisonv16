@@ -10,6 +10,8 @@ import './assets/style/magnific-popup.css'
 import './assets/style/portafolio.css'
 import './assets/style/work.css'
 import './assets/style/skill.css'
+import './assets/style/side-nav.css'
+import './assets/style/home-status.css'
 import './assets/style/galeria.css'
 
 import Header from './components/header/Header'
@@ -74,9 +76,10 @@ function App() {
       <StructuredData schema={structuredData} />
       <Header />
       <Profile />
+      <Skill />
       <Portafolio />
       <Work />
-      <Skill />
+
       <section id="resume">
         <Education />
       </section>
