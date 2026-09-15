@@ -1,4 +1,5 @@
 import { createWeatherModel } from '../models/weather.model';
+import { fetchWithRetry } from '../utils/http.util';
 
 const WEATHER_API_URL = 'https://api.open-meteo.com/v1/forecast';
 
@@ -11,13 +12,12 @@ export const getCurrentWeather = async ({ latitude, longitude }) => {
     wind_speed_unit: 'kmh',
     timezone: 'auto'
   });
-  const response = await fetch(`${WEATHER_API_URL}?${params}`, {
-    signal: AbortSignal.timeout(5000)
-  });
 
-  if (!response.ok) {
-    throw new Error('No fue posible consultar el clima actual.');
-  }
+  const response = await fetchWithRetry(
+    `${WEATHER_API_URL}?${params}`,
+    { timeoutMs: 5000 },
+    3
+  );
 
   const data = await response.json();
   return createWeatherModel(data.current);

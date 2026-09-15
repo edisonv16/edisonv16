@@ -3,7 +3,7 @@ import Info from "../../data/Info.jsx";
 
 const Profile = () => {
   const { profile } = Info;
-  const { name, tel, email, profileProfession } = profile;
+  const { profileProfession } = profile;
 
   return (
     <section id="about">
@@ -15,13 +15,6 @@ const Profile = () => {
           <div className="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 col-xxl-8">
             <h2>Perfil profesional</h2>
             {profileProfession.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-            <h2>Detalles de contacto</h2>
-            <p className="address">
-                <span>{name}</span> <br />
-                <span>Teléfono: {tel}</span>
-                <br />
-                <span>{email}</span>
-            </p>
           </div>
         </div>
       </div>
