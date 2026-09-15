@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import InfoPortafolio from '../../data/InfoPortafolio.jsx';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -11,14 +10,11 @@ import 'swiper/css/navigation';
 import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules';
 
 const Portafolio = () => {
-    const [portafolio, setInfoPortafolio] = useState(InfoPortafolio);
-    const images = '/';
+    const portafolio = InfoPortafolio;
     const imagesapps = '/apps/';
     const imagescampanas = '/campanas/';
     const imagesilustraciones = '/ilustraciones/';
     const imagesweb = '/web/';
-
-    const urlImagenes = images;
     return (
         <section id="portfolio">
             <div className='container-xxl'>
@@ -49,31 +45,31 @@ const Portafolio = () => {
                             className="swiper-container"
                         >
                             <SwiperSlide>
-                                <img src={imagesapps + "app_appprevio.png"} />
+                                <img src={imagesapps + "app_appprevio.png"} alt="Captura de pantalla de App Previo" />
                             </SwiperSlide>
                             <SwiperSlide>
-                                <img src={imagesapps + "app_crc.png"} />
+                                <img src={imagesapps + "app_crc.png"} alt="Captura de pantalla de App CRC" />
                             </SwiperSlide>
                             <SwiperSlide>
-                                <img src={imagesapps + "app_crc2.png"} />
+                                <img src={imagesapps + "app_crc2.png"} alt="Vista detallada de App CRC" />
                             </SwiperSlide>
                             <SwiperSlide>
-                                <img src={imagesapps + "app_ecoturistica.png"} />
+                                <img src={imagesapps + "app_ecoturistica.png"} alt="Captura de pantalla de App Ecoturística" />
                             </SwiperSlide>
                             <SwiperSlide>
-                                <img src={imagesapps + "app_gentedemar.png"} />
+                                <img src={imagesapps + "app_gentedemar.png"} alt="Captura de pantalla de App Gente de Mar" />
                             </SwiperSlide>
                             <SwiperSlide>
-                                <img src={imagesapps + "app_inder.png"} />
+                                <img src={imagesapps + "app_inder.png"} alt="Captura de pantalla de App INDER" />
                             </SwiperSlide>
                             <SwiperSlide>
-                                <img src={imagesapps + "app_notifico.png"} />
+                                <img src={imagesapps + "app_notifico.png"} alt="Captura de pantalla de App Notifico" />
                             </SwiperSlide>
                             <SwiperSlide>
-                                <img src={imagesapps + "app_tolimamusical.png"} />
+                                <img src={imagesapps + "app_tolimamusical.png"} alt="Captura de pantalla de App Tolima Musical" />
                             </SwiperSlide>
                             <SwiperSlide>
-                                <img src={imagesapps + "app_artesanal.png"} />
+                                <img src={imagesapps + "app_artesanal.png"} alt="Captura de pantalla de App Artesanal" />
                             </SwiperSlide>
                             <div className='slider-controler'>
                                 <div className='swiper-button-prev slider-arrow'>
@@ -89,9 +85,9 @@ const Portafolio = () => {
                         </Swiper>
                     </div>
                     <h1 className='mt-5'>Sitios Web</h1>
-                    {portafolio.Proyects.map((item, index) => {
+                    {portafolio.Proyects.map((item) => {
                         return (
-                            <div className="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xxl-3" key={index}>
+                            <div className="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xxl-3" key={item.title}>
                                 <div className='portafolio'>
                                     <h4 className='portafolio-title'>{item.title}</h4>
                                     <picture className='portafolio-img'>

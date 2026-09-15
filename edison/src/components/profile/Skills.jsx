@@ -1,9 +1,9 @@
-import { useState } from 'react';
 import Info from "../../data/Info.jsx";
+
 const Skill = () => {
-    const [info, setInfo] = useState(Info);
-    const { profile } = info;
+    const { profile } = Info;
     const { habilidades } = profile;
+
     return (
         <section id="skills">
             <div className='container-xxl pt-5 pb-5'>

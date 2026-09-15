@@ -1,10 +1,10 @@
-import { useState } from "react";
 import imgprofile from "../../assets/img/edisonospina.jpg";
 import Info from "../../data/Info.jsx";
+
 const Profile = () => {
-  const [info, setInfo] = useState(Info);
-  const { profile } = info;
+  const { profile } = Info;
   const { name, tel, email, profileProfession } = profile;
+
   return (
     <section id="about">
       <div className="container-xxl">
@@ -14,7 +14,7 @@ const Profile = () => {
           </div>
           <div className="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 col-xxl-8">
             <h2>Perfil profesional</h2>
-            {profileProfession.map((paragraph, index) => <p key={index}>{paragraph}</p>)}
+            {profileProfession.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
             <h2>Detalles de contacto</h2>
             <p className="address">
                 <span>{name}</span> <br />

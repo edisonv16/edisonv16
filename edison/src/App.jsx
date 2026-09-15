@@ -76,6 +76,7 @@ function App() {
       <StructuredData schema={structuredData} />
       <Header />
       <Profile />
+      <Contact />
       <Skill />
       <Portafolio />
       <Work />
@@ -83,7 +84,6 @@ function App() {
       <section id="resume">
         <Education />
       </section>
-      {/* <Contact /> */}
       <Footer />
     </div>
   )

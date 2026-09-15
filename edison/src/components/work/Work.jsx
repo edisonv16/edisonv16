@@ -1,7 +1,8 @@
-import { useState } from "react";
 import InfoWork from "../../data/InfoWork";
+
 const Work = () => {
-    const [work, setWork] = useState(InfoWork);
+    const work = InfoWork;
+
     return (
         <section id="work" className="container-xxl mb-5">
             <div className="row mt-5 mb-5">

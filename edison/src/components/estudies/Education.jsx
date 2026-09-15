@@ -1,10 +1,7 @@
-import { useState } from 'react';
 import InfoEducation from '../../data/InfoEducation.jsx';
 
 const Education = () => {
-    const [education, setEducation] = useState(InfoEducation);
-
-
+    const education = InfoEducation;
 
     return (
         <div className="container-xxl education pb-5 pt-5">

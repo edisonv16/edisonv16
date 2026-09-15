@@ -21,26 +21,26 @@ const Contact = () => {
                                 <table border="0">
                                     <tr>
                                         <td width="50%">
-                                            <p style="text-align:center;">Introduce tu nombre</p>
+                                            <label htmlFor="nombre" style={{ display: 'block', textAlign: 'center' }}>Introduce tu nombre</label>
                                         </td>
                                         <td width="50%">
-                                            <input type="text" size="50%" required name="nombre" placeholder="Nombre" />
+                                            <input id="nombre" type="text" size="50%" required name="nombre" placeholder="Nombre" />
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <p style="text-align:center;">Introduce tu email</p>
+                                            <label htmlFor="email" style={{ display: 'block', textAlign: 'center' }}>Introduce tu email</label>
                                         </td>
                                         <td>
-                                            <input type="email" size="50%" value="Ejem: usuario@dominio.com" name="email" />
+                                            <input id="email" type="email" size="50%" name="email" placeholder="Ejem: usuario@dominio.com" required />
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <p style="text-align:center;">Escriba su mensaje</p>
+                                            <label htmlFor="mensaje" style={{ display: 'block', textAlign: 'center' }}>Escriba su mensaje</label>
                                         </td>
                                         <td>
-                                            <textarea cols="50%" rows="8" name="mensaje" placeholder="Escribe tu mensaje"></textarea>
+                                            <textarea id="mensaje" cols="50%" rows="8" name="mensaje" placeholder="Escribe tu mensaje" required></textarea>
                                         </td>
                                     </tr>
                                     <tr>
@@ -69,7 +69,7 @@ const Contact = () => {
             </aside>
             <Testimonial />
         </section>
-                        );
+    );
 }
 
- export default Contact;
+export default Contact;
