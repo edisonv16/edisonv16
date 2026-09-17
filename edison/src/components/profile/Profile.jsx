@@ -13,7 +13,14 @@ const Profile = () => {
             <img className="profile-pic" src={imgprofile} alt="Imagen de portada"/>
           </div>
           <div className="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 col-xxl-8">
-            <h2>Perfil profesional</h2>
+            <div className="mb-4">
+              <span className="section-badge section-badge--dark mb-3">
+                <i className="fa fa-user" aria-hidden="true"></i> Sobre Mí
+              </span>
+              <h2 className="section-title-principal section-title-principal--dark text-start">
+                <span>Perfil Profesional</span>
+              </h2>
+            </div>
             {profileProfession.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
           </div>
         </div>

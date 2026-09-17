@@ -50,7 +50,11 @@ export const categorizeError = (error, status = null, attempts = 3) => {
   }
 
   if (status && status >= 400) {
-    return new ServiceError(`Error ${status}: Problema en la solicitud del servicio.`, {
+    const detail = error?.serverDetail || (error?.message && !error.message.startsWith('HTTP_') ? error.message : null);
+    const message = detail
+      ? `Error ${status}: ${detail}`
+      : `Error ${status}: Problema en la solicitud del servicio.`;
+    return new ServiceError(message, {
       category: 'CLIENT_ERROR',
       status,
       attempts,
@@ -121,7 +125,15 @@ export const fetchWithRetry = async (url, options = {}, maxAttempts = 3, delayMs
 
       if (!response.ok) {
         lastStatus = response.status;
-        throw new Error(`HTTP_${response.status}`);
+        let responseBody = '';
+        try {
+          responseBody = await response.text();
+        } catch {
+          // ignore
+        }
+        const error = new Error(responseBody || `HTTP_${response.status}`);
+        error.serverDetail = responseBody;
+        throw error;
       }
 
       return response;

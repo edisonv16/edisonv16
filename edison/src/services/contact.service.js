@@ -1,24 +1,38 @@
 import { fetchWithRetry } from '../utils/http.util';
 
-const FORMSUBMIT_URL = 'https://formsubmit.co/ajax/edisonv16@gmail.com';
+const EMAILJS_API_URL = 'https://api.emailjs.com/api/v1.0/email/send';
 
-export const sendContactEmail = async ({ nombre, email, mensaje }) => {
+const SERVICE_ID =
+  (typeof process !== 'undefined' && process.env?.VITE_EMAILJS_SERVICE_ID) ||
+  'service_6o6hwrt';
+const TEMPLATE_ID =
+  (typeof process !== 'undefined' && process.env?.VITE_EMAILJS_TEMPLATE_ID) ||
+  'template_7bvmakg';
+const PUBLIC_KEY =
+  (typeof process !== 'undefined' && process.env?.VITE_EMAILJS_PUBLIC_KEY) ||
+  'TXrNNX1tNYiuinhUI';
+
+export const sendContactEmail = async ({ nombre, email, mensaje, captchaToken }) => {
   const payload = {
-    name: nombre,
-    email: email,
-    message: mensaje,
-    _subject: `Nuevo mensaje de contacto de ${nombre}`,
-    _template: 'table',
-    _captcha: 'false'
+    service_id: SERVICE_ID,
+    template_id: TEMPLATE_ID,
+    user_id: PUBLIC_KEY,
+    template_params: {
+      name: nombre,
+      email: email,
+      message: mensaje,
+      title: 'Portafolio Edison Ospina',
+      'g-recaptcha-response': captchaToken || ''
+    }
   };
 
   const response = await fetchWithRetry(
-    FORMSUBMIT_URL,
+    EMAILJS_API_URL,
     {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Accept: 'application/json'
+        Accept: 'application/json, text/plain, */*'
       },
       body: JSON.stringify(payload),
       timeoutMs: 10000
@@ -27,6 +41,16 @@ export const sendContactEmail = async ({ nombre, email, mensaje }) => {
     500
   );
 
-  const data = await response.json();
-  return data;
+  let message = 'OK';
+  if (typeof response.text === 'function') {
+    message = await response.text();
+  } else if (typeof response.json === 'function') {
+    const data = await response.json();
+    message = data?.message || 'OK';
+  }
+
+  return {
+    success: true,
+    message
+  };
 };

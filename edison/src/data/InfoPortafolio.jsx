@@ -147,7 +147,7 @@ const InfoPortafolio = {
             tipo:'Sitio Web',
             img:'web_futbolred.png',
             compani:'Casa Editorial el Tiempo',
-            description:'',
+            description:'Desarrollo frontend e implementación de maquetas responsive para el portal deportivo líder de alto tráfico. Arquitectura e integración de APIs en tiempo real para marcadores y estadísticas en vivo, estimación de tiempos en sprints y coordinación técnica con backend, bases de datos, diseñadores UI/UX y directores de producto para el despliegue continuo de nuevas funcionalidades.',
             url:'https://www.futbolred.com/',
         },
         {
@@ -157,7 +157,7 @@ const InfoPortafolio = {
             tipo:'Sitio Web',
             img:'web_portafolio.png',
             compani:'Casa Editorial el Tiempo',
-            description:'',
+            description:'Desarrollo frontend y maquetación de interfaces para el diario económico líder de Colombia. Arquitectura de componentes, integración de APIs de indicadores financieros y bursátiles, estimación y planificación de tiempos, articulando entregas de nuevas funcionalidades con backend, bases de datos, diseñadores y directores de proyecto.',
             url:'https://www.portafolio.co/',
         },
         {
@@ -167,7 +167,7 @@ const InfoPortafolio = {
             tipo:'Sitio Web',
             img:'web_eltiempo.png',
             compani:'Casa Editorial el Tiempo',
-            description:'',
+            description:'Desarrollo frontend para especiales multimedia e historias digitales interactivas de alta concurrencia. Maquetación fiel de diseños editoriales, arquitectura de consumo de APIs, estimación de tiempos en reuniones de planificación y coordinación multidisciplinaria con backend, diseñadores, editores y directores de producto.',
             url:'https://www.eltiempo.com/historias-el-tiempo',
         },
         {
@@ -177,7 +177,7 @@ const InfoPortafolio = {
             tipo:'Sitio Web',
             img:'web_telesentinel.png',
             compani:'Telesentinel',
-            description:'',
+            description:'Liderazgo en rediseño y desarrollo frontend del portal corporativo, alcanzando 100% en Google Lighthouse. Maquetación responsive, integración de formularios de conversión y pasarelas de pago PSE, con estimación de tiempos y coordinación con directores de proyecto.',
             url:'https://www.telesentinel.com/',
         },
         {
@@ -187,7 +187,7 @@ const InfoPortafolio = {
             tipo:'Sitio Web',
             img:'web_onvacation.png',
             compani:'On Vacation',
-            description:'',
+            description:'Desarrollo frontend y liderazgo web para portales transaccionales de viajes y reservas. Maquetación UI/UX, optimización SEO y de rendimiento, consumo de APIs y coordinación con agencias, backend y directores de producto.',
             url:'https://www.onvacation.com/',
         },
         {
@@ -197,8 +197,8 @@ const InfoPortafolio = {
             tipo:'Sitio Web',
             img:'web_ciencuadras.png',
             compani:'Seguros Bolivar - Huella Digital',
-            description:'',
-            url:'',
+            description:'Desarrollo frontend para la plataforma proptech inmobiliaria líder. Implementación de maquetas UI, consumo y arquitectura de APIs para búsqueda avanzada y filtros interactivos de inmuebles, estimación técnica de tiempos y coordinación con backend, DBAs, diseñadores y directores de producto para la entrega de nuevas funcionalidades.',
+            url:'https://www.ciencuadras.com/',
         },
         {
             id:21,
@@ -207,7 +207,7 @@ const InfoPortafolio = {
             tipo:'Sitio Web',
             img:'web_jepitconjuntos.png',
             compani:'Seguros Bolivar - Huella Digital',
-            description:'',
+            description:'Desarrollo frontend y arquitectura modular para la plataforma de administración y seguridad comunitaria en copropiedades. Maquetación de interfaces intuitivas, integración de APIs para gestión y pagos, estimación de tiempos y coordinación activa con backend, bases de datos, diseñadores y directores de proyecto.',
             url:'',
         },
     ]

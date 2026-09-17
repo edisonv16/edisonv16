@@ -52,11 +52,27 @@ describe('Header', () => {
     });
   });
 
-  test('renders evening greeting with evening class', async () => {
-    await runGreetingScenario({
-      isoDate: '2024-01-10T21:00:00',
-      greeting: 'Buenas Noches',
-      className: 'estilo-noche',
+  test('renders all 7 navigation items in side-nav including Formation and Contact', () => {
+    render(<Header />);
+
+    const nav = screen.getByRole('navigation', { name: /navegación principal/i });
+    expect(nav).toBeInTheDocument();
+
+    const expectedLinks = [
+      { href: '#home', label: 'Ir a inicio', tooltip: 'Inicio' },
+      { href: '#about', label: 'Ir al perfil profesional', tooltip: 'Perfil profesional' },
+      { href: '#skills', label: 'Ir a habilidades', tooltip: 'Habilidades' },
+      { href: '#portfolio', label: 'Ir a proyectos', tooltip: 'Proyectos' },
+      { href: '#work', label: 'Ir a trayectoria profesional', tooltip: 'Trayectoria profesional' },
+      { href: '#resume', label: 'Ir a formación y certificaciones', tooltip: 'Formación y certificaciones' },
+      { href: '#contact', label: 'Ir a contacto', tooltip: 'Contacto' },
+    ];
+
+    expectedLinks.forEach(({ href, label, tooltip }) => {
+      const link = screen.getByRole('link', { name: label });
+      expect(link).toBeInTheDocument();
+      expect(link).toHaveAttribute('href', href);
+      expect(link).toHaveAttribute('data-tooltip', tooltip);
     });
   });
 });

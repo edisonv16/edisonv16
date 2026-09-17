@@ -270,7 +270,68 @@ a.contact-card__item-value:hover {
   color: #ff6b6b;
 }
 
-/* Botón de Enviar */
+/* Honeypot invisible para bots */
+.contact-form__hp {
+  position: absolute !important;
+  left: -9999px !important;
+  top: -9999px !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  z-index: -10 !important;
+}
+
+/* Indicador de requisitos antes de mostrar botón */
+.contact-form__requirement-hint {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  background: rgba(17, 171, 176, 0.08);
+  border: 1px dashed rgba(17, 171, 176, 0.45);
+  border-radius: 0.6rem;
+  padding: 0.8rem 1.1rem;
+  color: #38d3d9;
+  font: 500 0.82rem/1.45 'opensans-regular', sans-serif;
+  margin-top: 0.6rem;
+  text-align: left;
+}
+
+.contact-form__requirement-hint .fa {
+  font-size: 1.1rem;
+  color: #11abb0;
+  flex-shrink: 0;
+}
+
+/* Contenedor y Botón de Enviar */
+.contact-form__submit-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.contact-form__action-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1rem;
+  width: 100%;
+}
+
+.contact-form__recaptcha-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.contact-form__recaptcha {
+  min-height: 78px;
+  border-radius: 4px;
+}
+
 .contact-form__submit-btn {
   align-self: flex-end;
   background: #a33327;
@@ -304,6 +365,21 @@ a.contact-card__item-value:hover {
 .contact-form__submit-btn:focus-visible {
   outline: 3px solid #ff6b6b;
   outline-offset: 2px;
+}
+
+.contact-form__submit-btn--animated {
+  animation: submitBtnFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes submitBtnFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Alerta de Error en Envío */

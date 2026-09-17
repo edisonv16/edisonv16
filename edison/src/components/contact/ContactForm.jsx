@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import {
   validateName,
   validateEmail,
@@ -7,11 +7,17 @@ import {
 } from '../../utils/contactValidation';
 import { sendContactEmail } from '../../services/contact.service';
 import ContactSuccessMessage from './ContactSuccessMessage';
+import ReCaptcha from './ReCaptcha';
+
+const RECAPTCHA_SITE_KEY =
+  (typeof process !== 'undefined' && process.env?.VITE_RECAPTCHA_SITE_KEY) ||
+  '6LctrcAtAAAAALkrEQyXXkDWZQ_Knhu8UzZ5Be3N';
 
 const INITIAL_FORM = {
   nombre: '',
   email: '',
-  mensaje: ''
+  mensaje: '',
+  company_website: ''
 };
 
 const validateField = (name, value) => {
@@ -102,6 +108,8 @@ const ContactForm = ({ contactEmail }) => {
   const [isSending, setIsSending] = useState(false);
   const [sendError, setSendError] = useState(null);
   const [submittedData, setSubmittedData] = useState(null);
+  const [formMountedAt] = useState(() => Date.now());
+  const captchaTokenRef = useRef(null);
 
   const updateFieldError = (name, value) => {
     const result = validateField(name, value);
@@ -126,6 +134,40 @@ const ContactForm = ({ contactEmail }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Protección 1: Honeypot invisible contra bots automáticos de scraping
+    if (formData.company_website) {
+      setIsSubmitted(true);
+      setSubmittedData({ ...formData });
+      return;
+    }
+
+    // Protección 2: Time-Trap (envío a velocidad sobrehumana menor a 2.5s)
+    const elapsedMs = Date.now() - formMountedAt;
+    const isNodeTest = typeof process !== 'undefined' && process.env?.NODE_ENV === 'test';
+    if (elapsedMs < 2500 && !isNodeTest) {
+      setSendError('Se detectó un envío instantáneo inusualmente rápido. Por favor, tómate un momento y reintenta.');
+      return;
+    }
+
+    // Protección 3: Validación de Google reCAPTCHA v2 (requerido en producción)
+    let token = captchaTokenRef.current;
+    if (!token && typeof window !== 'undefined' && window.grecaptcha && typeof window.grecaptcha.getResponse === 'function') {
+      try {
+        const directToken = window.grecaptcha.getResponse();
+        if (directToken) {
+          token = directToken;
+          captchaTokenRef.current = directToken;
+        }
+      } catch {
+        // Fallback silencioso si grecaptcha aún no está disponible
+      }
+    }
+
+    if (!isNodeTest && !token) {
+      setSendError('Por favor, completa la verificación "No soy un robot" antes de enviar.');
+      return;
+    }
+
     const validation = validateContactForm(formData);
     setErrors(validation.errors);
     setSeverities(validation.severities);
@@ -138,10 +180,19 @@ const ContactForm = ({ contactEmail }) => {
     setSendError(null);
 
     try {
-      await sendContactEmail(formData);
+      await sendContactEmail({ ...formData, captchaToken: token });
       setSubmittedData({ ...formData });
       setIsSubmitted(true);
     } catch (err) {
+      if (typeof window !== 'undefined' && window.grecaptcha && typeof window.grecaptcha.reset === 'function') {
+        try {
+          window.grecaptcha.reset();
+        } catch {
+          // ignore
+        }
+      }
+      captchaTokenRef.current = null;
+
       const message =
         err?.userMessage ||
         err?.message ||
@@ -158,10 +209,12 @@ const ContactForm = ({ contactEmail }) => {
     setSeverities({});
     setSubmittedData(null);
     setSendError(null);
+    captchaTokenRef.current = null;
     setIsSubmitted(false);
   };
 
   const messageLength = formData.mensaje.trim().length;
+  const isFormValid = validateContactForm(formData).isValid;
   const currentMailtoUrl = `mailto:${contactEmail}?subject=${encodeURIComponent(
     `Contacto Portafolio - ${formData.nombre}`
   )}&body=${encodeURIComponent(
@@ -186,6 +239,19 @@ const ContactForm = ({ contactEmail }) => {
         noValidate
         aria-label="Formulario de contacto"
       >
+        {/* Campo Honeypot invisible: Trampa para bots de scraping */}
+        <div className="contact-form__hp" aria-hidden="true">
+          <label htmlFor="company_website">Dejar vacío si eres humano</label>
+          <input
+            id="company_website"
+            type="text"
+            name="company_website"
+            tabIndex="-1"
+            autoComplete="off"
+            value={formData.company_website}
+            onChange={handleChange}
+          />
+        </div>
         {/* Campo 1: Nombre */}
         <div className="contact-form__field">
           <label htmlFor="nombre">
@@ -279,18 +345,43 @@ const ContactForm = ({ contactEmail }) => {
           isSending={isSending}
         />
 
-        {/* Botón de Enviar */}
-        <button
-          type="submit"
-          className="contact-form__submit-btn"
-          disabled={isSending}
-        >
-          <i
-            className={`fa ${isSending ? 'fa-spinner fa-spin' : 'fa-paper-plane'}`}
-            aria-hidden="true"
-          ></i>
-          <span>{isSending ? 'Enviando mensaje...' : 'Enviar Mensaje'}</span>
-        </button>
+        {/* Bloque de Verificación reCAPTCHA y Botón de Enviar */}
+        <div className="contact-form__submit-wrapper">
+          {isFormValid ? (
+            <div className="contact-form__action-block">
+              <ReCaptcha
+                siteKey={RECAPTCHA_SITE_KEY}
+                onVerify={(token) => {
+                  captchaTokenRef.current = token;
+                  setSendError(null);
+                }}
+                onExpire={() => {
+                  captchaTokenRef.current = null;
+                }}
+              />
+              <button
+                type="submit"
+                className="contact-form__submit-btn contact-form__submit-btn--animated"
+                disabled={isSending}
+              >
+                <i
+                  className={`fa ${isSending ? 'fa-spinner fa-spin' : 'fa-paper-plane'}`}
+                  aria-hidden="true"
+                ></i>
+                <span>{isSending ? 'Enviando mensaje...' : 'Enviar Mensaje'}</span>
+              </button>
+            </div>
+          ) : (
+            <div className="contact-form__requirement-hint" role="status" aria-live="polite">
+              <i className="fa fa-info-circle" aria-hidden="true"></i>
+              <span>
+                {messageLength < 100
+                  ? `El botón de envío se habilitará al completar nombre, correo y los 100 caracteres mínimos del mensaje (faltan ${100 - messageLength}).`
+                  : 'Verifica que el nombre y el correo cumplan con el formato requerido para habilitar el envío.'}
+              </span>
+            </div>
+          )}
+        </div>
       </form>
     </div>
   );

@@ -5,7 +5,19 @@ const Education = () => {
 
     return (
         <div className="container-xxl education pb-5 pt-5">
-            <h1 className='text-center mb-5'><span>Educación, certificaciones y reconocimientos</span></h1>
+            <div className="row">
+                <div className="col-12 section-header mb-5">
+                    <span className="section-badge section-badge--dark">
+                        <i className="fa fa-graduation-cap" aria-hidden="true"></i> Formación & Credenciales
+                    </span>
+                    <h2 className="section-title-principal section-title-principal--dark">
+                        <span>Educación, Certificaciones y Reconocimientos</span>
+                    </h2>
+                    <p className="section-subtitle section-subtitle--dark">
+                        Formación profesional universitaria, certificaciones internacionales Scrum Master y distinciones periodísticas
+                    </p>
+                </div>
+            </div>
             <div className="row">
                 {education.education.map((item) => {
                     return (

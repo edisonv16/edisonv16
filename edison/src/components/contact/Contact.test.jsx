@@ -10,24 +10,35 @@ describe('Contact Component', () => {
     expect(screen.getByText('(+57) 318 573 5382')).toBeInTheDocument();
   });
 
-  test('renders 3 form fields: nombre, email and mensaje', () => {
+  test('renders 3 form fields: nombre, email, mensaje and requirement hint when incomplete', () => {
     render(<Contact />);
 
     expect(screen.getByLabelText(/Nombre completo/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/Correo electrónico/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/Observaciones o mensaje/i)).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /Enviar Mensaje/i })).toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: /Enviar Mensaje/i })).not.toBeInTheDocument();
+    expect(screen.getByText(/El botón de envío se habilitará/i)).toBeInTheDocument();
   });
 
-  test('displays validation alerts when submitting an empty form', () => {
+  test('displays send button only when all fields fulfill validation requirements', () => {
     render(<Contact />);
 
-    const submitBtn = screen.getByRole('button', { name: /Enviar Mensaje/i });
-    fireEvent.click(submitBtn);
+    const nameInput = screen.getByLabelText(/Nombre completo/i);
+    const emailInput = screen.getByLabelText(/Correo electrónico/i);
+    const messageInput = screen.getByLabelText(/Observaciones o mensaje/i);
 
-    expect(screen.getByText('El nombre es obligatorio.')).toBeInTheDocument();
-    expect(screen.getByText('El correo electrónico es obligatorio.')).toBeInTheDocument();
-    expect(screen.getByText('Las observaciones o mensaje son obligatorios.')).toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: /Enviar Mensaje/i })).not.toBeInTheDocument();
+
+    fireEvent.change(nameInput, { target: { value: 'Carlos Mendoza' } });
+    fireEvent.change(emailInput, { target: { value: 'carlos@empresa.com.co' } });
+    fireEvent.change(messageInput, {
+      target: {
+        value:
+          'Estimado Edison, me interesó mucho tu perfil profesional como Senior Frontend Engineer y deseamos coordinar una entrevista técnica para un proyecto.'
+      }
+    });
+
+    expect(screen.getByRole('button', { name: /Enviar Mensaje/i })).toBeInTheDocument();
   });
 
   test('displays warning when nombre has less than 6 characters', () => {
@@ -130,5 +141,36 @@ describe('Contact Component', () => {
     expect(nameInput.value).toBe('Andrea Suárez');
     expect(emailInput.value).toBe('andrea@tech.co');
     expect(messageInput.value).toBe(validMessage);
+  });
+
+  test('silently traps bot submission via honeypot without calling email service', async () => {
+    const fetchSpy = jest.fn();
+    global.fetch = fetchSpy;
+
+    render(<Contact />);
+
+    const nameInput = screen.getByLabelText(/Nombre completo/i);
+    const emailInput = screen.getByLabelText(/Correo electrónico/i);
+    const messageInput = screen.getByLabelText(/Observaciones o mensaje/i);
+    const honeypotInput = screen.getByLabelText(/Dejar vacío si eres humano/i);
+
+    fireEvent.change(nameInput, { target: { value: 'Bot Spamming' } });
+    fireEvent.change(emailInput, { target: { value: 'bot@spam.com' } });
+    fireEvent.change(messageInput, {
+      target: {
+        value:
+          'Mensaje de spam automático para llenar formularios web de manera indiscriminada y consumir cuotas de correo sin autorización.'
+      }
+    });
+    // El bot rellena el campo trampa
+    fireEvent.change(honeypotInput, { target: { value: 'http://spam-link.com' } });
+
+    const submitBtn = screen.getByRole('button', { name: /Enviar Mensaje/i });
+    fireEvent.click(submitBtn);
+
+    // Debe mostrar éxito al bot para engañarlo y no reintentar
+    expect(await screen.findByText('¡Mensaje enviado correctamente!')).toBeInTheDocument();
+    // Pero NUNCA hace llamadas fetch a EmailJS
+    expect(fetchSpy).not.toHaveBeenCalled();
   });
 });

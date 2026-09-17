@@ -18,9 +18,18 @@ const Portafolio = () => {
     return (
         <section id="portfolio">
             <div className='container-xxl'>
-                
                 <div className="row">
-                    <h1>Aplicaciones</h1>
+                    <div className="col-12 section-header mb-4">
+                        <span className="section-badge">
+                            <i className="fa fa-mobile" aria-hidden="true"></i> Portafolio Mobile & Web
+                        </span>
+                        <h2 className="section-title-principal">
+                            <span>Aplicaciones</span>
+                        </h2>
+                        <p className="section-subtitle">
+                            Desarrollo de experiencias interactivas y aplicaciones orientadas al usuario con alto rendimiento visual
+                        </p>
+                    </div>
                     <div className='container-galeria'>
                         <Swiper
                             effect={'coverflow'}
@@ -84,17 +93,41 @@ const Portafolio = () => {
                             <div className='swiper-pagination'></div>
                         </Swiper>
                     </div>
-                    <h1 className='mt-5'>Sitios Web</h1>
+                    <div className="col-12 section-header mt-5 mb-4">
+                        <span className="section-badge">
+                            <i className="fa fa-globe" aria-hidden="true"></i> Portafolio Web Corporativo
+                        </span>
+                        <h2 className="section-title-principal">
+                            <span>Sitios Web</span>
+                        </h2>
+                        <p className="section-subtitle">
+                            Plataformas transaccionales masivas, medios de comunicación y portales corporativos de alto impacto
+                        </p>
+                    </div>
                     {portafolio.Proyects.map((item) => {
                         return (
                             <div className="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xxl-3" key={item.title}>
                                 <div className='portafolio'>
                                     <h4 className='portafolio-title'>{item.title}</h4>
                                     <picture className='portafolio-img'>
-                                        {/* <source type="image/webp" srcset="assets/imgs/flower1.webp"/> */}
                                         <source type="image/jpeg" srcSet={imagesweb + item.img} />
-                                        <img src={imagesweb + item.img} alt={item.img} />
-                                        <a href={item.url} target='_blank' rel='noreferrer'><p>{item.tipo}</p></a>
+                                        <img src={imagesweb + item.img} alt={item.title || item.img} />
+                                        {item.url ? (
+                                            <a
+                                                href={item.url}
+                                                target='_blank'
+                                                rel='noreferrer'
+                                                className='portafolio-badge portafolio-badge--link'
+                                                title={`Visitar ${item.title}`}
+                                            >
+                                                <span>{item.tipo}</span>
+                                                <i className='fa fa-external-link' aria-hidden='true'></i>
+                                            </a>
+                                        ) : (
+                                            <span className='portafolio-badge'>
+                                                {item.tipo}
+                                            </span>
+                                        )}
                                     </picture>
                                     <p className='portafolio-company'>{item.compani}</p>
                                     <p className='portafolio-description'>{item.description}</p>
@@ -103,7 +136,17 @@ const Portafolio = () => {
                             </div>
                         )
                     })}
-                    <h1 className='mt-5'>Galería</h1>
+                    <div className="col-12 section-header mt-5 mb-4">
+                        <span className="section-badge">
+                            <i className="fa fa-picture-o" aria-hidden="true"></i> Dirección de Arte & Creatividad
+                        </span>
+                        <h2 className="section-title-principal">
+                            <span>Galería</span>
+                        </h2>
+                        <p className="section-subtitle">
+                            Ilustración digital, campañas visuales de gran formato y piezas gráficas premiadas
+                        </p>
+                    </div>
                     <div className="galeria_container">
                         <div className="galeria__item">
                             <img className="galeria__img" src={imagesilustraciones + "ilus_timbortom.jpg"} alt="timbortom" />

@@ -10,7 +10,22 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact">
+    <section id="contact" aria-label="Contacto directo">
+      <div className="container-xxl mb-4">
+        <div className="row">
+          <div className="col-12 section-header mb-4">
+            <span className="section-badge section-badge--dark">
+              <i className="fa fa-envelope" aria-hidden="true"></i> Canal Directo
+            </span>
+            <h2 className="section-title-principal section-title-principal--dark">
+              <span>Contacto</span>
+            </h2>
+            <p className="section-subtitle section-subtitle--dark">
+              ¿Tienes un proyecto, desafío arquitectónico o consulta técnica? Envíame un mensaje y conversemos.
+            </p>
+          </div>
+        </div>
+      </div>
       <div className="contact-section-wrapper">
         <div className="contact-card">
           <ContactInfo contactInfo={contactInfo} />

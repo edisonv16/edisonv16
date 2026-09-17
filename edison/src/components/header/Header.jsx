@@ -22,6 +22,7 @@ const Header = () => {
                     <li><a className="smoothscroll" href="#portfolio" data-tooltip="Proyectos" aria-label="Ir a proyectos"><i className="fa fa-folder-open" aria-hidden="true"></i></a></li>
                     <li><a className="smoothscroll" href="#work" data-tooltip="Trayectoria profesional" aria-label="Ir a trayectoria profesional"><i className="fa fa-briefcase" aria-hidden="true"></i></a></li>
                     <li><a className="smoothscroll" href="#resume" data-tooltip="Formación y certificaciones" aria-label="Ir a formación y certificaciones"><i className="fa fa-graduation-cap" aria-hidden="true"></i></a></li>
+                    <li><a className="smoothscroll" href="#contact" data-tooltip="Contacto" aria-label="Ir a contacto"><i className="fa fa-envelope" aria-hidden="true"></i></a></li>
                 </ul>
             </nav>
             <Portada 

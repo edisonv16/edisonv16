@@ -6,6 +6,7 @@ module.exports = {
   moduleFileExtensions: ['js', 'jsx'],
   setupFilesAfterEnv: ['<rootDir>/src/setupTests.js'],
   moduleNameMapper: {
+    '^swiper/css.*$': '<rootDir>/__mocks__/styleMock.cjs',
     '\\.(css|less|scss|sass)$': '<rootDir>/__mocks__/styleMock.cjs',
     '\\.(jpg|jpeg|png|gif|webp|svg)$': '<rootDir>/__mocks__/fileMock.cjs',
   },

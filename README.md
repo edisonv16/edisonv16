@@ -7,7 +7,7 @@
 ![Jest](https://img.shields.io/badge/Jest-30.x-C21325?logo=jest&logoColor=white)
 ![Bootstrap](https://img.shields.io/badge/Bootstrap-5.2.3-7952B3?logo=bootstrap&logoColor=white)
 
-Plataforma web profesional y portafolio interactivo de **Edison Vidal Ospina Corredor**, Senior Frontend Engineer y UI Architect con más de 15 años de trayectoria liderando la conceptualización, arquitectura y modernización de plataformas corporativas de misión crítica.
+Plataforma web profesional y portafolio interactivo de **Edison Vidal Ospina Corredor**, Senior Frontend Engineer y UI Architect con más de 18 años de trayectoria (desde 2008) liderando la conceptualización, arquitectura y modernización de plataformas corporativas de misión crítica.
 
 > **Ubicación del código fuente:** El proyecto de React reside en la carpeta [`edison/`](./edison/).
 
