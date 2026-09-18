@@ -7,7 +7,7 @@ import 'swiper/css/navigation';
 
 
 // import required modules
-import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules';
+import { EffectCoverflow, Pagination, Navigation, Autoplay } from 'swiper/modules';
 
 const Portafolio = () => {
     const portafolio = InfoPortafolio;
@@ -37,6 +37,11 @@ const Portafolio = () => {
                             centeredSlides={true}
                             loop={true}
                             slidesPerView={'auto'}
+                            autoplay={{
+                                delay: 7000,
+                                disableOnInteraction: false,
+                                pauseOnMouseEnter: true,
+                            }}
                             coverflowEffect={{
                                 rotate: 0,
                                 stretch: 0,
@@ -50,7 +55,7 @@ const Portafolio = () => {
                                 prevEl:'.swiper-button-prev',
                                 clickable: true,
                             }}
-                            modules={[EffectCoverflow, Pagination, Navigation]}
+                            modules={[EffectCoverflow, Pagination, Navigation, Autoplay]}
                             className="swiper-container"
                         >
                             <SwiperSlide>

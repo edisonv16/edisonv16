@@ -74,6 +74,30 @@ El proyecto se ejecuta sobre **React 19.3**:
   * [`src/data/InfoPortafolio.jsx`](./edison/src/data/InfoPortafolio.jsx)
   * [`src/data/InfoWork.jsx`](./edison/src/data/InfoWork.jsx)
 
+### 6. Modo Desarrollo vs. Modo Verificación (Agilidad de Flujo)
+* **Modo Desarrollo (Ajustes Iterativos):** Cuando el desarrollador solicite cambios visuales, de contenido o ajustes de componentes, **ir directo a implementar los cambios** sin demoras innecesarias corriendo suites de pruebas completas o análisis pesados.
+* **Modo Verificación (Testing a Solicitud):** La ejecución de `npm test`, `npm run check` o auditorías completas se reserva para **cuando el desarrollador lo indique expresamente** o para el cierre final de una entrega mayor.
+
+### 7. Arquitectura Desacoplada (Separación Estricta de Responsabilidades)
+Cada sección o funcionalidad debe respetar la separación en tres capas independientes:
+* **🖼️ Capa de Presentación / HTML (`Component.jsx`):**
+  * Vista JSX pura, limpia y semántica.
+  * Prohibido mezclar lógica de transformación de datos compleja o bucles de formateo pesados dentro del componente visual.
+* **🧠 Capa de Lógica / Estado (`useComponent.js` o helpers):**
+  * Encapsula el acceso a datos (`src/data/`), filtrado, normalización y estados reactivos mediante Custom Hooks o utilidades puras.
+  * Retorna datos ya preparados y listos para ser consumidos directamente por la vista.
+* **🎨 Capa de Estilos (`component.css`):**
+  * Los estilos residen en archivos CSS dedicados en `src/assets/style/` (ej. `profile.css`, `work.css`, `contact.css`) e importados en `App.jsx`.
+
+### 8. Cero Estilos en Línea (Prohibido `style={{ ... }}`)
+* **Regla estricta:** No utilizar atributos `style={{ ... }}` en JSX.
+* Toda presentación, espaciado, colores o tipografía debe definirse mediante clases CSS semánticas en sus respectivos archivos `.css`.
+
+### 9. Clean Code y Nombres Descriptivos (Prohibido Variables de Una Letra)
+* **Prohibido el uso de variables crípticas o de una sola letra** (`i`, `j`, `raw`, `next`, `temp`, `data2`, etc.).
+* Todo identificador (variables, parámetros, acumuladores) debe ser **autoexplicativo y legible** en el contexto de negocio (ej. `elementIndex`, `accumulatedStrengths`, `currentItem`, `titleSection`, `boldTitle`, etc.).
+* **Preferir enfoques declarativos** (`reduce`, `map`, `filter`, `find`) con nombres significativos sobre bucles imperativos con manipulación manual de índices.
+
 ---
 
 ## 🔄 Runbook de Verificación Obligatorio

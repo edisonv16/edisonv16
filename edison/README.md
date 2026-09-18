@@ -49,20 +49,25 @@ Plataforma web profesional y portafolio interactivo de **Edison Vidal Ospina Cor
 
 ## 📂 Arquitectura del Proyecto
 
-El código fuente sigue una arquitectura modular y desacoplada por capas:
+El código fuente sigue una **arquitectura modular y desacoplada** con estricta separación de responsabilidades:
+* **🖼️ Capa de Presentación (JSX puro):** Componentes visuales semánticos, limpios y libres de estilos en línea (`style={{ ... }}`).
+* **🧠 Capa de Lógica / Estado (Hooks & Servicios):** Encapsulación de extracción de datos, filtrado y normalización (`useProfile.js`, `contact.service.js`).
+* **🎨 Capa de Estilos (CSS Modular):** Hojas de estilo dedicadas e independientes por sección en `src/assets/style/` (`profile.css`, `work.css`, etc.).
+* **✨ Clean Code:** Nomenclatura descriptiva y legible; prohibidas variables de una sola letra (`i`, `raw`, etc.) o bucles imperativos opacos.
 
 ```text
 edison/
 ├── __mocks__/                  # Mocks estáticos de Jest (CSS e imágenes)
 ├── public/                     # Activos estáticos públicos
 ├── src/
-│   ├── assets/                 # Estilos CSS, imágenes y fuentes web
+│   ├── assets/                 # Estilos CSS modulares, imágenes y fuentes web
+│   │   └── style/              # profile.css, work.css, contact.css, layout.css, etc.
 │   ├── components/             # Componentes React organizados por dominio
 │   │   ├── contact/            # Formulario de contacto y testimonios
 │   │   ├── estudies/           # Educación y certificaciones
 │   │   ├── footer/             # Pie de página y enlaces sociales
 │   │   ├── header/             # Encabezado, navegación, portada, reloj y clima
-│   │   ├── profile/            # Perfil profesional y matriz de habilidades
+│   │   ├── profile/            # Perfil profesional (Profile.jsx, useProfile.js, Skills.jsx)
 │   │   ├── proyects/           # Portafolio interactivo de proyectos
 │   │   ├── seo/                # Inyección de Structured Data (JSON-LD)
 │   │   └── work/               # Experiencia laboral y trayectoria

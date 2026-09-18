@@ -13,6 +13,7 @@ import './assets/style/skill.css'
 import './assets/style/side-nav.css'
 import './assets/style/home-status.css'
 import './assets/style/contact.css'
+import './assets/style/profile.css'
 import './assets/style/galeria.css'
 
 import Header from './components/header/Header'

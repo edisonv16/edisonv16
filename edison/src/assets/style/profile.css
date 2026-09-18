@@ -1,0 +1,56 @@
+﻿/* ===================================================================
+ * Sección Perfil Profesional / About
+ * =================================================================== */
+
+#about .profile-title {
+   color: #11abb0;
+   font-size: 1.2rem;
+   font-family: 'opensans-bold', sans-serif;
+   margin-bottom: 15px;
+}
+
+#about .profile-description {
+   color: #c5c5c5;
+   line-height: 28px;
+   margin-bottom: 20px;
+}
+
+#about .profile-subtitle {
+   color: #ffffff;
+   font-size: 1.05rem;
+   font-family: 'opensans-bold', sans-serif;
+   margin: 20px 0 15px;
+   display: flex;
+   align-items: center;
+}
+
+#about .profile-subtitle i {
+   color: #11abb0;
+   margin-right: 8px;
+}
+
+#about .profile-items-list {
+   list-style: none;
+   padding: 0;
+   margin: 0;
+}
+
+#about .profile-item {
+   margin-bottom: 12px;
+   display: flex;
+   align-items: flex-start;
+   gap: 10px;
+   color: #b0b0b0;
+   line-height: 26px;
+}
+
+#about .profile-item-icon {
+   color: #11abb0;
+   margin-top: 6px;
+   font-size: 12px;
+   flex-shrink: 0;
+}
+
+#about .profile-item strong {
+   color: #ffffff;
+}

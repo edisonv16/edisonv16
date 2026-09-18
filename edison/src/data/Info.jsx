@@ -3,10 +3,23 @@ const Info = {
     name: 'Edison Vidal Ospina Corredor',
     tel: '+57 318 573 5382',
     email: 'edisonv16@gmail.com',
-    wellcomome: 'Senior Frontend Engineer y UI Architect con más de 18 años de experiencia (desde 2008) liderando la conceptualización, arquitectura y modernización de plataformas web corporativas de misión crítica y alta escala.',
+    wellcomome: 'Senior Frontend Engineer y UI Architect con más de 15 años de experiencia (desde 2008) liderando la conceptualización, arquitectura y modernización de plataformas web corporativas de misión crítica y alta escala.',
     profileProfession: [
-      'Senior Frontend Engineer y UI Architect con más de 18 años de trayectoria profesional (desde 2008, desarrollando proyectos independientes y en continua evolución técnica) liderando la conceptualización, arquitectura y modernización de plataformas web corporativas de misión crítica y alta escala. Especialista en el ecosistema Angular (v7–20+), TypeScript estricto y programación reactiva con RxJS. Integro una formación sólida en Diseño Gráfico y UX/UI con ingeniería de software rigurosa, transformando procesos de negocio complejos —Gestión Humana, nómina, compensación variable y portales transaccionales masivos— en productos digitales fluidos, accesibles y de máximo rendimiento.',
-      'Cuento con experiencia comprobada en integración de APIs empresariales, seguridad corporativa e identidad en la nube con Azure AD, MSAL y Microsoft Graph API; servicios backend con Node.js y Express; y bases de datos relacionales críticas con Oracle PL/SQL, paquetes, procedimientos y despliegues idempotentes. Como Scrum Master certificado por CertiProf, promuevo la calidad de código, la optimización con ChangeDetectionStrategy.OnPush, las suites de pruebas unitarias y la automatización en pipelines de CI/CD.'
+      {title: 'Senior Frontend Engineer & UI Architect | Technical Lead'},
+      {description: 'Ingeniero de software con más de 15 años de experiencia liderando la arquitectura frontend y evolución técnica de plataformas corporativas de alta escala y misión crítica. Mi diferencial radica en integrar una sólida formación en Diseño UX/UI con ingeniería rigurosa, facilitando la comunicación entre áreas de negocio, producto y desarrollo para transformar procesos complejos (Gestión Humana, compensación, nómina y transaccional masivo) en soluciones intuitivas, accesibles y de alto desempeño.   Como Scrum Master certificado (CertiProf), promuevo un estilo de liderazgo colaborativo y facilitador, impulsando la resolución de bloqueos, la mentoría técnica de equipos y la reducción de deuda técnica mediante buenas prácticas de código (Angular, React, Vue, TypeScript estricto, RxJS, Jsx, OnPush y pruebas). Experiencia demostrada coordinando con backend, seguridad cloud (Azure AD/MSAL) y bases de datos empresariales (Oracle PL/SQL), asegurando entregas continuas que combinan excelencia técnica, estabilidad operativa y valor medible para el negocio.'},
+      {subtitle: 'Fortalezas interpersonales y de impacto integradas'},
+      {
+        items: [
+          {bold: 'Traductor de Negocio a Código'},
+          {description2: 'Dialogo con directores, gerentes y directores de proyctos como, Gestión Humana, Operaciones y Nómina para entender la lógica de negocio y diseñar los flujos.'},
+          {bold: 'Liderazgo Empático y Mentoría:'},
+          {description2: 'Apoyo y guío a desarrolladores y diseñadores para manejar los mejores estándares de accesibilidad, tipado estricto y patrones de diseño.'},
+          {bold: 'Facilitación Ágil Genuina:'},
+          {description2: 'Enfoque en remover impedimentos, negociar alcance de épicas, historias de usuario y alinear expectativas con stakeholders.'},
+          {bold: 'Visión de Producto:'},
+          {description2: 'Equilibrio entre estética y usabilidad (UX) con desempeño técnico y resiliencia de datos (Oracle / Cloud).'}
+        ]
+      }
     ],
     habilidades: [
       {

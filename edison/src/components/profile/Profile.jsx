@@ -1,9 +1,8 @@
 import imgprofile from "../../assets/img/edisonospina.jpg";
-import Info from "../../data/Info.jsx";
+import useProfile from "./useProfile";
 
 const Profile = () => {
-  const { profile } = Info;
-  const { profileProfession } = profile;
+  const { title, description, subtitle, strengths } = useProfile();
 
   return (
     <section id="about">
@@ -21,7 +20,39 @@ const Profile = () => {
                 <span>Perfil Profesional</span>
               </h2>
             </div>
-            {profileProfession.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+
+            {title && (
+              <h3 className="profile-title">
+                {title}
+              </h3>
+            )}
+
+            {description && (
+              <p className="profile-description">
+                {description}
+              </p>
+            )}
+
+            {subtitle && (
+              <h4 className="profile-subtitle">
+                <i className="fa fa-star" aria-hidden="true"></i>
+                <span>{subtitle}</span>
+              </h4>
+            )}
+
+            {strengths.length > 0 && (
+              <ul className="profile-items-list">
+                {strengths.map((strengthItem) => (
+                  <li key={strengthItem.boldTitle} className="profile-item">
+                    <i className="fa fa-chevron-right profile-item-icon" aria-hidden="true"></i>
+                    <div>
+                      <strong>{strengthItem.boldTitle} </strong>
+                      <span>{strengthItem.descriptionText}</span>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
         </div>
       </div>
