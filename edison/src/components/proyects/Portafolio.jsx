@@ -80,16 +80,8 @@ const Portafolio = () => {
                             <SwiperSlide>
                                 <img src={imagesapps + "app_artesanal.png"} alt="Captura de pantalla de App Artesanal" />
                             </SwiperSlide>
-                            <div className='slider-controler'>
-                                <div className='swiper-button-prev slider-arrow'>
-                                    <ion-icon name="arrow-back-outline"></ion-icon>
-                                </div>
-                            </div>
-                            <div className='slider-controler'>
-                                <div className='swiper-button-next slider-arrow'>
-                                    <ion-icon name="arrow-forward-outline"></ion-icon>
-                                </div>
-                            </div>
+                            <button type="button" className='swiper-button-prev slider-arrow' aria-label="Slide anterior"></button>
+                            <button type="button" className='swiper-button-next slider-arrow' aria-label="Slide siguiente"></button>
                             <div className='swiper-pagination'></div>
                         </Swiper>
                     </div>

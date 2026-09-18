@@ -1,15 +1,15 @@
 # Portafolio Profesional — Edison Vidal Ospina Corredor
 
-![React](https://img.shields.io/badge/React-18.2.0-61DAFB?logo=react&logoColor=black)
-![Vite](https://img.shields.io/badge/Vite-8.0.0-646CFF?logo=vite&logoColor=white)
-![ESLint](https://img.shields.io/badge/ESLint-9.x-4B32C3?logo=eslint&logoColor=white)
-![React Doctor](https://img.shields.io/badge/React_Doctor-0.9.x-00D8FF?logo=react&logoColor=white)
-![Jest](https://img.shields.io/badge/Jest-30.x-C21325?logo=jest&logoColor=white)
+![React](https://img.shields.io/badge/React-19.3.0-61DAFB?logo=react&logoColor=black)
+![Vite](https://img.shields.io/badge/Vite-8.x-646CFF?logo=vite&logoColor=white)
+![React Doctor](https://img.shields.io/badge/React_Doctor-100%2F100-00D8FF?logo=react&logoColor=white)
+![Jest](https://img.shields.io/badge/Jest-54%20passed%20(100%25)-brightgreen?logo=jest&logoColor=white)
+![ESLint](https://img.shields.io/badge/ESLint-9.x%20(Flat%20Config)-4B32C3?logo=eslint&logoColor=white)
 ![Bootstrap](https://img.shields.io/badge/Bootstrap-5.2.3-7952B3?logo=bootstrap&logoColor=white)
 
-Plataforma web profesional y portafolio interactivo de **Edison Vidal Ospina Corredor**, Senior Frontend Engineer y UI Architect con más de 18 años de trayectoria (desde 2008) liderando la conceptualización, arquitectura y modernización de plataformas corporativas de misión crítica.
+Plataforma web profesional y portafolio interactivo de **Edison Vidal Ospina Corredor**, Senior Frontend Engineer y UI Architect con más de 18 años de trayectoria liderando la conceptualización, arquitectura y modernización de plataformas corporativas de misión crítica.
 
-> **Ubicación del código fuente:** El proyecto de React reside en la carpeta [`edison/`](./edison/).
+> 📍 **Ubicación del código fuente:** El proyecto de React reside en la carpeta [`edison/`](./edison/).
 
 ---
 
@@ -19,32 +19,33 @@ Plataforma web profesional y portafolio interactivo de **Edison Vidal Ospina Cor
 * **Estado en tiempo real (`HomeStatus`):**
   * **Reloj local (`LocalClock`):** Sincronizado dinámicamente con la zona horaria del visitante mediante la API nativa `Intl.DateTimeFormat`.
   * **Clima en vivo (`WeatherCard`):** Consulta meteorológica en tiempo real mediante Open-Meteo y geolocalización con degradación elegante (*graceful degradation*).
-* **Galería interactiva de proyectos:** Carrusel touch responsivo implementado con `Swiper` y efectos de cubierta (*Coverflow*).
+* **Galería interactiva de proyectos:** Carrusel touch responsivo implementado con `Swiper` y navegación optimizada con botones accesibles (`aria-label`).
 * **SEO & Datos Estructurados:** Integración de Schema.org en formato JSON-LD (`StructuredData`) optimizado para indexación en motores de búsqueda (Google) y redes profesionales.
-* **Calidad de código y testing integral:** Suite de pruebas unitarias con Jest + Testing Library y doble anillo de calidad con ESLint 9 + React Doctor.
+* **Calidad de código y testing integral:** Suite de 54 pruebas unitarias con Jest + Testing Library y doble anillo de calidad con ESLint 9 + React Doctor (Puntaje 100/100).
+* **Agente IA y Skill de Seguridad:** Configuración de skill personalizada [`.agents/skills/edison-portfolio-guard/`](./.agents/skills/edison-portfolio-guard/SKILL.md) para garantizar que cualquier desarrollo futuro respete los estándares arquitectónicos sin romper funcionalidades.
 
 ---
 
 ## 🛠️ Stack Tecnológico
 
 ### Core & Framework
-* **[React 18.2](https://react.dev/):** Biblioteca para interfaces reactivas con renderizado concurrente.
-* **[Vite 8.0](https://vitejs.dev/):** Entorno de desarrollo rápido y empaquetador para producción basado en Rollup y ES Modules.
+* **[React 19.3](https://react.dev/):** Biblioteca para interfaces reactivas con soporte nativo de acciones, `ref` estándar y alto rendimiento.
+* **[Vite 8](https://vitejs.dev/):** Entorno de desarrollo ultrarrápido y empaquetador para producción basado en Rollup y ES Modules.
 
 ### UI & Estilos
-* **Bootstrap 5.2 & React-Bootstrap 2.7:** Sistema de rejilla responsiva y componentes UI.
-* **Swiper 12.1:** Carruseles táctiles para presentación de portafolios.
+* **Bootstrap 5.2 & React-Bootstrap 2.10:** Sistema de rejilla responsiva y componentes UI accesibles.
+* **Swiper 12.1:** Carruseles táctiles para presentación fluida del portafolio.
 * **FontAwesome:** Iconografía vectorial interactiva.
 
 ### Servicios & Datos
-* **Open-Meteo API:** Consulta meteorológica en tiempo real (gratuita y sin dependencias de API keys).
-* **Nominatim OpenStreetMap:** Geocodificación inversa para resolución de ciudades.
+* **Open-Meteo API:** Consulta meteorológica en tiempo real (gratuita, sin API keys).
+* **Nominatim OpenStreetMap:** Geocodificación inversa para resolución automática de ciudades.
 
 ### Calidad & Testing
-* **ESLint 9 (Flat Config):** Validación sintáctica, estándares de ECMAScript y reglas de React Hooks.
-* **React Doctor (Million.js):** Diagnóstico de salud, accesibilidad (a11y), rendimiento y anti-patrones en React.
-* **Jest 30 + Babel:** Test runner y compilador para pruebas unitarias.
-* **@testing-library/react & @testing-library/jest-dom:** Pruebas unitarias orientadas al comportamiento del usuario final.
+* **Jest 30 + Babel:** Test runner y compilador para pruebas unitarias con cobertura superior al 84%.
+* **@testing-library/react (v16) & @testing-library/dom (v10):** Pruebas unitarias orientadas al comportamiento real del usuario.
+* **React Doctor (Million.js):** Puntuación perfecta **100/100** auditando accesibilidad (WCAG), rendimiento y estándares de React 19.
+* **ESLint 9 (Flat Config):** Validación sintáctica, estándares ECMAScript y reglas de ciclo de vida de React Hooks.
 
 ---
 
@@ -52,23 +53,24 @@ Plataforma web profesional y portafolio interactivo de **Edison Vidal Ospina Cor
 
 ```text
 edisonv16/
-├── edison/                     # Aplicación React + Vite
+├── .agents/skills/edison-portfolio-guard/ # Skill personalizada para agentes IA
+├── edison/                     # Aplicación React 19 + Vite 8
 │   ├── __mocks__/              # Mocks estáticos de Jest (CSS e imágenes)
 │   ├── public/                 # Activos estáticos públicos
 │   ├── src/
 │   │   ├── assets/             # Estilos CSS, imágenes y fuentes web
 │   │   ├── components/         # Componentes React organizados por dominio
-│   │   │   ├── contact/        # Formulario de contacto y microformatos
-│   │   │   ├── estudies/       # Sección de educación y certificaciones
+│   │   │   ├── contact/        # Formulario de contacto y testimonios
+│   │   │   ├── estudies/       # Educación y certificaciones
 │   │   │   ├── footer/         # Pie de página y enlaces sociales
-│   │   │   ├── header/         # Encabezado, navegación, portada, reloj y clima
+│   │   │   ├── header/         # Encabezado, reloj y clima
 │   │   │   ├── profile/        # Perfil profesional y matriz de habilidades
 │   │   │   ├── proyects/       # Portafolio interactivo de proyectos
 │   │   │   ├── seo/            # Inyección de Structured Data (JSON-LD)
 │   │   │   └── work/           # Experiencia laboral y trayectoria
 │   │   ├── data/               # Información centralizada del portafolio (Info.jsx)
 │   │   ├── interfaces/         # Definiciones de tipos y contratos (JSDoc)
-│   │   ├── models/             # Modelos de datos y factory functions inmutables
+│   │   ├── models/             # Modelos de datos inmutables
 │   │   ├── services/           # Servicios desacoplados de geolocalización y clima
 │   │   ├── App.jsx             # Componente raíz de la aplicación
 │   │   ├── main.jsx            # Punto de entrada de React en el DOM
@@ -100,14 +102,14 @@ edisonv16/
    ```powershell
    npm run dev
    ```
-   La aplicación se abrirá en `http://localhost:5173`.
+   La aplicación estará disponible en `http://localhost:5173`.
 
-4. **Ejecutar pruebas unitarias:**
+4. **Ejecutar la suite de pruebas unitarias (54 tests):**
    ```powershell
    npm test
    ```
 
-5. **Verificación de calidad (ESLint + React Doctor):**
+5. **Auditoría de calidad y salud (ESLint + React Doctor):**
    ```powershell
    npm run check
    ```
@@ -116,22 +118,32 @@ edisonv16/
 
 ## 🧪 Scripts Disponibles
 
-Desde la carpeta `edison/`:
+Todos los comandos se ejecutan desde la carpeta `edison/`:
 
 | Script | Descripción |
 | :--- | :--- |
 | `npm run dev` | Inicia el servidor de desarrollo local con Hot Module Replacement (HMR). |
-| `npm run build` | Compila y optimiza el proyecto para producción en la carpeta `dist/`. |
-| `npm run preview` | Previsualiza localmente el empaquetado de producción generado. |
-| `npm test` | Ejecuta la suite de pruebas unitarias con Jest. |
-| `npm run test:watch` | Ejecuta las pruebas en modo interactivo y reacciona a cambios de código. |
-| `npm run test:coverage` | Genera un reporte detallado con el porcentaje de cobertura de código. |
-| `npm run lint` | Analiza el código con ESLint para detectar errores de sintaxis o variables huérfanas. |
-| `npm run lint:fix` | Aplica correcciones automáticas de formato y reglas de ESLint. |
-| `npm run doctor` | Ejecuta el diagnóstico de salud de React Doctor (accesibilidad, bugs y rendimiento). |
-| `npm run doctor:verbose` | Muestra el reporte extendido de cada regla evaluada por React Doctor. |
-| **`npm run check`** | **Modo estricto**: Ejecuta ESLint y React Doctor secuencialmente sin modificar código. |
-| **`npm run check:fix`** | **Modo productivo**: Corrige con ESLint y luego audita con React Doctor. |
+| `npm run build` | Compila y optimiza el proyecto para producción en `dist/`. |
+| `npm run preview` | Previsualiza localmente el build generado. |
+| `npm test` | Ejecuta las 54 pruebas unitarias con Jest. |
+| `npm run test:watch` | Ejecuta las pruebas en modo interactivo mientras se edita código. |
+| `npm run test:coverage` | Genera reporte de cobertura de código (>84%). |
+| `npm run lint` | Analiza el código con ESLint 9. |
+| `npm run lint:fix` | Aplica correcciones automáticas de sintaxis con ESLint. |
+| `npm run doctor` | Ejecuta el análisis de salud con React Doctor (Puntaje 100/100). |
+| **`npm run check`** | **Control de Calidad Estricto**: Ejecuta ESLint + React Doctor consecutivamente. |
+| **`npm run check:fix`** | **Modo Productivo**: Corrige con ESLint y luego valida con React Doctor. |
+
+---
+
+## 🛡️ Skill de Seguridad del Proyecto
+
+Para mantener la máxima estabilidad y que ninguna modificación futura degrade el sistema, este repositorio incluye la skill **`edison-portfolio-guard`** en [`.agents/skills/edison-portfolio-guard/SKILL.md`](./.agents/skills/edison-portfolio-guard/SKILL.md).
+
+Esta directriz establece:
+1. **Ejecución obligatoria de `npm test`:** Las 54 pruebas deben pasar al 100%.
+2. **Preservación del puntaje 100 en React Doctor:** Verificación de accesibilidad, seguridad de enlaces y mejores prácticas de React 19.
+3. **Validación de compilación:** `npm run build` sin errores.
 
 ---
 
