@@ -1,21 +1,34 @@
 import Info from '../../data/Info.jsx';
-import HomeStatus from './HomeStatus';
+import LocalClock from './LocalClock';
+import WeatherCard from './WeatherCard';
+import useHomeStatus from './useHomeStatus';
 
-const Portada = (props) => {
+const Portada = ({ mensaje }) => {
     const { profile } = Info;
     const { name, wellcomome } = profile;
+    const { location, weather, status, errorMessage } = useHomeStatus();
 
     return (
     <>
         <div className="container-xxl banner">
-            <HomeStatus />
-            <div className='banner-text'>
-                <h1 className="responsive-headline">{props.mensaje} <br/> Soy {' ' + name}</h1>
-                <p>{wellcomome}</p>
-                <hr />
-                <ul className="social">
-                    <li><a href="https://www.linkedin.com/in/edison-ospina" target="_blank" rel="noreferrer" aria-label="Perfil de LinkedIn"><i className="fa fa-linkedin"></i></a></li>
-                </ul>
+            <div className="home-status">
+                <LocalClock timeZone={location.timeZone} />
+            </div>
+            <div className="banner-content">
+                <div className='banner-text'>
+                    <h1 className="responsive-headline">{mensaje} <br/> Soy {' ' + name}</h1>
+                    <p>{wellcomome}</p>
+                    <hr />
+                    <ul className="social">
+                        <li><a href="https://www.linkedin.com/in/edison-ospina" target="_blank" rel="noreferrer" aria-label="Perfil de LinkedIn"><i className="fa fa-linkedin"></i></a></li>
+                    </ul>
+                </div>
+                <WeatherCard
+                    location={location}
+                    weather={weather}
+                    status={status}
+                    errorMessage={errorMessage}
+                />
             </div>
         </div>
 
@@ -26,6 +39,6 @@ const Portada = (props) => {
         </p>
     </>
     );
-}
+};
 
 export default Portada;
