@@ -67,9 +67,6 @@
     position: absolute;
     bottom: 8px;
     left: 8px;
-    background: rgba(17, 171, 176, 0.92);
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    color: #ffffff;
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
     border-radius: 2rem;
@@ -82,9 +79,18 @@
     display: inline-flex;
     align-items: center;
     gap: 5px;
-    box-shadow: 0 3px 10px rgba(17, 171, 176, 0.35);
     transition: all 0.2s ease;
     text-decoration: none;
+}
+
+/* Sitios Web con enlace activo (Estilo turquesa/teal interactivo) */
+.portafolio-badge--link,
+.portafolio-img a p {
+    background: rgba(17, 171, 176, 0.92);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    color: #ffffff;
+    box-shadow: 0 3px 10px rgba(17, 171, 176, 0.35);
+    cursor: pointer;
 }
 
 .portafolio-badge--link:hover,
@@ -94,6 +100,16 @@
     border-color: #ffffff;
     box-shadow: 0 4px 14px rgba(17, 171, 176, 0.5);
     transform: scale(1.03);
+}
+
+/* Sitios Web sin URL activa o históricos (Estilo gris neutro y distinguible) */
+.portafolio-badge--offline {
+    background: rgba(71, 85, 105, 0.88);
+    border: 1px solid rgba(203, 213, 225, 0.45);
+    color: #f8fafc;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.2);
+    cursor: default;
+    user-select: none;
 }
 
 .portafolio-company {

@@ -37,8 +37,8 @@ const Info = {
   },
   seo: {
     siteUrl: 'https://edisonospina.netlify.app',
-    title: 'Edison Vidal Ospina Corredor | Senior Frontend Engineer & UI Architect',
-    description: 'Portafolio de Edison Vidal Ospina Corredor, Senior Frontend Engineer, UI Architect y Technical Lead.',
+    title: 'Edison Vidal Ospina | Senior Frontend Engineer & UI Architect',
+    description: 'Senior Frontend Engineer y UI Architect con más de 15 años de experiencia liderando plataformas web de alta escala, Angular, React, TypeScript y diseño UX/UI.',
     image: 'https://edisonospina.netlify.app/edisonospina.jpg',
     jobTitle: 'Senior Frontend Engineer & UI Architect | Technical Lead',
     sameAs: ['https://www.linkedin.com/in/edison-ospina']

@@ -42,4 +42,37 @@ describe('Portafolio Component', () => {
     expect(screen.getByText(/Desarrollo frontend para la plataforma proptech inmobiliaria líder/i)).toBeInTheDocument();
     expect(screen.getByText(/Desarrollo frontend y arquitectura modular para la plataforma de administración/i)).toBeInTheDocument();
   });
+
+  test('renders active project links with target _blank and rel noopener noreferrer', () => {
+    render(<Portafolio />);
+
+    const crcLink = screen.getByRole('link', { name: /visitar sitio web de comisión de regulación de comunicaciones/i });
+    expect(crcLink).toBeInTheDocument();
+    expect(crcLink).toHaveAttribute('href', 'https://crcom.gov.co/es');
+    expect(crcLink).toHaveAttribute('target', '_blank');
+    expect(crcLink).toHaveAttribute('rel', 'noopener noreferrer');
+    expect(crcLink).toHaveClass('portafolio-badge--link');
+  });
+
+  test('renders offline badges without anchor tags for projects without url', () => {
+    render(<Portafolio />);
+
+    const aulasHeader = screen.getByText('Aulas sin fronteras');
+    const aulasCard = aulasHeader.closest('.portafolio');
+    expect(aulasCard).toBeInTheDocument();
+
+    // Must not have an anchor link
+    expect(aulasCard.querySelector('a')).toBeNull();
+
+    // Must have the offline badge
+    const offlineBadge = aulasCard.querySelector('.portafolio-badge--offline');
+    expect(offlineBadge).toBeInTheDocument();
+    expect(offlineBadge).toHaveTextContent('Sitio Web');
+
+    // La tv en Colombia must also have an offline badge now that its broken link was cleared
+    const latvHeader = screen.getByText('La tv en Colombia');
+    const latvCard = latvHeader.closest('.portafolio');
+    expect(latvCard.querySelector('a')).toBeNull();
+    expect(latvCard.querySelector('.portafolio-badge--offline')).toBeInTheDocument();
+  });
 });

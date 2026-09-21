@@ -18,7 +18,7 @@ const InfoPortafolio = {
             img:'web_latvencolombia.png',
             compani:'RTVC',
             description:'Un proyecto de Señal Colombia para celebrar los 60 años de la tv nacional, donde participe como Diseñador gráfico y front end.',
-            url:'http://latv.senalmemoria.co/#/',
+            url:'',
         },
         {
             id:3,
@@ -48,7 +48,7 @@ const InfoPortafolio = {
             img:'web_destinos.png',
             compani:'Ministerio de turismo',
             description:'Un proyecto del Ministerio de turismo, donde participe como Diseñador gráfico y front end, implementando el diseño gráfico y plasmarlo en la web.',
-            url:'http://destinos.mincit.gov.co/',
+            url:'https://destinos.mincit.gov.co/',
         },
         {
             id:6,
