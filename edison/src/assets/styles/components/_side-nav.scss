@@ -1,0 +1,143 @@
+// ===================================================================
+// Menú de Navegación Lateral (Efecto Frosted Glass)
+// ===================================================================
+@use '../abstracts' as *;
+
+.side-nav {
+  @extend %glass-surface;
+  position: fixed;
+  top: 50%;
+  left: 1.25rem;
+  z-index: 1000;
+  width: 4.5rem;
+  padding: 0.5rem;
+  transform: translateY(-50%);
+
+  ul {
+    display: grid;
+    gap: 0.4rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  a {
+    position: relative;
+    display: grid;
+    width: 3.5rem;
+    height: 3.5rem;
+    place-items: center;
+    color: $color-white;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 1.05rem;
+    font-size: 1.25rem;
+    text-decoration: none;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+    transition: all $transition-spring;
+
+    &:hover,
+    &:focus-visible {
+      color: $color-white;
+      background: linear-gradient(135deg, rgba($color-primary, 0.95), rgba($color-primary-dark, 0.95));
+      border-color: rgba(255, 255, 255, 0.6);
+      outline: none;
+      transform: scale(1.06) translateX(0.15rem);
+      box-shadow: 0 6px 18px rgba(17, 171, 176, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.45);
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    // Tooltip con efecto ventana oscuro
+    &::after {
+      position: absolute;
+      left: calc(100% + 0.9rem);
+      top: 50%;
+      width: max-content;
+      max-width: 16rem;
+      padding: 0.5rem 0.85rem;
+      color: $color-white;
+      background: rgba(15, 23, 42, 0.88);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 0.6rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      content: attr(data-tooltip);
+      font: 600 0.78rem/1.2 $font-sans-bold;
+      letter-spacing: 0.02em;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-0.35rem, -50%);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      visibility: hidden;
+      z-index: 1010;
+    }
+
+    &:hover::after,
+    &:focus-visible::after {
+      opacity: 1;
+      transform: translate(0, -50%);
+      visibility: visible;
+    }
+  }
+
+  @include respond-to(md) {
+    top: auto;
+    bottom: 0.75rem;
+    left: 50%;
+    width: calc(100% - 1.25rem);
+    max-width: 32rem;
+    padding: 0.4rem;
+    transform: translateX(-50%);
+    border-radius: 1.4rem;
+
+    ul {
+      display: flex;
+      justify-content: space-around;
+      gap: 0.2rem;
+    }
+
+    a {
+      width: 2.6rem;
+      height: 2.6rem;
+      font-size: 1rem;
+      border-radius: 0.75rem;
+
+      &:hover,
+      &:focus-visible {
+        transform: translateY(-0.1rem);
+      }
+
+      &::after {
+        top: auto;
+        bottom: calc(100% + 0.75rem);
+        left: 50%;
+        transform: translate(-50%, 0.35rem);
+      }
+
+      &:hover::after,
+      &:focus-visible::after {
+        transform: translate(-50%, 0);
+      }
+    }
+  }
+}
+
+// Fallback SVG para el icono de birrete (Formación y certificaciones)
+.side-nav .fa-graduation-cap::before,
+.fa-graduation-cap::before {
+  content: "";
+  display: inline-block;
+  width: 1.15em;
+  height: 1.15em;
+  background-color: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 512'%3E%3Cpath fill='currentColor' d='M320 32c-8.1 0-16.1 2.1-23.3 6.3L7 182.2C-2.3 187.6-2.3 201 7 206.4l65 37.9V384c0 53 111 96 248 96s248-43 248-96V244.3l51-29.8c9.3-5.4 9.3-18.9 0-24.3L343.3 38.3C336.1 34.1 328.1 32 320 32zM608 288c-8.8 0-16 7.2-16 16v96c0 17.7-14.3 32-32 32s-32-14.3-32-32V304c0-8.8-7.2-16-16-16s-16 7.2-16 16v96c0 35.3 28.7 64 64 64s64-28.7 64-64V304c0-8.8-7.2-16-16-16z'/%3E%3C/svg%3E") no-repeat center / contain;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 512'%3E%3Cpath fill='currentColor' d='M320 32c-8.1 0-16.1 2.1-23.3 6.3L7 182.2C-2.3 187.6-2.3 201 7 206.4l65 37.9V384c0 53 111 96 248 96s248-43 248-96V244.3l51-29.8c9.3-5.4 9.3-18.9 0-24.3L343.3 38.3C336.1 34.1 328.1 32 320 32zM608 288c-8.8 0-16 7.2-16 16v96c0 17.7-14.3 32-32 32s-32-14.3-32-32V304c0-8.8-7.2-16-16-16s-16 7.2-16 16v96c0 35.3 28.7 64 64 64s64-28.7 64-64V304c0-8.8-7.2-16-16-16z'/%3E%3C/svg%3E") no-repeat center / contain;
+  vertical-align: -0.15em;
+}
+
+@include respond-to(md) {
+  body {
+    padding-bottom: 6rem;
+  }
+}

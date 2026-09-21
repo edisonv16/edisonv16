@@ -1,0 +1,55 @@
+// ===================================================================
+// Mixins Reutilizables del Portafolio
+// ===================================================================
+@use 'sass:map';
+@use 'variables' as *;
+
+// --- Mixin Responsivo (Media Queries Modernas) ---
+@mixin respond-to($breakpoint) {
+  @if map.has-key($breakpoints, $breakpoint) {
+    @media only screen and (max-width: map.get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @media only screen and (max-width: $breakpoint) {
+      @content;
+    }
+  }
+}
+
+// --- Mixin Glassmorphism Personalizable ---
+@mixin glassmorphism($radius: $radius-glass, $border-color: rgba(255, 255, 255, 0.22), $blur: 20px) {
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.72) 0%, rgba(15, 23, 42, 0.60) 100%);
+  border: 1px solid $border-color;
+  border-radius: $radius;
+  box-shadow: $shadow-glass;
+  backdrop-filter: blur($blur) saturate(180%);
+  -webkit-backdrop-filter: blur($blur) saturate(180%);
+}
+
+// --- Mixin para Insignias de Portafolio ---
+@mixin badge-pill($bg: rgba($color-primary, 0.92), $color: $color-white, $shadow: $shadow-badge) {
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-radius: $radius-pill;
+  padding: 4px 12px;
+  font: 700 0.72rem/1.2 $font-sans-bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0;
+  width: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: $bg;
+  color: $color;
+  box-shadow: $shadow;
+  transition: all $transition-fast;
+  text-decoration: none;
+}
+
+// --- Mixin para Estados de Foco Accesibles ---
+@mixin focus-ring($color: $color-primary, $offset: 2px) {
+  outline: 2px solid $color;
+  outline-offset: $offset;
+}

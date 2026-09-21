@@ -1,0 +1,116 @@
+// ===================================================================
+// Métricas y Gráficos Circulares de Tecnologías (Optimizado con SCSS)
+// ===================================================================
+@use 'sass:map';
+@use '../abstracts' as *;
+
+.metriccont {
+  padding: 50px 0;
+  text-align: center;
+  max-width: 900px;
+  min-width: 100px;
+  width: auto;
+  margin: 0 auto;
+}
+
+.chart {
+  position: relative;
+  display: inline-block;
+  color: #999;
+  font-size: 20px;
+  text-align: center;
+
+  figcaption {
+    margin: 190px 0 30px;
+    width: 200px;
+  }
+
+  img {
+    position: absolute;
+    max-width: 100px;
+    max-height: 100px;
+    background: $color-white;
+  }
+
+  svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  &:hover .outer {
+    stroke-dashoffset: 534 !important;
+    animation-play-state: paused;
+  }
+}
+
+.outer {
+  fill: transparent;
+  stroke-width: 20;
+  stroke-dasharray: 534;
+  transition: stroke-dashoffset 2s, all ease 2s;
+  animation-play-state: running;
+  transform: rotate(-89deg) translateX(-190px);
+}
+
+// --- Mapa y bucle @each para Tecnologías ---
+$tech-skills: (
+  'html': (top: 50px, left: 45px, color: #e34f26, stroke: #e34f26),
+  'css': (top: 50px, left: 51px, color: #0d84ce, stroke: #0d84ce),
+  'jquery': (top: 50px, left: 51px, color: #e4a227, stroke: #FC3),
+  'php': (top: 45px, left: 46px, color: #6c7eb7, stroke: #6c7eb7),
+  'wordpress': (top: 45px, left: 46px, color: #21759b, stroke: #21759b),
+  'illustrator': (top: 46px, left: 45px, color: #ff7719, stroke: #ff7719),
+  'photoshop': (top: 46px, left: 45px, color: #1fd0f6, stroke: #1fd0f6),
+  'dreamweaver': (top: 46px, left: 45px, color: #71f900, stroke: #71f900),
+  'indesign': (top: 46px, left: 45px, color: #ff3a93, stroke: #ff3a93),
+  'flash': (top: 46px, left: 45px, color: #fe441a, stroke: #fe441a),
+  'dmax': (top: 45px, left: 59px, color: #1f686b, stroke: #1f686b)
+);
+
+@each $name, $props in $tech-skills {
+  .#{$name} {
+    top: map.get($props, top);
+    left: map.get($props, left);
+    color: map.get($props, color);
+
+    + svg .outer {
+      stroke: map.get($props, stroke);
+
+      &:hover {
+        stroke: transparent !important;
+      }
+    }
+  }
+}
+
+// --- Generador de Animaciones Circulares con @each ---
+$percentages: (
+  0: 534,
+  10: 480.6,
+  20: 427.2,
+  30: 373.8,
+  40: 320.4,
+  50: 267,
+  60: 213.6,
+  70: 160.2,
+  80: 106.2,
+  90: 53.4,
+  100: 0
+);
+
+@each $p, $offset in $percentages {
+  .show#{$p} {
+    animation-name: show#{$p};
+    stroke-dashoffset: 534;
+  }
+
+  @keyframes show#{$p} {
+    from {
+      stroke-dashoffset: 534;
+    }
+    to {
+      stroke-dashoffset: #{$offset};
+    }
+  }
+}

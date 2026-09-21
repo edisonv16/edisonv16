@@ -1,0 +1,80 @@
+// ===================================================================
+// Design Tokens / Variables Globales del Portafolio
+// ===================================================================
+
+// --- Colores de Marca ---
+$color-primary: #11abb0;
+$color-primary-dark: #0d8b90;
+$color-primary-accent: #0e9297;
+$color-primary-glow: rgba(17, 171, 176, 0.18);
+
+// --- Colores de Estado ---
+$color-danger: #ff6b6b;
+$color-danger-bg: rgba(220, 53, 69, 0.12);
+$color-danger-border: rgba(220, 53, 69, 0.35);
+$color-info: #38bdf8;
+$color-success: #10b981;
+
+// --- Escala Neutra / Slate ---
+$color-white: #ffffff;
+$color-slate-50: #f8fafc;
+$color-slate-100: #f1f5f9;
+$color-slate-200: #e2e8f0;
+$color-slate-300: #cbd5e1;
+$color-slate-400: #94a3b8;
+$color-slate-500: #64748b;
+$color-slate-600: #475569;
+$color-slate-700: #334155;
+$color-slate-800: #1e293b;
+$color-slate-900: #0f172a;
+
+// --- Fondos y Superficies Oscuras ---
+$color-dark-bg: #0f0f0f;
+$color-dark-header: #0f0f0f;
+$color-dark-surface: #20242b;
+$color-dark-surface-gradient-start: #181b20;
+$color-dark-surface-gradient-end: #1c2027;
+$color-dark-input: #15181d;
+$color-dark-border: #2f3642;
+
+// --- Tipografía ---
+$font-sans-regular: 'opensans-regular', sans-serif;
+$font-sans-bold: 'opensans-bold', sans-serif;
+$font-sans-semibold: 'opensans-semibold', sans-serif;
+$font-sans-light: 'opensans-light', sans-serif;
+$font-serif-regular: 'librebaskerville-regular', serif;
+$font-serif-bold: 'librebaskerville-bold', serif;
+
+// --- Sombras (Elevation) ---
+$shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+$shadow-card: 0 4px 18px rgba(15, 23, 42, 0.06);
+$shadow-card-hover: 0 14px 30px rgba(17, 171, 176, 0.18), 0 4px 10px rgba(0, 0, 0, 0.04);
+$shadow-glass: 0 16px 40px 0 rgba(0, 0, 0, 0.32), inset 0 1px 2px 0 rgba(255, 255, 255, 0.30);
+$shadow-glass-hover: 0 20px 48px 0 rgba(0, 0, 0, 0.42), inset 0 1px 2px 0 rgba(255, 255, 255, 0.45);
+$shadow-badge: 0 3px 10px rgba(17, 171, 176, 0.35);
+$shadow-badge-hover: 0 4px 14px rgba(17, 171, 176, 0.5);
+$shadow-badge-offline: 0 2px 8px rgba(15, 23, 42, 0.2);
+
+// --- Radios de Borde ---
+$radius-sm: 0.45rem;
+$radius-md: 0.6rem;
+$radius-card: 0.85rem;
+$radius-lg: 1.25rem;
+$radius-glass: 1.6rem;
+$radius-pill: 2rem;
+
+// --- Transiciones ---
+$transition-fast: 0.2s ease;
+$transition-base: 0.25s ease;
+$transition-smooth: 0.3s ease;
+$transition-spring: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+// --- Breakpoints Responsivos ---
+$breakpoints: (
+  xs: 480px,
+  sm: 576px,
+  md: 768px,
+  lg: 900px,
+  xl: 1024px,
+  xxl: 1200px
+);

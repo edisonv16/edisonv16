@@ -1,0 +1,120 @@
+// ===================================================================
+// Layout General y Secciones del Portafolio
+// ===================================================================
+@use '../abstracts' as *;
+
+// --- Cabeceras Globales de Sección ---
+.section-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.section-badge {
+  @extend %section-badge-base;
+}
+
+.section-title-principal {
+  @extend %section-title-base;
+}
+
+.section-subtitle {
+  @extend %section-subtitle-base;
+}
+
+// --- Secciones Específicas ---
+#about {
+  background: #2B2B2B;
+  padding-top: 96px;
+  padding-bottom: 66px;
+  overflow: hidden;
+
+  a, a:visited {
+    color: $color-white;
+  }
+
+  a:hover, a:focus {
+    color: $color-primary;
+  }
+
+  h2 {
+    font: 22px/30px $font-sans-bold;
+    color: $color-white;
+    margin-bottom: 12px;
+  }
+
+  p {
+    line-height: 30px;
+    color: #7A7A7A;
+  }
+
+  .contact-details {
+    width: 41.66667%;
+  }
+
+  .download {
+    width: 58.33333%;
+    padding-top: 6px;
+
+    .button {
+      margin-top: 6px;
+      background: #444;
+      color: $color-white;
+      padding: 12px 20px;
+      display: inline-block;
+      border-radius: $radius-sm;
+      transition: all $transition-fast;
+
+      &:hover {
+        background: $color-white;
+        color: #2B2B2B;
+      }
+
+      i {
+        margin-right: 15px;
+        font-size: 20px;
+      }
+    }
+  }
+
+  .main-col {
+    padding-right: 5%;
+  }
+}
+
+#resume {
+  background: black;
+
+  a, a:visited {
+    color: $color-primary;
+  }
+
+  a:hover, a:focus {
+    color: #313131;
+  }
+
+  h1 {
+    font: 18px $font-sans-bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #F06000;
+
+    span {
+      border-bottom: 3px solid $color-primary;
+      padding-bottom: 6px;
+    }
+  }
+}
+
+#skills {
+  background: #ebeeee;
+  padding-bottom: 60px;
+
+  h1 {
+    font: 15px/24px $font-sans-semibold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+    margin-bottom: 48px;
+    color: #95A3A3;
+  }
+}

@@ -1,0 +1,97 @@
+// ===================================================================
+// Placeholders SCSS (%placeholders para @extend)
+// ===================================================================
+@use 'variables' as *;
+
+// --- Superficie Base de Tarjeta (Portafolio, Experiencia, etc.) ---
+%card-surface {
+  background-color: $color-white;
+  border: 1px solid $color-slate-200;
+  border-radius: $radius-card;
+  margin: 0 0 28px;
+  height: calc(100% - 28px);
+  display: flex;
+  flex-direction: column;
+  box-shadow: $shadow-card;
+  transition: transform $transition-base, box-shadow $transition-base, border-color $transition-base;
+}
+
+// --- Efecto Hover con Elevación y Brillo de Marca ---
+%card-hover {
+  &:hover {
+    transform: translateY(-5px);
+    border-color: $color-primary;
+    box-shadow: $shadow-card-hover;
+  }
+}
+
+// --- Superficie de Vidrio Esmerilado (Glassmorphism) ---
+%glass-surface {
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.72) 0%, rgba(15, 23, 42, 0.60) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: $radius-glass;
+  box-shadow: $shadow-glass;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  transition: transform $transition-base, box-shadow $transition-base, border-color $transition-base, background $transition-smooth;
+
+  &:hover {
+    border-color: rgba(255, 255, 255, 0.45);
+    box-shadow: $shadow-glass-hover;
+  }
+}
+
+// --- Insignia de Cabecera de Sección ---
+%section-badge-base {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(17, 171, 176, 0.08);
+  border: 1px solid rgba(17, 171, 176, 0.3);
+  color: $color-primary-accent;
+  font: 700 0.75rem/1.2 $font-sans-bold;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 6px 14px;
+  border-radius: $radius-pill;
+  margin-bottom: 14px;
+  width: fit-content;
+}
+
+// --- Título Principal de Sección ---
+%section-title-base {
+  font: 700 1.5rem/1.3 $font-sans-bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: center;
+  color: $color-slate-800;
+  margin: 0 0 14px;
+  text-shadow: none;
+
+  span {
+    border-bottom: 3px solid $color-primary;
+    padding-bottom: 6px;
+  }
+}
+
+// --- Subtítulo Descriptivo de Sección ---
+%section-subtitle-base {
+  font: 400 0.92rem/1.6 $font-sans-regular;
+  color: $color-slate-500;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+// --- Centrado Flex Rápido ---
+%flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// --- Truncado de Texto ---
+%text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

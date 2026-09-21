@@ -1,0 +1,172 @@
+// ===================================================================
+// Sección Work / Trayectoria Profesional
+// ===================================================================
+@use '../abstracts' as *;
+
+#work {
+  background: $color-slate-50;
+  padding-top: 90px;
+  padding-bottom: 80px;
+  border-top: 1px solid $color-slate-200;
+  border-bottom: 1px solid $color-slate-200;
+
+  @include respond-to(md) {
+    padding-top: 60px;
+    padding-bottom: 50px;
+  }
+}
+
+.work-section-header {
+  margin-bottom: 48px;
+
+  @include respond-to(md) {
+    margin-bottom: 32px;
+  }
+}
+
+.work-section-badge {
+  @extend %section-badge-base;
+}
+
+.work-title-principal {
+  @extend %section-title-base;
+}
+
+.work-subtitle {
+  @extend %section-subtitle-base;
+}
+
+// --- Tarjetas de Experiencia Laboral ---
+.work-card {
+  @extend %card-surface;
+  @extend %card-hover;
+  border-radius: 0.95rem;
+  padding: 1.65rem 1.5rem;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+
+  // Barra decorativa superior con color de marca
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: $color-slate-200;
+    transition: background $transition-base;
+  }
+
+  &:hover::before {
+    background: linear-gradient(90deg, $color-primary, $color-primary-accent);
+  }
+
+  // Tarjeta destacada / Cargo actual
+  &--current {
+    border-color: rgba($color-primary, 0.45);
+    box-shadow: 0 6px 22px rgba($color-primary, 0.08);
+
+    &::before {
+      background: linear-gradient(90deg, $color-primary, #F06000);
+    }
+  }
+
+  @include respond-to(md) {
+    padding: 1.35rem 1.2rem;
+  }
+}
+
+.work-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+
+  @include respond-to(md) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+
+.work-card__company-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.work-card__icon-box {
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  border-radius: 0.55rem;
+  background: #f0fdfa;
+  border: 1px solid #ccfbf1;
+  color: #0f766e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  transition: background $transition-fast, color $transition-fast;
+
+  .work-card:hover & {
+    background: $color-primary;
+    color: $color-white;
+    border-color: $color-primary;
+  }
+}
+
+.work-card__company {
+  font: 700 1.05rem/1.3 $font-sans-bold;
+  color: $color-slate-800;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+// Badge de fecha
+.work-card__date {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font: 600 0.72rem/1.2 $font-sans-regular;
+  color: $color-slate-500;
+  background: $color-slate-100;
+  border: 1px solid $color-slate-200;
+  padding: 4px 10px;
+  border-radius: $radius-pill;
+  white-space: nowrap;
+
+  &--current {
+    background: #e6fffa;
+    color: $color-primary-dark;
+    border-color: #99f6e4;
+    font-family: $font-sans-bold;
+    font-weight: 700;
+  }
+}
+
+// Cargo / Rol
+.work-card__role-wrap {
+  margin-bottom: 0.9rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid $color-slate-100;
+}
+
+.work-card__role {
+  font: 600 0.86rem/1.4 $font-sans-bold;
+  color: $color-primary-accent;
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+
+// Descripción
+.work-card__description {
+  font: 400 0.83rem/1.65 $font-sans-regular;
+  color: $color-slate-600;
+  margin: 0;
+  flex-grow: 1;
+  text-align: left;
+}

@@ -1,0 +1,128 @@
+// ===================================================================
+// Tarjetas de Portafolio - Sitios Web
+// ===================================================================
+@use '../abstracts' as *;
+
+.portafolio {
+  @extend %card-surface;
+  @extend %card-hover;
+  padding: 1.25rem;
+
+  p {
+    margin: 0;
+    line-height: normal;
+    font-family: $font-sans-regular;
+  }
+}
+
+.portafolio-title {
+  font: 700 0.95rem/1.35 $font-sans-bold;
+  color: $color-slate-800;
+  padding: 0 0 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  min-height: 44px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+.portafolio-img {
+  position: relative;
+  border-radius: $radius-md;
+  overflow: hidden;
+  background: $color-slate-100;
+  border: 1px solid $color-slate-200;
+  margin-bottom: 12px;
+  height: 185px;
+  width: 100%;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.35s ease;
+  }
+
+  .portafolio:hover & img {
+    transform: scale(1.05);
+  }
+}
+
+.portafolio-badge,
+.portafolio-img p {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-radius: $radius-pill;
+  padding: 4px 12px;
+  font: 700 0.72rem/1.2 $font-sans-bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0;
+  width: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: all $transition-fast;
+  text-decoration: none;
+}
+
+/* Sitios Web con enlace activo (Estilo turquesa/teal interactivo) */
+.portafolio-badge--link,
+.portafolio-img a p {
+  background: rgba($color-primary, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  color: $color-white;
+  box-shadow: $shadow-badge;
+  cursor: pointer;
+
+  &:hover {
+    background: $color-primary-dark;
+    color: $color-white;
+    border-color: $color-white;
+    box-shadow: $shadow-badge-hover;
+    transform: scale(1.03);
+  }
+}
+
+/* Sitios Web sin URL activa o históricos (Estilo gris neutro y distinguible) */
+.portafolio-badge--offline {
+  background: rgba(71, 85, 105, 0.88);
+  border: 1px solid rgba(203, 213, 225, 0.45);
+  color: #f8fafc;
+  box-shadow: $shadow-badge-offline;
+  cursor: default;
+  user-select: none;
+}
+
+.portafolio-company {
+  font: italic 600 0.8rem/1.35 $font-sans-regular;
+  color: $color-primary-accent;
+  padding: 4px 0 2px;
+  margin: 0;
+}
+
+.portafolio-description {
+  font: 400 0.82rem/1.55 $font-sans-regular;
+  color: $color-slate-600;
+  margin: 6px 0 14px;
+  flex-grow: 1;
+}
+
+.portafolio-work {
+  font: 600 0.72rem/1.25 $font-sans-bold;
+  color: $color-slate-700;
+  background: $color-slate-100;
+  border: 1px solid $color-slate-300;
+  border-radius: $radius-sm;
+  padding: 6px 12px;
+  margin: auto 0 0 0;
+  display: inline-block;
+  width: fit-content;
+  letter-spacing: 0.02em;
+  box-shadow: $shadow-sm;
+}

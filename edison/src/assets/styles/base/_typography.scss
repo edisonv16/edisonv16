@@ -1,0 +1,119 @@
+// ===================================================================
+// Tipografía Base y Elementos Globales
+// ===================================================================
+@use '../abstracts' as *;
+
+body {
+  background: $color-white;
+  font-family: $font-sans-regular;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 30px;
+  color: $color-slate-500;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #313131;
+  font-family: $font-sans-bold;
+  font-weight: normal;
+
+  a {
+    font-weight: inherit;
+  }
+}
+
+h1 {
+  font-size: 38px;
+  line-height: 42px;
+  margin-bottom: 12px;
+  letter-spacing: -1px;
+}
+
+h2 {
+  font-size: 28px;
+  line-height: 36px;
+  margin-bottom: 6px;
+}
+
+h3 {
+  font-size: 22px;
+  line-height: 30px;
+  margin-bottom: 12px;
+}
+
+h4 {
+  font-size: 20px;
+  line-height: 30px;
+  margin-bottom: 6px;
+}
+
+h5 {
+  font-size: 18px;
+  line-height: 30px;
+}
+
+h6 {
+  font-size: 14px;
+  line-height: 30px;
+}
+
+p {
+  margin: 0;
+
+  img {
+    margin: 0;
+  }
+
+  &.lead {
+    font: 19px/36px $font-sans-light;
+    margin-bottom: 18px;
+  }
+
+  a, a:visited {
+    line-height: inherit;
+  }
+}
+
+em {
+  font: 15px/30px 'opensans-italic', sans-serif;
+}
+
+strong, b {
+  font: 15px/30px $font-sans-bold;
+}
+
+small {
+  font-size: 11px;
+  line-height: inherit;
+}
+
+hr {
+  border: solid #E3E3E3;
+  border-width: 1px 0 0;
+  clear: both;
+  margin: 11px 0 30px;
+  height: 0;
+}
+
+a, a:visited {
+  text-decoration: none;
+  outline: 0;
+  color: $color-primary;
+  transition: color $transition-smooth;
+
+  &:hover, &:focus {
+    color: #313131;
+  }
+}
+
+code, kbd, pre, samp {
+  font-family: monospace, serif;
+  font-size: 1em;
+}
+
+pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
