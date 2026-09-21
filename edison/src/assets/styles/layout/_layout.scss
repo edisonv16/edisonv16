@@ -11,14 +11,29 @@
 
 .section-badge {
   @extend %section-badge-base;
+
+  &--dark {
+    background: rgba(17, 171, 176, 0.15);
+    border-color: rgba(17, 171, 176, 0.45);
+    color: #38d3d9;
+    box-shadow: 0 2px 10px rgba(17, 171, 176, 0.2);
+  }
 }
 
 .section-title-principal {
   @extend %section-title-base;
+
+  &--dark {
+    color: $color-white;
+  }
 }
 
 .section-subtitle {
   @extend %section-subtitle-base;
+
+  &--dark {
+    color: #94a3b8;
+  }
 }
 
 // --- Secciones Específicas ---
