@@ -39,16 +39,19 @@ describe('Education Component (Roadmap / Timeline)', () => {
     render(<Education />);
 
     // Find and click the 'Premios' filter button
-    const premiosButton = screen.getByRole('tab', { name: /premios/i });
+    const premiosButton = screen.getByRole('button', { name: /premios/i });
+    expect(premiosButton).toHaveAttribute('aria-pressed', 'false');
     fireEvent.click(premiosButton);
+    expect(premiosButton).toHaveAttribute('aria-pressed', 'true');
 
     // Only 'Premios y reconocimientos' should be visible
     expect(screen.getByText('Premios y reconocimientos')).toBeInTheDocument();
     expect(screen.queryByText('Licencias y certificaciones recientes')).not.toBeInTheDocument();
 
     // Click 'Todos' to restore all categories
-    const allButton = screen.getByRole('tab', { name: /todos/i });
+    const allButton = screen.getByRole('button', { name: /todos/i });
     fireEvent.click(allButton);
+    expect(allButton).toHaveAttribute('aria-pressed', 'true');
 
     expect(screen.getByText('Licencias y certificaciones recientes')).toBeInTheDocument();
     expect(screen.getByText('Premios y reconocimientos')).toBeInTheDocument();

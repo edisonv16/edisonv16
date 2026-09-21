@@ -3,7 +3,7 @@
 ![React](https://img.shields.io/badge/React-19.3.0-61DAFB?logo=react&logoColor=black)
 ![Vite](https://img.shields.io/badge/Vite-8.x-646CFF?logo=vite&logoColor=white)
 ![React Doctor](https://img.shields.io/badge/React_Doctor-100%2F100-00D8FF?logo=react&logoColor=white)
-![Jest](https://img.shields.io/badge/Jest-54%20passed%20(100%25)-brightgreen?logo=jest&logoColor=white)
+![Jest](https://img.shields.io/badge/Jest-60%20passed%20(100%25)-brightgreen?logo=jest&logoColor=white)
 ![ESLint](https://img.shields.io/badge/ESLint-9.x%20(Flat%20Config)-4B32C3?logo=eslint&logoColor=white)
 ![Bootstrap](https://img.shields.io/badge/Bootstrap-5.2.3-7952B3?logo=bootstrap&logoColor=white)
 
@@ -18,8 +18,10 @@ Plataforma web profesional y portafolio interactivo de **Edison Vidal Ospina Cor
   * **Reloj local (`LocalClock`):** Sincronizado dinámicamente con la zona horaria del visitante mediante la API nativa `Intl.DateTimeFormat`.
   * **Clima en vivo (`WeatherCard`):** Consulta meteorológica en tiempo real mediante Open-Meteo y geolocalización con degradación elegante (*graceful degradation*).
 * **Galería interactiva de proyectos:** Carrusel touch responsivo implementado con `Swiper` y navegación optimizada con botones accesibles (`aria-label`).
+* **Portafolio histórico identificable:** Los proyectos sin URL pública se presentan como inactivos y los enlaces disponibles se abren de forma segura en una pestaña nueva.
+* **Ruta de formación filtrable:** Educación, certificaciones y reconocimientos se muestran en un roadmap responsivo, con controles accesibles, años y aptitudes.
 * **SEO & Datos Estructurados:** Integración de Schema.org en formato JSON-LD (`StructuredData`) optimizado para indexación en motores de búsqueda (Google) y redes profesionales.
-* **Calidad de código y testing integral:** Suite de 54 pruebas unitarias con Jest + Testing Library y doble anillo de calidad con ESLint 9 + React Doctor (Puntaje 100/100).
+* **Calidad de código y testing integral:** Suite de 60 pruebas unitarias con Jest + Testing Library y doble anillo de calidad con ESLint 9 + React Doctor.
 * **Skill de Protección Continua:** Protocolo de seguridad integrado en el repositorio para evitar regresiones o daños en futuras modificaciones.
 
 ---
@@ -32,6 +34,7 @@ Plataforma web profesional y portafolio interactivo de **Edison Vidal Ospina Cor
 
 ### UI & Estilos
 * **Bootstrap 5.2 & React-Bootstrap 2.10:** Sistema de rejilla responsiva y componentes UI accesibles.
+* **Sass modular:** Tokens, mixins y parciales organizados por capa y componente, compilados desde `src/assets/styles/main.scss`.
 * **Swiper 12.1:** Carruseles táctiles para presentación fluida del portafolio.
 * **FontAwesome:** Iconografía vectorial interactiva.
 
@@ -52,7 +55,7 @@ Plataforma web profesional y portafolio interactivo de **Edison Vidal Ospina Cor
 El código fuente sigue una **arquitectura modular y desacoplada** con estricta separación de responsabilidades:
 * **🖼️ Capa de Presentación (JSX puro):** Componentes visuales semánticos, limpios y libres de estilos en línea (`style={{ ... }}`).
 * **🧠 Capa de Lógica / Estado (Hooks & Servicios):** Encapsulación de extracción de datos, filtrado y normalización (`useProfile.js`, `contact.service.js`).
-* **🎨 Capa de Estilos (CSS Modular):** Hojas de estilo dedicadas e independientes por sección en `src/assets/style/` (`profile.css`, `work.css`, etc.).
+* **🎨 Capa de Estilos (Sass Modular):** Parciales por capa y componente en `src/assets/styles/`, compilados desde `main.scss`.
 * **✨ Clean Code:** Nomenclatura descriptiva y legible; prohibidas variables de una sola letra (`i`, `raw`, etc.) o bucles imperativos opacos.
 
 ```text
@@ -60,8 +63,8 @@ edison/
 ├── __mocks__/                  # Mocks estáticos de Jest (CSS e imágenes)
 ├── public/                     # Activos estáticos públicos
 ├── src/
-│   ├── assets/                 # Estilos CSS modulares, imágenes y fuentes web
-│   │   └── style/              # profile.css, work.css, contact.css, layout.css, etc.
+│   ├── assets/                 # Estilos Sass, imágenes y fuentes web
+│   │   └── styles/             # abstracts/, base/, components/, layout/ y main.scss
 │   ├── components/             # Componentes React organizados por dominio
 │   │   ├── contact/            # Formulario de contacto y testimonios
 │   │   ├── estudies/           # Educación y certificaciones
@@ -128,7 +131,7 @@ edison/
 | `npm run dev` | Inicia el servidor de desarrollo local con Hot Module Replacement (HMR). |
 | `npm run build` | Compila y optimiza el proyecto para producción en la carpeta `dist/`. |
 | `npm run preview` | Previsualiza localmente el empaquetado de producción generado. |
-| `npm test` | Ejecuta la suite de 54 pruebas unitarias con Jest. |
+| `npm test` | Ejecuta la suite de 60 pruebas unitarias con Jest. |
 | `npm run test:watch` | Ejecuta las pruebas en modo interactivo y reacciona a cambios de código. |
 | `npm run test:coverage` | Genera un reporte detallado con el porcentaje de cobertura de código (>84%). |
 | `npm run lint` | Analiza el código con ESLint para detectar errores de sintaxis o variables huérfanas. |

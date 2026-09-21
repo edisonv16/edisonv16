@@ -31,15 +31,14 @@ const Education = () => {
       {/* Category filter pills */}
       <div className="row mb-5">
         <div className="col-12">
-          <div className="education-roadmap__filters" role="tablist" aria-label="Filtrar por categoría">
+          <div className="education-roadmap__filters" role="group" aria-label="Filtrar por categoría">
             {categoryFilters.map((filterItem) => {
               const isActive = selectedCategory === filterItem.id;
               return (
                 <button
                   key={filterItem.id}
                   type="button"
-                  role="tab"
-                  aria-selected={isActive}
+                  aria-pressed={isActive}
                   className={`education-roadmap__filter-btn ${isActive ? 'education-roadmap__filter-btn--active' : ''}`}
                   onClick={() => setSelectedCategory(filterItem.id)}
                 >
