@@ -101,34 +101,38 @@ const Portafolio = () => {
                             Plataformas transaccionales masivas, medios de comunicación y portales corporativos de alto impacto
                         </p>
                     </div>
-                    {portafolio.Proyects.map((item) => {
+                    {portafolio.Proyects.map((projectItem) => {
                         return (
-                            <div className="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xxl-3" key={item.title}>
+                            <div className="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xxl-3" key={projectItem.title}>
                                 <div className='portafolio'>
-                                    <h4 className='portafolio-title'>{item.title}</h4>
+                                    <h4 className='portafolio-title'>{projectItem.title}</h4>
                                     <picture className='portafolio-img'>
-                                        <source type="image/jpeg" srcSet={imagesweb + item.img} />
-                                        <img src={imagesweb + item.img} alt={item.title || item.img} />
-                                        {item.url ? (
+                                        <source type="image/jpeg" srcSet={imagesweb + projectItem.img} />
+                                        <img src={imagesweb + projectItem.img} alt={projectItem.title || projectItem.img} />
+                                        {projectItem.url ? (
                                             <a
-                                                href={item.url}
+                                                href={projectItem.url}
                                                 target='_blank'
-                                                rel='noreferrer'
+                                                rel='noopener noreferrer'
                                                 className='portafolio-badge portafolio-badge--link'
-                                                title={`Visitar ${item.title}`}
+                                                title={`Visitar ${projectItem.title} (se abre en nueva pestaña)`}
+                                                aria-label={`Visitar sitio web de ${projectItem.title} en una nueva pestaña`}
                                             >
-                                                <span>{item.tipo}</span>
+                                                <span>{projectItem.tipo}</span>
                                                 <i className='fa fa-external-link' aria-hidden='true'></i>
                                             </a>
                                         ) : (
-                                            <span className='portafolio-badge'>
-                                                {item.tipo}
+                                            <span
+                                                className='portafolio-badge portafolio-badge--offline'
+                                                title="Sitio web histórico o sin enlace público activo"
+                                            >
+                                                <span>{projectItem.tipo}</span>
                                             </span>
                                         )}
                                     </picture>
-                                    <p className='portafolio-company'>{item.compani}</p>
-                                    <p className='portafolio-description'>{item.description}</p>
-                                    <p className='portafolio-work'>{item.work}</p>
+                                    <p className='portafolio-company'>{projectItem.compani}</p>
+                                    <p className='portafolio-description'>{projectItem.description}</p>
+                                    <p className='portafolio-work'>{projectItem.work}</p>
                                 </div>
                             </div>
                         )
