@@ -10,12 +10,12 @@ const Education = () => {
 
   return (
     <div
-      className="container-xxl education-roadmap pb-5 pt-5"
+      className="container-xxl education-roadmap"
       role="region"
       aria-label="Educación, Certificaciones y Reconocimientos"
     >
       <div className="row">
-        <div className="col-12 section-header mb-4">
+        <div className="col-12 section-header">
           <span className="section-badge section-badge--dark">
             <i className="fa fa-graduation-cap" aria-hidden="true"></i> Formación &amp; Credenciales
           </span>

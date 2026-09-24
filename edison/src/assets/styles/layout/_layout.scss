@@ -5,8 +5,16 @@
 
 // --- Cabeceras Globales de Sección ---
 .section-header {
-  margin-bottom: 2rem;
+  margin-bottom: $section-header-margin-bottom;
   text-align: center;
+
+  @include respond-to(md) {
+    margin-bottom: $section-header-margin-bottom-mobile;
+  }
+
+  &--sub {
+    margin-top: 5rem;
+  }
 }
 
 .section-badge {
@@ -39,9 +47,14 @@
 // --- Secciones Específicas ---
 #about {
   background: #2B2B2B;
-  padding-top: 96px;
-  padding-bottom: 66px;
+  padding-top: $section-padding-y;
+  padding-bottom: $section-padding-y;
   overflow: hidden;
+
+  @include respond-to(md) {
+    padding-top: $section-padding-y-mobile;
+    padding-bottom: $section-padding-y-mobile;
+  }
 
   a, a:visited {
     color: $color-white;
@@ -122,7 +135,15 @@
 
 #skills {
   background: #ebeeee;
-  padding-bottom: 60px;
+  padding-top: $section-padding-y;
+  padding-bottom: $section-padding-y;
+  border-top: 1px solid $color-slate-200;
+  border-bottom: 1px solid $color-slate-200;
+
+  @include respond-to(md) {
+    padding-top: $section-padding-y-mobile;
+    padding-bottom: $section-padding-y-mobile;
+  }
 
   h1 {
     font: 15px/24px $font-sans-semibold;

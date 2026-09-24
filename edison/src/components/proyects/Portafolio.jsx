@@ -8,18 +8,17 @@ import 'swiper/css/navigation';
 
 // import required modules
 import { EffectCoverflow, Pagination, Navigation, Autoplay } from 'swiper/modules';
+import Galeria from './Galeria';
 
 const Portafolio = () => {
     const portafolio = InfoPortafolio;
     const imagesapps = '/apps/';
-    const imagescampanas = '/campanas/';
-    const imagesilustraciones = '/ilustraciones/';
     const imagesweb = '/web/';
     return (
         <section id="portfolio">
             <div className='container-xxl'>
                 <div className="row">
-                    <div className="col-12 section-header mb-4">
+                    <div className="col-12 section-header">
                         <span className="section-badge">
                             <i className="fa fa-mobile" aria-hidden="true"></i> Portafolio Mobile & Web
                         </span>
@@ -90,7 +89,7 @@ const Portafolio = () => {
                             <div className='swiper-pagination'></div>
                         </Swiper>
                     </div>
-                    <div className="col-12 section-header mt-5 mb-4">
+                    <div className="col-12 section-header section-header--sub">
                         <span className="section-badge">
                             <i className="fa fa-globe" aria-hidden="true"></i> Portafolio Web Corporativo
                         </span>
@@ -137,54 +136,7 @@ const Portafolio = () => {
                             </div>
                         )
                     })}
-                    <div className="col-12 section-header mt-5 mb-4">
-                        <span className="section-badge">
-                            <i className="fa fa-picture-o" aria-hidden="true"></i> Dirección de Arte & Creatividad
-                        </span>
-                        <h2 className="section-title-principal">
-                            <span>Galería</span>
-                        </h2>
-                        <p className="section-subtitle">
-                            Ilustración digital, campañas visuales de gran formato y piezas gráficas premiadas
-                        </p>
-                    </div>
-                    <div className="galeria_container">
-                        <div className="galeria__item">
-                            <img className="galeria__img" src={imagesilustraciones + "ilus_timbortom.jpg"} alt="timbortom" />
-                        </div>
-                        <div className="galeria__item">
-                            <img className="galeria__img" src={imagescampanas + "cam_confit.png"} alt="confit" />
-                        </div>
-                        <div className="galeria__item">
-                            <img className="galeria__img" src={imagescampanas + "cam_doritos.jpg"} alt="doritos" />
-                        </div>
-                        <div className="galeria__item">
-                            <img className="galeria__img" src={imagesilustraciones + "ilus_agua.jpg"} alt="cinco" />
-                        </div>
-                        <div className="galeria__item">
-                            <img className="galeria__img" src={imagesilustraciones + "ilus_princemask.jpg"} alt="seis" />
-                        </div>
-                        <div className="galeria__item">
-                            <img className="galeria__img" src={imagesilustraciones + "ilus_familia.jpg"} alt="familia" />
-                        </div>
-                        <div className="galeria__item">
-                            <img className="galeria__img" src={imagesilustraciones + "ilus_spaider.jpg"} alt="Spiderman" />
-                        </div>
-                        <div className="galeria__item">
-                            <img className="galeria__img" src={imagesilustraciones + "ilus_juanadearco.jpg"} alt="Arquera" />
-                        </div>
-
-                        <div className="galeria__item">
-                            <img className="galeria__img" src={imagesilustraciones + "ilus_madre.jpg"} alt="mujer" />
-                        </div>
-                        <div className="galeria__item">
-                            <img className="galeria__img" src={imagescampanas + "cam_bufalo.png"} alt="bufalo" />
-                        </div>
-                        <div className="galeria__item">
-                            <img className="galeria__img" src={imagescampanas + "cam_micanola.png"} alt="mi canola" />
-
-                        </div>
-                    </div>
+                    <Galeria />
                 </div>
 
             </div>

@@ -3,6 +3,17 @@
 // ===================================================================
 @use '../abstracts' as *;
 
+#portfolio {
+  background: $color-white;
+  padding-top: $section-padding-y;
+  padding-bottom: $section-padding-y;
+
+  @include respond-to(md) {
+    padding-top: $section-padding-y-mobile;
+    padding-bottom: $section-padding-y-mobile;
+  }
+}
+
 .portafolio {
   @extend %card-surface;
   @extend %card-hover;

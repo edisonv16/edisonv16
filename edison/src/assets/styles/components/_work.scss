@@ -5,22 +5,22 @@
 
 #work {
   background: $color-slate-50;
-  padding-top: 90px;
-  padding-bottom: 80px;
+  padding-top: $section-padding-y;
+  padding-bottom: $section-padding-y;
   border-top: 1px solid $color-slate-200;
   border-bottom: 1px solid $color-slate-200;
 
   @include respond-to(md) {
-    padding-top: 60px;
-    padding-bottom: 50px;
+    padding-top: $section-padding-y-mobile;
+    padding-bottom: $section-padding-y-mobile;
   }
 }
 
 .work-section-header {
-  margin-bottom: 48px;
+  margin-bottom: $section-header-margin-bottom;
 
   @include respond-to(md) {
-    margin-bottom: 32px;
+    margin-bottom: $section-header-margin-bottom-mobile;
   }
 }
 

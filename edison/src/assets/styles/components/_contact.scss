@@ -3,6 +3,17 @@
 // ===================================================================
 @use '../abstracts' as *;
 
+#contact {
+  background: $color-white;
+  padding-top: $section-padding-y;
+  padding-bottom: 0;
+  border-top: 1px solid $color-slate-200;
+
+  @include respond-to(md) {
+    padding-top: $section-padding-y-mobile;
+  }
+}
+
 .contact-section-wrapper {
   max-width: 1080px;
   margin: 0 auto;
@@ -599,8 +610,12 @@
   position: relative;
   width: 100%;
   overflow: hidden;
-  padding: 4.5rem 0 4rem;
+  padding: $section-padding-y 0;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
+
+  @include respond-to(md) {
+    padding: $section-padding-y-mobile 0;
+  }
 }
 
 .testimonials-wrapper {

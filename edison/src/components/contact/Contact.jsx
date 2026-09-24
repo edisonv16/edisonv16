@@ -11,16 +11,16 @@ const Contact = () => {
 
   return (
     <section id="contact" aria-label="Contacto directo">
-      <div className="container-xxl mb-4">
+      <div className="container-xxl">
         <div className="row">
-          <div className="col-12 section-header mb-4">
-            <span className="section-badge section-badge--dark">
+          <div className="col-12 section-header">
+            <span className="section-badge">
               <i className="fa fa-envelope" aria-hidden="true"></i> Canal Directo
             </span>
-            <h2 className="section-title-principal section-title-principal--dark">
+            <h2 className="section-title-principal">
               <span>Contacto</span>
             </h2>
-            <p className="section-subtitle section-subtitle--dark">
+            <p className="section-subtitle">
               ¿Tienes un proyecto, desafío arquitectónico o consulta técnica? Envíame un mensaje y conversemos.
             </p>
           </div>

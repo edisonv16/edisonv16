@@ -1,61 +1,1573 @@
 // ===================================================================
-// Galería de Arte & Ilustraciones
-// ===================================================================
+// Galería de Arte & Ilustraciones — Estilo Editorial Asimétrico Dttio
+@use 'sass:color';
 @use '../abstracts' as *;
 
-.galeria_container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: 470px;
-  padding: 4px;
-  gap: 4px;
-  text-align: center;
+.galeria-section {
+  position: relative;
+  width: 100%;
+  margin-top: 5rem;
+  padding-top: 2rem;
+}
 
-  @include respond-to(md) {
-    grid-auto-rows: 190px;
+// --- Cabecera Editorial Monumental (Macro / Micro Escala y Tensión Tipográfica) ---
+.galeria-editorial-monument {
+  margin: 0 0 4rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.85);
+}
+
+// Meta superior (Insignia + Kicker de Estudio)
+.galeria-editorial-monument__meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+}
+
+.galeria-editorial-monument__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.4rem 1.15rem;
+  border-radius: $radius-pill;
+  background-color: rgba(17, 171, 176, 0.08);
+  border: 1px solid rgba(17, 171, 176, 0.25);
+  color: $color-primary-dark;
+  font: 700 0.74rem/1.2 $font-sans-bold;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+
+  i {
+    font-size: 0.8rem;
+    color: $color-primary;
   }
 }
 
-.galeria__img {
-  height: 100%;
-  margin: auto;
-  object-fit: cover;
+.galeria-editorial-monument__kicker {
+  font: 600 0.74rem/1.2 $font-sans-semibold;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: $color-slate-400;
 }
 
-.galeria__item {
-  background-color: black;
-
-  &:nth-child(1) { grid-column-start: span 3; }
-  &:nth-child(3) { grid-column-start: span 4; }
-  &:nth-child(4) { grid-column-start: span 4; }
-  &:nth-child(6) { grid-column-start: span 2; }
-  &:nth-child(8) { grid-column-start: span 2; }
-  &:nth-child(9) { grid-column-start: span 2; }
-  &:nth-child(10) { grid-column-start: span 4; }
-  &:nth-child(11) { grid-column-start: span 4; }
+// Fila Principal: Titular Macro a dos líneas + Micro-ubicación
+.galeria-editorial-monument__headline-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  margin-bottom: 1.75rem;
 
   @include respond-to(md) {
-    grid-column-start: span 4;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+}
 
-    &:nth-child(1) { grid-column-start: span 4; }
-    &:nth-child(2) { grid-column-start: span 2; }
-    &:nth-child(3) { grid-column-start: span 2; }
-    &:nth-child(4) { grid-column-start: span 4; }
-    &:nth-child(5) { grid-column-start: span 4; }
-    &:nth-child(6) { grid-column-start: span 2; }
-    &:nth-child(7) { grid-column-start: span 2; }
-    &:nth-child(8) { grid-column-start: span 4; }
-    &:nth-child(9) { grid-column-start: span 4; }
-    &:nth-child(10) { grid-column-start: span 4; }
-    &:nth-child(11) { grid-column-start: span 4; }
-    &:nth-child(12) { grid-column-start: span 2; }
-    &:nth-child(13) { grid-column-start: span 2; }
-    &:nth-child(14) { grid-column-start: span 2; }
-    &:nth-child(15) { grid-column-start: span 2; }
-    &:nth-child(17) { grid-column-start: span 2; }
-    &:nth-child(18) { grid-column-start: span 2; }
-    &:nth-child(19) { grid-column-start: span 2; }
-    &:nth-child(20) { grid-column-start: span 2; }
-    &:nth-child(21) { grid-column-start: span 4; }
+.galeria-editorial-monument__title-wrap {
+  flex: 1;
+}
+
+// Titular Monumental en Serif con Contraste y Escala Masiva
+.galeria-editorial-monument__title {
+  font-family: $font-serif-bold;
+  font-size: clamp(3.2rem, 7.8vw, 6.2rem);
+  font-weight: 700;
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  color: $color-slate-900;
+  margin: 0;
+}
+
+.galeria-editorial-monument__line-top {
+  display: block;
+}
+
+.galeria-editorial-monument__line-bottom {
+  display: block;
+  margin-top: 0.12em;
+
+  span:last-child {
+    color: $color-slate-900;
+  }
+}
+
+// La barra inclinada / protagonista, estilizada y esbelta
+.galeria-editorial-monument__slash {
+  font-family: $font-sans-light;
+  font-weight: 200;
+  font-size: 0.92em;
+  color: $color-primary;
+  margin-right: 0.2em;
+  vertical-align: baseline;
+}
+
+// Micro-bloque de Ubicación en la esquina superior derecha
+.galeria-editorial-monument__aside-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  padding-top: 0.8rem;
+
+  @include respond-to(md) {
+    align-items: flex-start;
+    text-align: left;
+    padding-top: 0;
+  }
+}
+
+.galeria-editorial-monument__aside-label {
+  font: 600 0.72rem/1.3 $font-sans-regular;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: $color-slate-400;
+}
+
+.galeria-editorial-monument__aside-city {
+  font: 700 0.98rem/1.3 $font-sans-bold;
+  color: $color-slate-800;
+  letter-spacing: -0.01em;
+}
+
+.galeria-editorial-monument__aside-role {
+  font: 500 0.76rem/1.3 $font-sans-regular;
+  color: $color-primary;
+  margin-top: 2px;
+}
+
+// Línea introductoria curatorial
+.galeria-editorial-monument__intro-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  padding-top: 0.5rem;
+}
+
+.galeria-editorial-monument__statement-desc {
+  font: 400 0.98rem/1.65 $font-sans-regular;
+  color: $color-slate-600;
+  margin: 0;
+  max-width: 580px;
+}
+
+.galeria-editorial-monument__statement-tags {
+  font: 600 0.76rem/1.2 $font-sans-semibold;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: $color-slate-400;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.galeria-editorial-monument__statement-dot {
+  color: $color-primary;
+  font-size: 0.9rem;
+}
+
+// ===================================================================
+// BLOQUE 1: Showcase Asimétrico Dttio (3 Columnas con Descanso Visual)
+// ===================================================================
+.galeria-dttio-hero {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3.5rem 2.85rem;
+  align-items: start;
+  margin-bottom: 5.5rem;
+
+  @include respond-to(lg) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.25rem;
+  }
+
+  @include respond-to(sm) {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+.galeria-dttio-col {
+  display: flex;
+  flex-direction: column;
+  gap: 3.25rem;
+
+  // Stagger natural característico de la referencia de estudio de diseño (Dttio)
+  &--center {
+    @media (min-width: 992px) {
+      padding-top: 3.5rem;
+    }
+  }
+}
+
+// Panel de Filtros Tipográficos Dttio (integrado en Columna 3)
+.galeria-editorial-filters-panel {
+  padding: 1.25rem 0 1.5rem;
+  border-bottom: 1px dashed rgba(226, 232, 240, 0.9);
+  margin-bottom: 0.5rem;
+
+  &__eyebrow {
+    font: 700 0.72rem/1.2 $font-sans-bold;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: $color-primary;
+    margin-bottom: 1.25rem;
+    display: block;
+  }
+}
+
+.galeria-editorial-filters {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.85rem;
+  padding: 0;
+}
+
+.galeria-editorial-filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  background: transparent;
+  border: none;
+  padding: 0.4rem 0;
+  cursor: pointer;
+  text-align: left;
+  font-family: $font-sans-semibold;
+  font-size: 1.05rem;
+  color: $color-slate-500;
+  transition: all $transition-fast;
+  position: relative;
+
+  &:hover {
+    color: $color-primary;
+    transform: translateX(6px);
+
+    .galeria-editorial-filter__arrow {
+      color: $color-primary;
+      opacity: 1;
+      transform: translateX(2px);
+    }
+
+    .galeria-editorial-filter__count {
+      color: $color-primary;
+    }
+  }
+
+  &:focus-visible {
+    @include focus-ring($color-primary, 2px);
+    border-radius: $radius-sm;
+  }
+
+  // Estado Activo
+  &--active {
+    color: $color-slate-900;
+    font-family: $font-sans-bold;
+    transform: translateX(6px);
+
+    .galeria-editorial-filter__arrow {
+      color: $color-primary;
+      font-weight: 900;
+      opacity: 1;
+      transform: scale(1.2);
+    }
+
+    .galeria-editorial-filter__label {
+      color: $color-slate-900;
+      border-bottom: 2px solid $color-primary;
+      padding-bottom: 2px;
+    }
+
+    .galeria-editorial-filter__count {
+      color: $color-primary;
+      font-weight: 700;
+    }
+  }
+}
+
+.galeria-editorial-filter__arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  font-size: 1.25rem;
+  line-height: 1;
+  color: $color-primary;
+  opacity: 0;
+  transition: all $transition-fast;
+
+  .galeria-editorial-filter--active & {
+    opacity: 1;
+  }
+}
+
+.galeria-editorial-filter__label {
+  letter-spacing: -0.01em;
+  transition: color $transition-fast, border-color $transition-fast;
+}
+
+.galeria-editorial-filter__count {
+  font-family: $font-sans-regular;
+  font-size: 0.85rem;
+  color: $color-slate-400;
+  letter-spacing: 0.02em;
+  transition: color $transition-fast;
+}
+
+// ===================================================================
+// TARJETAS DE OBRAS (Squircle Curvature r=2rem)
+// ===================================================================
+.galeria-card {
+  display: block;
+  width: 100%;
+  padding: 0;
+  text-align: left;
+  font: inherit;
+  background-color: $color-white;
+  border: 1px solid rgba(226, 232, 240, 0.85);
+  border-radius: 2rem;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+  cursor: pointer;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.25s ease;
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 24px 50px rgba(15, 23, 42, 0.12), 0 8px 20px rgba(17, 171, 176, 0.14);
+    border-color: $color-primary;
+
+    .galeria-card__img {
+      transform: scale(1.05);
+    }
+
+    .galeria-card__overlay {
+      opacity: 1;
+    }
+
+    .galeria-card__overlay-bottom {
+      transform: translateY(0);
+    }
+  }
+
+  &:focus-visible {
+    @include focus-ring($color-primary, 3px);
+  }
+}
+
+.galeria-card__media {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background-color: $color-slate-100;
+  border-radius: 2rem;
+}
+
+.galeria-card__img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+// Overlay Informativo en Hover / Focus
+.galeria-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.15) 0%, rgba(15, 23, 42, 0.45) 45%, rgba(15, 23, 42, 0.95) 100%);
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.5rem;
+  transition: opacity 0.35s ease;
+  border-radius: 2rem;
+}
+
+.galeria-card__overlay-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.galeria-card__badge {
+  background: rgba(17, 171, 176, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: $color-white;
+  font: 700 0.72rem/1.2 $font-sans-bold;
+  padding: 4px 12px;
+  border-radius: $radius-pill;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  box-shadow: $shadow-badge;
+}
+
+.galeria-card__action-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-white;
+  font-size: 0.95rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  transition: background $transition-fast, transform $transition-fast;
+
+  &:hover {
+    background: $color-primary;
+    transform: scale(1.1);
+  }
+}
+
+.galeria-card__overlay-bottom {
+  transform: translateY(10px);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.galeria-card__index {
+  display: block;
+  font-family: $font-serif-bold;
+  font-size: 0.92rem;
+  color: #7dd3fc;
+  margin-bottom: 2px;
+  letter-spacing: 0.04em;
+}
+
+.galeria-card__title {
+  display: block;
+  font: 700 1.22rem/1.35 $font-serif-bold;
+  color: $color-white;
+  margin: 0 0 5px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.galeria-card__technique {
+  font: 500 0.82rem/1.3 $font-sans-regular;
+  color: #bae6fd;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  i {
+    font-size: 0.75rem;
+  }
+}
+
+// ===================================================================
+// TARJETAS DE DESCANSO EDITORIAL (Visual Relief & White Space)
+// ===================================================================
+.galeria-card--editorial {
+  background: $color-white;
+  border: 1px solid rgba(226, 232, 240, 0.95);
+  border-radius: 2rem;
+  padding: 2.75rem 2.25rem;
+  cursor: default;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 42px rgba(15, 23, 42, 0.08);
+    border-color: rgba(17, 171, 176, 0.4);
+  }
+}
+
+.galeria-card--editorial__content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.galeria-card--editorial__kicker {
+  font: 700 0.72rem/1.2 $font-sans-bold;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: $color-primary;
+  margin-bottom: 0.85rem;
+  display: block;
+}
+
+.galeria-card--editorial__title {
+  font: 700 1.5rem/1.25 $font-serif-bold;
+  color: $color-slate-900;
+  margin: 0 0 1.35rem;
+  letter-spacing: -0.02em;
+}
+
+.galeria-card--editorial__list {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.25rem;
+}
+
+.galeria-card--editorial__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.85rem 0;
+  border-top: 1px solid rgba(226, 232, 240, 0.9);
+  font: 500 0.88rem/1.3 $font-sans-regular;
+  color: $color-slate-700;
+
+  &:last-child {
+    border-bottom: 1px solid rgba(226, 232, 240, 0.9);
+  }
+}
+
+.galeria-card--editorial__year {
+  font: 700 0.82rem/1.2 $font-sans-bold;
+  color: $color-slate-400;
+  letter-spacing: 0.04em;
+}
+
+.galeria-card--editorial__desc {
+  font: 400 0.92rem/1.65 $font-sans-regular;
+  color: $color-slate-500;
+  margin: 0.85rem 0 1.5rem;
+}
+
+.galeria-card--editorial__quote {
+  font: italic 400 1.05rem/1.65 'librebaskerville-italic', serif;
+  color: $color-slate-700;
+  margin: 0 0 1.5rem;
+  border-left: 3px solid $color-primary;
+  padding-left: 1.15rem;
+}
+
+.galeria-card--editorial__author {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+
+  strong {
+    font: 700 0.95rem/1.3 $font-sans-bold;
+    color: $color-slate-900;
+  }
+
+  span {
+    font: 500 0.8rem/1.3 $font-sans-regular;
+    color: $color-slate-500;
+    margin-top: 2px;
+  }
+}
+
+.galeria-card--editorial__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  background: transparent;
+  border: none;
+  padding: 0.75rem 0 0;
+  font: 700 0.86rem/1.2 $font-sans-bold;
+  color: $color-primary-dark;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all $transition-fast;
+  margin-top: auto;
+
+  i {
+    font-size: 0.8rem;
+    transition: transform $transition-fast;
+  }
+
+  &:hover {
+    color: $color-primary;
+    i {
+      transform: translateY(3px);
+    }
+  }
+
+  &:focus-visible {
+    @include focus-ring($color-primary, 2px);
+    border-radius: $radius-sm;
+  }
+}
+
+// ===================================================================
+// BLOQUE 2: Pausa Editorial & Gran Formato ("Digital Expertise")
+// ===================================================================
+.galeria-interlude {
+  margin: 6.5rem 0 5.5rem;
+  padding: 4.5rem 0;
+  border-top: 1px dashed rgba(226, 232, 240, 0.9);
+  border-bottom: 1px dashed rgba(226, 232, 240, 0.9);
+
+  &__header {
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto 3.5rem;
+  }
+
+  &__kicker {
+    font: 700 0.72rem/1.2 $font-sans-bold;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: $color-primary;
+    display: block;
+    margin-bottom: 0.75rem;
+  }
+
+  &__title {
+    font: 700 clamp(2.2rem, 4.5vw, 3.4rem)/1.15 $font-serif-bold;
+    color: $color-slate-900;
+    margin: 0 0 0.85rem;
+    letter-spacing: -0.025em;
+  }
+
+  &__subtitle {
+    font: 400 1rem/1.6 $font-sans-regular;
+    color: $color-slate-500;
+    margin: 0;
+  }
+
+  &__layout {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 3.5rem;
+    align-items: center;
+
+    @include respond-to(lg) {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+  }
+
+  &__artwork {
+    width: 100%;
+  }
+
+  &__card {
+    height: 100%;
+  }
+
+  &__specs {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin: 1.5rem 0;
+    padding: 1.25rem 0;
+    border-top: 1px solid rgba(226, 232, 240, 0.9);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.9);
+  }
+
+  &__spec-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font: 500 0.85rem/1.3 $font-sans-regular;
+    color: $color-slate-500;
+
+    strong {
+      color: $color-slate-800;
+      font-weight: 600;
+    }
+  }
+}
+
+// ===================================================================
+// BLOQUE 3: Colección & Slider Cinemático (Inspiración Africa / Travel UI)
+// ===================================================================
+.galeria-collection {
+  margin: 5.5rem 0 4rem;
+
+  // Encabezado de la sección alineado a la derecha (estilo editorial asimétrico)
+  &__header {
+    margin-bottom: 2.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+
+    @include respond-to(md) {
+      align-items: flex-start;
+      text-align: left;
+    }
+  }
+
+  &__kicker {
+    font: 700 0.72rem/1.2 $font-sans-bold;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: $color-primary;
+    display: block;
+    margin-bottom: 0.5rem;
+    text-align: right;
+
+    @include respond-to(md) {
+      text-align: left;
+    }
+  }
+
+  &__section-name {
+    font: 700 clamp(2.1rem, 3.8vw, 3.2rem)/1.15 $font-serif-bold;
+    color: $color-slate-900;
+    margin: 0 0 0.75rem;
+    letter-spacing: -0.025em;
+    text-align: right;
+
+    @include respond-to(md) {
+      text-align: left;
+    }
+  }
+
+  &__lead {
+    font: 400 0.95rem/1.6 $font-sans-regular;
+    color: $color-slate-600;
+    margin: 0;
+    max-width: 580px;
+    text-align: right;
+
+    @include respond-to(md) {
+      text-align: left;
+    }
+  }
+
+  // Lienzo principal inmersivo (100% libre para la obra de arte)
+  &__showcase {
+    position: relative;
+    height: clamp(28rem, 52vw, 42rem);
+    min-height: 28rem;
+    overflow: hidden;
+    border-radius: 2rem;
+    background: #080d19;
+    box-shadow: 0 24px 60px rgba(11, 15, 25, 0.22);
+    border: 1px solid rgba(226, 232, 240, 0.85);
+
+    @include respond-to(lg) {
+      height: auto;
+      min-height: 34rem;
+    }
+  }
+
+  // Viewport 3D con perspectiva para el efecto de profundidad Creative
+  &__viewport-3d {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    perspective: 1400px;
+    perspective-origin: 50% 50%;
+    transform-style: preserve-3d;
+    overflow: hidden;
+  }
+
+  // Capas de imagen con animación 3D de profundidad y rotación suave
+  &__bg-layer {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    will-change: transform, opacity, filter;
+
+    &--active {
+      transform: translate3d(0, 0, 0) rotateY(0deg) scale(1);
+      opacity: 1;
+      z-index: 1;
+    }
+
+    &--outgoing-next {
+      z-index: 1;
+      animation: galeria3dCreativeOutgoingNext 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    &--incoming-next {
+      z-index: 2;
+      animation: galeria3dCreativeIncomingNext 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    &--outgoing-prev {
+      z-index: 1;
+      animation: galeria3dCreativeOutgoingPrev 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    &--incoming-prev {
+      z-index: 2;
+      animation: galeria3dCreativeIncomingPrev 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+  }
+
+  &__bg-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: brightness(0.92) contrast(1.04);
+    display: block;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+
+  // Scrim atmosférico en la parte inferior y laterales para contraste
+  &__scrim {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: linear-gradient(
+      180deg,
+      rgba(8, 15, 27, 0) 0%,
+      rgba(8, 15, 27, 0.18) 35%,
+      rgba(8, 15, 27, 0.82) 100%
+    ),
+    linear-gradient(
+      90deg,
+      rgba(8, 15, 27, 0.35) 0%,
+      rgba(8, 15, 27, 0) 35%,
+      rgba(8, 15, 27, 0) 65%,
+      rgba(8, 15, 27, 0.7) 100%
+    );
+  }
+
+  // Metadatos y acción anclados en la esquina inferior izquierda del lienzo (sin fondo blanco)
+  &__canvas-meta {
+    position: absolute;
+    bottom: 1.75rem;
+    left: clamp(1.25rem, 3.5vw, 2.75rem);
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+
+    @include respond-to(lg) {
+      position: relative;
+      bottom: auto;
+      left: auto;
+      width: 100%;
+      padding: 1.25rem 1.25rem 0.5rem;
+      background: rgba(8, 15, 27, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+  }
+
+  &__canvas-tags {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.35rem 0.95rem;
+    border-radius: $radius-pill;
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  }
+
+  &__canvas-badge {
+    color: #7dd3fc;
+    font: 700 0.72rem/1.2 $font-sans-bold;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  &__canvas-dot {
+    color: rgba(255, 255, 255, 0.35);
+    font-size: 0.8rem;
+  }
+
+  &__canvas-technique {
+    color: rgba(255, 255, 255, 0.88);
+    font: 600 0.72rem/1.2 $font-sans-semibold;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+
+    i {
+      color: $color-primary;
+      font-size: 0.75rem;
+    }
+  }
+
+  // Botón "Explorar obra" integrado en el lienzo sin fondo blanco sólido
+  &__explore-btn {
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: $radius-pill;
+    padding: 0.45rem 0.55rem 0.45rem 1.15rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.85rem;
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    transition: all $transition-fast;
+
+    &:hover {
+      background: rgba(17, 171, 176, 0.22);
+      border-color: $color-primary;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(17, 171, 176, 0.35);
+
+      .galeria-collection__explore-arrow {
+        background: $color-primary;
+        color: $color-white;
+        transform: translateX(3px);
+      }
+    }
+
+    &:focus-visible {
+      @include focus-ring($color-primary, 2px);
+    }
+  }
+
+  &__explore-text {
+    font: 700 0.88rem/1.2 $font-sans-bold;
+    color: $color-white;
+    letter-spacing: -0.01em;
+  }
+
+  &__explore-arrow {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(17, 171, 176, 0.25);
+    border: 1px solid rgba(17, 171, 176, 0.45);
+    color: #7dd3fc;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    transition: all $transition-fast;
+  }
+
+  // Muelle lateral derecho: miniaturas arriba y controles (< >) debajo
+  &__dock {
+    position: absolute;
+    right: clamp(1.25rem, 3.5vw, 2.75rem);
+    bottom: 1.75rem;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: min(52%, 36rem);
+    max-width: 100%;
+
+    @include respond-to(lg) {
+      position: relative;
+      right: auto;
+      bottom: auto;
+      width: 100%;
+      padding: 1.25rem 1.25rem 1.75rem;
+      background: rgba(8, 15, 27, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+  }
+
+  // Carril de miniaturas
+  &__rail {
+    display: flex;
+    gap: 1.15rem;
+    width: 100%;
+    overflow-x: auto;
+    padding: 0.5rem 0.25rem 0.85rem;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  // Tarjeta de miniatura individual
+  &__thumb {
+    flex: 0 0 clamp(9.5rem, 13vw, 11rem);
+    height: 14rem;
+    border-radius: 1.25rem;
+    padding: 0;
+    background: #0f172a;
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.3s ease,
+                box-shadow 0.35s ease,
+                opacity 0.3s ease;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+    text-align: left;
+    opacity: 0.82;
+
+    &:hover {
+      opacity: 1;
+      transform: translateY(-5px);
+      border-color: rgba(255, 255, 255, 0.7);
+      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.6);
+
+      .galeria-collection__thumb-img {
+        transform: scale(1.07);
+      }
+    }
+
+    &:focus-visible {
+      @include focus-ring($color-primary, 2px);
+    }
+
+    // Estado Activo
+    &--active {
+      opacity: 1;
+      border-color: $color-primary;
+      transform: translateY(-6px) scale(1.03);
+      box-shadow: 0 18px 40px rgba(17, 171, 176, 0.45), 0 0 0 1px $color-primary;
+
+      &:hover {
+        transform: translateY(-6px) scale(1.03);
+      }
+    }
+  }
+
+  &__thumb-media {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    border-radius: 1.15rem;
+    overflow: hidden;
+    background: #0b0f19;
+  }
+
+  &__thumb-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  &__thumb-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0.85rem;
+    background: linear-gradient(
+      180deg,
+      rgba(15, 23, 42, 0.35) 0%,
+      rgba(15, 23, 42, 0.05) 35%,
+      rgba(15, 23, 42, 0.94) 100%
+    );
+  }
+
+  &__thumb-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  &__thumb-number {
+    font: 700 0.7rem/1.2 $font-sans-bold;
+    color: $color-white;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    padding: 2px 7px;
+    border-radius: $radius-pill;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  &__thumb-badge {
+    font: 700 0.65rem/1.2 $font-sans-bold;
+    color: $color-white;
+    background: $color-primary;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    padding: 3px 8px;
+    border-radius: $radius-pill;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    box-shadow: 0 2px 8px rgba(17, 171, 176, 0.5);
+
+    i {
+      font-size: 0.62rem;
+    }
+  }
+
+  &__thumb-bottom {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__thumb-category {
+    font: 600 0.66rem/1.2 $font-sans-semibold;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #7dd3fc;
+    margin-bottom: 2px;
+  }
+
+  &__thumb-title {
+    font: 700 0.84rem/1.25 $font-serif-bold;
+    color: $color-white;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  // Controles de navegación (< >) ubicados debajo de las miniaturas en el dock
+  &__dock-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0.35rem 0.25rem 0;
+  }
+
+  &__arrows {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+  }
+
+  &__arrow-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: $color-white;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all $transition-fast;
+
+    &:hover {
+      background: $color-primary;
+      border-color: $color-primary;
+      transform: scale(1.1);
+    }
+
+    &:focus-visible {
+      @include focus-ring($color-primary, 2px);
+    }
+  }
+
+  &__counter-wrap {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: $color-white;
+  }
+
+  &__counter-numbers {
+    font: 700 0.92rem/1.2 $font-sans-bold;
+    color: $color-white;
+    letter-spacing: 0.08em;
+  }
+
+  &__counter-sep {
+    color: rgba(255, 255, 255, 0.4);
+    margin: 0 2px;
+  }
+
+  &__count {
+    color: #7dd3fc;
+    background: rgba(17, 171, 176, 0.18);
+    border: 1px solid rgba(17, 171, 176, 0.35);
+    padding: 3px 10px;
+    border-radius: $radius-pill;
+    font: 700 0.72rem/1.2 $font-sans-bold;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  // ===================================================================
+  // ÁREA EDITORIAL JUSTIFICADA A LA IZQUIERDA (Debajo del lienzo)
+  // ===================================================================
+  &__footer-info {
+    margin-top: 2.25rem;
+    max-width: 760px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  &__info-title {
+    font: 700 clamp(1.85rem, 3.5vw, 2.6rem)/1.15 $font-serif-bold;
+    color: $color-slate-900;
+    margin: 0 0 0.85rem;
+    letter-spacing: -0.025em;
+  }
+
+  &__info-desc {
+    font: 400 0.98rem/1.65 $font-sans-regular;
+    color: $color-slate-600;
+    margin: 0;
+    max-width: 660px;
+  }
+}
+
+// ===================================================================
+// EFECTO CREATIVE 3D (Profundidad en el espacio Z + Rotación Y)
+// ===================================================================
+@keyframes galeria3dCreativeOutgoingNext {
+  0% {
+    transform: translate3d(0, 0, 0) rotateY(0deg) scale(1);
+    opacity: 1;
+    filter: brightness(0.92) contrast(1.04) blur(0px);
+  }
+  40% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: translate3d(-16%, 0, -320px) rotateY(14deg) scale(0.86);
+    opacity: 0;
+    filter: brightness(0.35) contrast(1.1) blur(4px);
+  }
+}
+
+@keyframes galeria3dCreativeIncomingNext {
+  0% {
+    transform: translate3d(22%, 0, 180px) rotateY(-12deg) scale(1.08);
+    opacity: 0;
+    filter: brightness(1.2) contrast(1.05) blur(6px);
+  }
+  60% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotateY(0deg) scale(1);
+    opacity: 1;
+    filter: brightness(0.92) contrast(1.04) blur(0px);
+  }
+}
+
+@keyframes galeria3dCreativeOutgoingPrev {
+  0% {
+    transform: translate3d(0, 0, 0) rotateY(0deg) scale(1);
+    opacity: 1;
+    filter: brightness(0.92) contrast(1.04) blur(0px);
+  }
+  40% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: translate3d(16%, 0, -320px) rotateY(-14deg) scale(0.86);
+    opacity: 0;
+    filter: brightness(0.35) contrast(1.1) blur(4px);
+  }
+}
+
+@keyframes galeria3dCreativeIncomingPrev {
+  0% {
+    transform: translate3d(-22%, 0, 180px) rotateY(12deg) scale(1.08);
+    opacity: 0;
+    filter: brightness(1.2) contrast(1.05) blur(6px);
+  }
+  60% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotateY(0deg) scale(1);
+    opacity: 1;
+    filter: brightness(0.92) contrast(1.04) blur(0px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .galeria-collection__bg-layer--outgoing-next,
+  .galeria-collection__bg-layer--incoming-next,
+  .galeria-collection__bg-layer--outgoing-prev,
+  .galeria-collection__bg-layer--incoming-prev {
+    animation-duration: 0.01ms !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}
+
+// ===================================================================
+// MODAL LIGHTBOX ACCESIBLE
+// ===================================================================
+.galeria-modal {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
+  margin: 0;
+  padding: 1.25rem;
+  border: none;
+  background: transparent;
+  z-index: 1050;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.galeria-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 23, 42, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: none;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.galeria-modal__content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1100px;
+  max-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  background: $color-white;
+  border-radius: 2rem;
+  overflow: hidden;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.galeria-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 2rem;
+  border-bottom: 1px solid $color-slate-200;
+  background: $color-white;
+}
+
+.galeria-modal__header-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.galeria-modal__badge {
+  background: rgba(17, 171, 176, 0.12);
+  color: $color-primary-dark;
+  font: 700 0.72rem/1.2 $font-sans-bold;
+  padding: 4px 12px;
+  border-radius: $radius-pill;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 1px solid rgba(17, 171, 176, 0.3);
+}
+
+.galeria-modal__counter {
+  font: 700 0.85rem/1.2 $font-sans-bold;
+  color: $color-slate-400;
+  letter-spacing: 0.05em;
+}
+
+.galeria-modal__close-btn {
+  background: transparent;
+  border: none;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  color: $color-slate-500;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all $transition-fast;
+
+  &:hover {
+    background: $color-slate-100;
+    color: $color-slate-900;
+    transform: scale(1.1);
+  }
+
+  &:focus-visible {
+    @include focus-ring($color-primary, 2px);
+  }
+}
+
+.galeria-modal__body {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.45fr 1fr;
+  align-items: stretch;
+  overflow: hidden;
+  max-height: calc(92vh - 80px);
+
+  @include respond-to(lg) {
+    grid-template-columns: 1fr;
+    max-height: calc(92vh - 80px);
+    overflow-y: auto;
+  }
+}
+
+.galeria-modal__media-col {
+  position: relative;
+  background: #0b0f19;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 420px;
+  overflow: hidden;
+
+  @include respond-to(lg) {
+    min-height: 320px;
+  }
+}
+
+.galeria-modal__img {
+  max-width: 100%;
+  max-height: 68vh;
+  object-fit: contain;
+  display: block;
+}
+
+.galeria-modal__nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: $color-white;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  cursor: pointer;
+  z-index: 3;
+  transition: background $transition-fast, transform $transition-fast;
+
+  &:hover {
+    background: $color-primary;
+    transform: translateY(-50%) scale(1.1);
+  }
+
+  &:focus-visible {
+    @include focus-ring($color-primary, 2px);
+  }
+
+  &--prev {
+    left: 1rem;
+  }
+
+  &--next {
+    right: 1rem;
+  }
+}
+
+.galeria-modal__info-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2.25rem 2.5rem;
+  background: $color-white;
+  overflow-y: auto;
+
+  @include respond-to(lg) {
+    padding: 1.75rem 1.5rem;
+  }
+}
+
+.galeria-modal__details {
+  display: flex;
+  flex-direction: column;
+}
+
+.galeria-modal__title {
+  font: 700 1.75rem/1.25 $font-serif-bold;
+  color: $color-slate-900;
+  margin: 0 0 1rem;
+  letter-spacing: -0.02em;
+}
+
+.galeria-modal__technique {
+  font: 600 0.85rem/1.4 $font-sans-semibold;
+  color: $color-primary-dark;
+  background: rgba(17, 171, 176, 0.08);
+  padding: 6px 12px;
+  border-radius: $radius-sm;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  margin-bottom: 1.25rem;
+
+  i {
+    color: $color-primary;
+  }
+}
+
+.galeria-modal__desc {
+  font: 400 0.98rem/1.65 $font-sans-regular;
+  color: $color-slate-600;
+  margin: 0 0 1.5rem;
+}
+
+.galeria-modal__footer-meta {
+  border-top: 1px solid $color-slate-200;
+  padding-top: 1.25rem;
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.galeria-modal__author {
+  display: flex;
+  flex-direction: column;
+
+  strong {
+    font: 700 0.88rem/1.3 $font-sans-bold;
+    color: $color-slate-800;
+  }
+
+  span {
+    font: 500 0.74rem/1.3 $font-sans-regular;
+    color: $color-slate-500;
+  }
+}
+
+.galeria-modal__hints {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font: 500 0.74rem/1.2 $font-sans-regular;
+  color: $color-slate-400;
+
+  kbd {
+    background: $color-slate-100;
+    border: 1px solid $color-slate-300;
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-size: 0.7rem;
+    color: $color-slate-700;
+    font-family: monospace;
   }
 }

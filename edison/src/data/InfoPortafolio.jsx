@@ -210,6 +210,129 @@ const InfoPortafolio = {
             description:'Desarrollo frontend y arquitectura modular para la plataforma de administración y seguridad comunitaria en copropiedades. Maquetación de interfaces intuitivas, integración de APIs para gestión y pagos, estimación de tiempos y coordinación activa con backend, bases de datos, diseñadores y directores de proyecto.',
             url:'',
         },
+    ],
+    Galeria: [
+        {
+            id: 1,
+            title: 'Spider-Man — Realismo Mágico',
+            category: 'ilustracion',
+            categoryLabel: 'Ilustración Digital',
+            technique: 'Concept Art & Iluminación Cinematográfica',
+            description: 'Homenaje artístico al universo de Spider-Man con estética de realismo mágico urbano, contrastes lumínicos dorados y composición aérea dramática.',
+            img: 'ilus_spaider.jpg',
+            folder: '/ilustraciones/',
+            alt: 'Ilustración artística y cartel de Spider-Man con atmósfera de realismo mágico'
+        },
+        {
+            id: 2,
+            title: 'Guerrera Lunar — La Arquera Mística',
+            category: 'ilustracion',
+            categoryLabel: 'Ilustración Digital',
+            technique: 'Pintura Digital & Fantasía Épica',
+            description: 'Diseño de personaje mitológico femenino empuñando un arco ceremonial bajo el resplandor de una luna llena cinematográfica.',
+            img: 'ilus_juanadearco.jpg',
+            folder: '/ilustraciones/',
+            alt: 'Ilustración digital de una guerrera arquera frente a una luna llena gigante'
+        },
+        {
+            id: 3,
+            title: 'Retrato en Carmín — La Dama de las Rosas',
+            category: 'ilustracion',
+            categoryLabel: 'Ilustración Digital',
+            technique: 'Retrato Digital & Paleta Armónica',
+            description: 'Composición pictórica femenina que explora la elegancia, textura floral de pétalos de rosa y una rica paleta de rojos y esmeraldas.',
+            img: 'ilus_madre.jpg',
+            folder: '/ilustraciones/',
+            alt: 'Retrato ilustrado de mujer con sombrero rojo rodeada de rosas carmesí'
+        },
+        {
+            id: 4,
+            title: 'The Prince Mask — Cartel Cinematográfico',
+            category: 'ilustracion',
+            categoryLabel: 'Ilustración Digital',
+            technique: 'Poster Art & Matte Painting',
+            description: 'Afiche conceptual de película de acción y fantasía con iluminación dramática de contrastes fríos y cálidos.',
+            img: 'ilus_princemask.jpg',
+            folder: '/ilustraciones/',
+            alt: 'Póster cinematográfico de fantasía y acción The Prince Mask'
+        },
+        {
+            id: 5,
+            title: 'Cena en Familia — Calor de Hogar',
+            category: 'ilustracion',
+            categoryLabel: 'Ilustración Digital',
+            technique: 'Pintura Digital & Expresión Narrativa',
+            description: 'Ilustración centrada en el retrato costumbrista y la calidez emocional de una reunión familiar compartiendo la mesa.',
+            img: 'ilus_familia.jpg',
+            folder: '/ilustraciones/',
+            alt: 'Ilustración digital de una familia compartiendo alegremente una comida en la mesa'
+        },
+        {
+            id: 6,
+            title: 'Metamorfosis Líquida — Rostro de Agua',
+            category: 'ilustracion',
+            categoryLabel: 'Ilustración Digital',
+            technique: 'Matte Painting & Efectos de Fluidos',
+            description: 'Composición surrealista que recrea un rostro humano moldeado íntegramente por salpicaduras y corrientes de agua cristalina.',
+            img: 'ilus_agua.jpg',
+            folder: '/ilustraciones/',
+            alt: 'Ilustración conceptual de rostro femenino formado por corrientes y salpicaduras de agua'
+        },
+        {
+            id: 7,
+            title: 'Timbor Tom — Relieve & Tipografía Conceptual',
+            category: 'ilustracion',
+            categoryLabel: 'Ilustración Digital',
+            technique: 'Concept Art & Modelado 2.5D',
+            description: 'Pieza conceptual con estética gótica, relieve metálico digital volumétrico y gradientes atmosféricos.',
+            img: 'ilus_timbortom.jpg',
+            folder: '/ilustraciones/',
+            alt: 'Ilustración conceptual con relieve metálico volumétrico inspirada en estilo gótico'
+        },
+        {
+            id: 8,
+            title: 'Búfalo Auto Brillante — Campaña Zen & Protección',
+            category: 'campanas',
+            categoryLabel: 'Campaña Publicitaria',
+            technique: 'Dirección de Arte & Render Publicitario',
+            description: 'Campaña publicitaria de lanzamiento para producto de brillo de pisos en formato panorámico con ambientación zen oriental y madera noble.',
+            img: 'cam_bufalo.png',
+            folder: '/campanas/',
+            alt: 'Campaña publicitaria panorámica para Búfalo Auto Brillante con ambientación de piso de madera zen'
+        },
+        {
+            id: 9,
+            title: 'Aceite Express — La Calidad en Nuestra Naturaleza',
+            category: 'campanas',
+            categoryLabel: 'Campaña Publicitaria',
+            technique: 'Diseño Publicitario & Línea de Empaque',
+            description: 'Pieza publicitaria integral para exhibición de la línea de aceites vegetales de cocina con atributos de nutrición Omega 3 y 6.',
+            img: 'cam_micanola.png',
+            folder: '/campanas/',
+            alt: 'Pieza publicitaria de exhibición y presentación de botellas para Aceite Express'
+        },
+        {
+            id: 10,
+            title: 'Doritos — Campaña de Alto Impacto',
+            category: 'campanas',
+            categoryLabel: 'Campaña Publicitaria',
+            technique: 'Publicidad Exterior & Gran Formato',
+            description: 'Diseño y composición de alto impacto visual para activaciones de marca y piezas exteriores de gran formato.',
+            img: 'cam_doritos.jpg',
+            folder: '/campanas/',
+            alt: 'Campaña publicitaria gráfica para Doritos de gran impacto visual'
+        },
+        {
+            id: 11,
+            title: 'Confit — Dulcería & Confitería',
+            category: 'campanas',
+            categoryLabel: 'Campaña Publicitaria',
+            technique: 'Composición Publicitaria & Branding',
+            description: 'Diseño publicitario para producto y piezas promocionales en puntos de venta de la categoría de confitería.',
+            img: 'cam_confit.png',
+            folder: '/campanas/',
+            alt: 'Pieza publicitaria de producto y branding para línea Confit'
+        }
     ]
 };
 

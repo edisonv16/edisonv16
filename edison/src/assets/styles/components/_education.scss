@@ -8,9 +8,15 @@
   background-image: 
     radial-gradient(ellipse at 50% 0%, rgba(17, 171, 176, 0.08) 0%, transparent 60%),
     radial-gradient(circle at 100% 50%, rgba(56, 189, 248, 0.04) 0%, transparent 40%);
-  padding: 5rem 0;
+  padding-top: $section-padding-y;
+  padding-bottom: $section-padding-y;
   position: relative;
   overflow: hidden;
+
+  @include respond-to(md) {
+    padding-top: $section-padding-y-mobile;
+    padding-bottom: $section-padding-y-mobile;
+  }
 
   // Garantizar contraste global de encabezados dentro de la sección oscura
   h2, h3, h4 {

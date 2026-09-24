@@ -6,7 +6,7 @@ const Skill = () => {
 
     return (
         <section id="skills" aria-label="Competencias y habilidades técnicas">
-            <div className='container-xxl pt-5 pb-5'>
+            <div className="container-xxl">
                 <div className="row">
                     <div className="col-12 section-header">
                         <span className="section-badge">

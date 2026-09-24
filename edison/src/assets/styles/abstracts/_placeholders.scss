@@ -54,18 +54,18 @@
   letter-spacing: 0.08em;
   padding: 6px 14px;
   border-radius: $radius-pill;
-  margin-bottom: 14px;
+  margin-bottom: 0.85rem;
   width: fit-content;
 }
 
 // --- Título Principal de Sección ---
 %section-title-base {
-  font: 700 1.5rem/1.3 $font-sans-bold;
+  font: 700 clamp(1.6rem, 3.2vw, 2.1rem)/1.2 $font-sans-bold;
   text-transform: uppercase;
   letter-spacing: 2px;
   text-align: center;
   color: $color-slate-800;
-  margin: 0 0 14px;
+  margin: 0 0 1rem;
   text-shadow: none;
 
   span {
@@ -76,7 +76,7 @@
 
 // --- Subtítulo Descriptivo de Sección ---
 %section-subtitle-base {
-  font: 400 0.92rem/1.6 $font-sans-regular;
+  font: 400 0.95rem/1.6 $font-sans-regular;
   color: $color-slate-500;
   max-width: 680px;
   margin: 0 auto;
