@@ -55,6 +55,20 @@ const Info = {
     image: 'https://edisonospina.netlify.app/edisonospina.jpg',
     jobTitle: 'Senior Frontend Engineer & UI Architect | Technical Lead',
     sameAs: ['https://www.linkedin.com/in/edison-ospina']
+  },
+  whatsapp: {
+    phoneNumber: '573185735382',
+    displayPhone: '+57 318 573 5382',
+    operatorName: 'Edison Vidal Ospina',
+    role: 'Senior Frontend Engineer & UI Architect',
+    avatar: '/edisonospina.jpg',
+    statusText: 'En línea',
+    welcomeMessage: '¡Hola! 👋 Gracias por visitar mi portafolio. Si buscas agendar una reunión o conversar sobre un proyecto técnico, déjame tu mensaje y continuemos en WhatsApp.',
+    defaultMessage: 'Hola Edison, estuve revisando tu portafolio web y me gustaría agendar una reunión para conversar sobre una oportunidad.',
+    placeholder: 'Escribe tu mensaje para WhatsApp...',
+    buttonTitle: 'Chatear en WhatsApp',
+    badgeText: '1',
+    eventCustomName: 'whatsapp_click'
   }
 };
 

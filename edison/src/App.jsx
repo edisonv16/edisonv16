@@ -11,6 +11,7 @@ import Skill from './components/profile/Skills'
 import Portafolio from './components/proyects/Portafolio'
 import Contact from './components/contact/Contact'
 import Footer from './components/footer/Footer'
+import WhatsAppChatWidget from './components/whatsapp/WhatsAppChatWidget'
 import StructuredData from './components/seo/StructuredData'
 import Info from './data/Info'
 
@@ -74,6 +75,7 @@ function App() {
         <Education />
       </section>
       <Footer />
+      <WhatsAppChatWidget />
     </div>
   )
 }
