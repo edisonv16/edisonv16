@@ -57,10 +57,12 @@ const WhatsAppChatWidget = ({ widgetConfig = Info.whatsapp } = {}) => {
     inputText,
     messages,
     isTyping,
+    quickOptions,
     toggleChat,
     closeChat,
     handleInputChange,
-    sendMessage
+    sendMessage,
+    handleQuickOption
   } = useWhatsAppWidget({
     phoneNumber,
     welcomeMessage,
@@ -160,6 +162,28 @@ const WhatsAppChatWidget = ({ widgetConfig = Info.whatsapp } = {}) => {
                   </div>
                 );
               })}
+
+              {messages.length <= 1 && (
+                <div
+                  className="whatsapp-card__quick-options"
+                  role="group"
+                  aria-label="Opciones rápidas de consulta"
+                >
+                  {quickOptions.map((quickOptionItem) => (
+                    <button
+                      key={quickOptionItem.id}
+                      type="button"
+                      className="whatsapp-card__quick-option-btn"
+                      onClick={() => handleQuickOption(quickOptionItem)}
+                    >
+                      <span className="whatsapp-card__quick-option-label">
+                        {quickOptionItem.label}
+                      </span>
+                      <i className="fa fa-chevron-right whatsapp-card__quick-option-arrow" aria-hidden="true" />
+                    </button>
+                  ))}
+                </div>
+              )}
 
               {isTyping && (
                 <div

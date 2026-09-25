@@ -164,4 +164,81 @@ describe('WhatsAppChatWidget (Chat Conversacional Embebido)', () => {
     expect(fallbackLink).toHaveAttribute('target', '_blank');
     expect(fallbackLink).toHaveAttribute('rel', 'noreferrer');
   });
+
+  test('debe mostrar los 3 botones de opciones rápidas al abrir el chat inicial', () => {
+    render(<WhatsAppChatWidget />);
+
+    const triggerButton = screen.getByRole('button', { name: /abrir chat interactivo de whatsapp/i });
+    fireEvent.click(triggerButton);
+
+    expect(screen.getByRole('button', { name: /📅 agendar cita/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /💼 preguntar sobre mi portafolio/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /💬 hablar directamente con edison/i })).toBeInTheDocument();
+  });
+
+  test('debe enviar mensaje al webhook y ocultar opciones al hacer clic en Agendar cita', async () => {
+    global.fetch.mockResolvedValueOnce({
+      ok: true,
+      text: async () => JSON.stringify({ reply: 'Con gusto agendamos. ¿Qué día prefieres?' }),
+      json: async () => ({ reply: 'Con gusto agendamos. ¿Qué día prefieres?' })
+    });
+
+    render(<WhatsAppChatWidget />);
+
+    const triggerButton = screen.getByRole('button', { name: /abrir chat interactivo de whatsapp/i });
+    fireEvent.click(triggerButton);
+
+    const agendaButton = screen.getByRole('button', { name: /📅 agendar cita/i });
+    fireEvent.click(agendaButton);
+
+    expect(global.fetch).toHaveBeenCalledTimes(1);
+    expect(global.fetch).toHaveBeenCalledWith(
+      'https://hook.us2.make.com/jt5r7jvtrodngsjka1atkwkrt5ol3ct7',
+      expect.objectContaining({
+        body: expect.stringContaining('me gustaría agendar una reunión o cita')
+      })
+    );
+
+    // Los botones de opciones rápidas se ocultan al avanzar la conversación
+    expect(screen.queryByRole('button', { name: /📅 agendar cita/i })).not.toBeInTheDocument();
+
+    await waitFor(() => {
+      expect(screen.getByText('Con gusto agendamos. ¿Qué día prefieres?')).toBeInTheDocument();
+    });
+  });
+
+  test('debe mostrar mensaje orientativo al hacer clic en Preguntar sobre mi portafolio', () => {
+    render(<WhatsAppChatWidget />);
+
+    const triggerButton = screen.getByRole('button', { name: /abrir chat interactivo de whatsapp/i });
+    fireEvent.click(triggerButton);
+
+    const portfolioButton = screen.getByRole('button', { name: /💼 preguntar sobre mi portafolio/i });
+    fireEvent.click(portfolioButton);
+
+    expect(
+      screen.getByText(/¡Excelente! Cuéntame qué te gustaría saber. Puedes preguntarme sobre mi experiencia/i)
+    ).toBeInTheDocument();
+  });
+
+  test('debe abrir WhatsApp directo al hacer clic en Hablar directamente con Edison', () => {
+    const windowOpenSpy = jest.spyOn(window, 'open').mockImplementation(() => {});
+
+    render(<WhatsAppChatWidget />);
+
+    const triggerButton = screen.getByRole('button', { name: /abrir chat interactivo de whatsapp/i });
+    fireEvent.click(triggerButton);
+
+    const directButton = screen.getByRole('button', { name: /💬 hablar directamente con edison/i });
+    fireEvent.click(directButton);
+
+    expect(windowOpenSpy).toHaveBeenCalledTimes(1);
+    expect(windowOpenSpy).toHaveBeenCalledWith(
+      expect.stringContaining('https://wa.me/573185735382'),
+      '_blank',
+      'noopener,noreferrer'
+    );
+
+    windowOpenSpy.mockRestore();
+  });
 });

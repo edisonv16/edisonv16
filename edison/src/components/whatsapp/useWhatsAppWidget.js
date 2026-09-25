@@ -10,6 +10,15 @@ const getFormattedTimestamp = () => {
 };
 
 /**
+ * Opciones interactivas rápidas iniciales para el usuario.
+ */
+export const DEFAULT_QUICK_OPTIONS = [
+  { id: 'agenda', label: '📅 Agendar cita', action: 'agenda' },
+  { id: 'portfolio', label: '💼 Preguntar sobre mi portafolio', action: 'portfolio' },
+  { id: 'direct', label: '💬 Hablar directamente con Edison', action: 'direct' }
+];
+
+/**
  * Hook para la gestión del chat conversacional interactivo integrado con Make.com y Google Tag Manager.
  *
  * @param {Object} options Configuración del widget.
@@ -58,112 +67,166 @@ export const useWhatsAppWidget = ({
     setInputText(event.target.value);
   }, []);
 
-  const sendMessage = useCallback(async (event) => {
-    if (event && typeof event.preventDefault === 'function') {
-      event.preventDefault();
-    }
-
-    const trimmedUserMessage = inputText.trim();
-    if (!trimmedUserMessage || isTyping) {
+  const addAssistantMessage = useCallback((replyText) => {
+    if (!replyText) {
       return;
     }
-
-    const userMessageId = `user-msg-${Date.now()}`;
-    const userTimestamp = getFormattedTimestamp();
-
-    // 1. Agregar mensaje del usuario a la conversación
     setMessages((previousMessages) => [
       ...previousMessages,
       {
-        id: userMessageId,
-        sender: 'user',
-        text: trimmedUserMessage,
-        timestamp: userTimestamp
+        id: `assistant-msg-${Date.now()}`,
+        sender: 'assistant',
+        text: replyText,
+        timestamp: getFormattedTimestamp()
       }
     ]);
+  }, []);
 
-    // Limpiar input y activar estado "escribiendo"
-    setInputText('');
-    setIsTyping(true);
+  const sendMessage = useCallback(
+    async (eventOrMessageText = null) => {
+      let messageToSend = '';
+      if (typeof eventOrMessageText === 'string') {
+        messageToSend = eventOrMessageText.trim();
+      } else {
+        if (eventOrMessageText && typeof eventOrMessageText.preventDefault === 'function') {
+          eventOrMessageText.preventDefault();
+        }
+        messageToSend = inputText.trim();
+      }
 
-    // 2. Disparar evento a Google Tag Manager (dataLayer)
-    if (typeof window !== 'undefined') {
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({
-        event: eventCustomName,
-        whatsapp_phone: phoneNumber,
-        whatsapp_source: 'portfolio_embedded_chat',
-        whatsapp_message_length: trimmedUserMessage.length,
-        timestamp: new Date().toISOString()
-      });
-    }
+      if (!messageToSend || isTyping) {
+        return;
+      }
 
-    // 3. Enviar mensaje de forma asíncrona hacia el Webhook de Make.com
-    try {
-      const response = await fetch(makeWebhookUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json, text/plain, */*'
-        },
-        body: JSON.stringify({
-          message: trimmedUserMessage,
-          sender: 'visitante_web',
+      const userMessageId = `user-msg-${Date.now()}`;
+      const userTimestamp = getFormattedTimestamp();
+
+      // 1. Agregar mensaje del usuario a la conversación
+      setMessages((previousMessages) => [
+        ...previousMessages,
+        {
+          id: userMessageId,
+          sender: 'user',
+          text: messageToSend,
+          timestamp: userTimestamp
+        }
+      ]);
+
+      // Limpiar input y activar estado "escribiendo"
+      setInputText('');
+      setIsTyping(true);
+
+      // 2. Disparar evento a Google Tag Manager (dataLayer)
+      if (typeof window !== 'undefined') {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: eventCustomName,
+          whatsapp_phone: phoneNumber,
+          whatsapp_source: 'portfolio_embedded_chat',
+          whatsapp_message_length: messageToSend.length,
           timestamp: new Date().toISOString()
-        })
-      });
-
-      if (!response.ok) {
-        throw new Error(`Webhook responded with status ${response.status}`);
+        });
       }
 
-      let rawResponseText = '';
-      let parsedResponse = null;
+      // 3. Enviar mensaje de forma asíncrona hacia el Webhook de Make.com
+      try {
+        const response = await fetch(makeWebhookUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json, text/plain, */*'
+          },
+          body: JSON.stringify({
+            message: messageToSend,
+            sender: 'visitante_web',
+            timestamp: new Date().toISOString()
+          })
+        });
 
-      if (typeof response.text === 'function') {
-        rawResponseText = await response.text();
-        try {
-          parsedResponse = JSON.parse(rawResponseText);
-        } catch {
-          // Si no es JSON estándar se procesa de forma resiliente con extractAssistantReply
+        if (!response.ok) {
+          throw new Error(`Webhook responded with status ${response.status}`);
         }
-      } else if (typeof response.json === 'function') {
-        parsedResponse = await response.json();
+
+        let rawResponseText = '';
+        let parsedResponse = null;
+
+        if (typeof response.text === 'function') {
+          rawResponseText = await response.text();
+          try {
+            parsedResponse = JSON.parse(rawResponseText);
+          } catch {
+            // Si no es JSON estándar se procesa de forma resiliente con extractAssistantReply
+          }
+        } else if (typeof response.json === 'function') {
+          parsedResponse = await response.json();
+        }
+
+        let assistantReplyText = extractAssistantReply(rawResponseText, parsedResponse);
+
+        if (!assistantReplyText) {
+          assistantReplyText = '¡He recibido tu mensaje! Pronto me comunicaré contigo.';
+        }
+
+        setMessages((previousMessages) => [
+          ...previousMessages,
+          {
+            id: `assistant-msg-${Date.now()}`,
+            sender: 'assistant',
+            text: assistantReplyText,
+            timestamp: getFormattedTimestamp()
+          }
+        ]);
+      } catch {
+        // Mensaje de respaldo con opción a WhatsApp directo
+        const fallbackUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(messageToSend)}`;
+        setMessages((previousMessages) => [
+          ...previousMessages,
+          {
+            id: `fallback-msg-${Date.now()}`,
+            sender: 'assistant',
+            text: 'Gracias por tu mensaje. Se ha registrado tu consulta en mi sistema. También puedes tocar aquí para continuar por WhatsApp si requieres respuesta inmediata.',
+            fallbackUrl,
+            isFallback: true,
+            timestamp: getFormattedTimestamp()
+          }
+        ]);
+      } finally {
+        setIsTyping(false);
+      }
+    },
+    [inputText, isTyping, eventCustomName, phoneNumber, makeWebhookUrl]
+  );
+
+  const handleQuickOption = useCallback(
+    (quickOption) => {
+      if (!quickOption) {
+        return;
       }
 
-      let assistantReplyText = extractAssistantReply(rawResponseText, parsedResponse);
-
-      if (!assistantReplyText) {
-        assistantReplyText = '¡He recibido tu mensaje! Pronto me comunicaré contigo.';
+      if (quickOption.action === 'direct') {
+        const directGreeting = encodeURIComponent(
+          'Hola Edison, estuve revisando tu portafolio web y me gustaría hablar directamente contigo.'
+        );
+        const directWhatsAppUrl = `https://wa.me/${phoneNumber}?text=${directGreeting}`;
+        if (typeof window !== 'undefined') {
+          window.open(directWhatsAppUrl, '_blank', 'noopener,noreferrer');
+        }
+        return;
       }
 
-      setMessages((previousMessages) => [
-        ...previousMessages,
-        {
-          id: `assistant-msg-${Date.now()}`,
-          sender: 'assistant',
-          text: assistantReplyText,
-          timestamp: getFormattedTimestamp()
-        }
-      ]);
-    } catch {
-      // Mensaje de respaldo con opción a WhatsApp directo
-      const fallbackUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(trimmedUserMessage)}`;
-      setMessages((previousMessages) => [
-        ...previousMessages,
-        {
-          id: `fallback-msg-${Date.now()}`,
-          sender: 'assistant',
-          text: 'Gracias por tu mensaje. Se ha registrado tu consulta en mi sistema. También puedes tocar aquí para continuar por WhatsApp si requieres respuesta inmediata.',
-          fallbackUrl,
-          isFallback: true,
-          timestamp: getFormattedTimestamp()
-        }
-      ]);
-    } finally {
-      setIsTyping(false);
-    }
-  }, [eventCustomName, inputText, isTyping, makeWebhookUrl, phoneNumber]);
+      if (quickOption.action === 'agenda') {
+        sendMessage('Hola Edison, me gustaría agendar una reunión o cita para conversar sobre una oportunidad.');
+        return;
+      }
+
+      if (quickOption.action === 'portfolio') {
+        addAssistantMessage(
+          '¡Excelente! Cuéntame qué te gustaría saber. Puedes preguntarme sobre mi experiencia liderando arquitecturas frontend, proyectos de alta escala en Sodimac Colombia, stack tecnológico o casos de éxito.'
+        );
+      }
+    },
+    [phoneNumber, sendMessage, addAssistantMessage]
+  );
 
   return {
     isChatOpen,
@@ -171,11 +234,14 @@ export const useWhatsAppWidget = ({
     inputText,
     messages,
     isTyping,
+    quickOptions: DEFAULT_QUICK_OPTIONS,
     toggleChat,
     openChat,
     closeChat,
     handleInputChange,
-    sendMessage
+    sendMessage,
+    handleQuickOption,
+    addAssistantMessage
   };
 };
 
