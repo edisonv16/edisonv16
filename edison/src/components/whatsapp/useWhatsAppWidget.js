@@ -116,23 +116,32 @@ export const useWhatsAppWidget = ({
         throw new Error(`Webhook responded with status ${response.status}`);
       }
 
-      const rawResponseText = await response.text();
-      let assistantReplyText = rawResponseText ? rawResponseText.trim() : '';
+      let rawResponseText = '';
+      let parsedResponse = null;
 
-      try {
-        const parsedResponse = JSON.parse(rawResponseText);
-        if (parsedResponse && typeof parsedResponse === 'object') {
-          assistantReplyText =
-            parsedResponse.reply ||
-            parsedResponse.message ||
-            parsedResponse.response ||
-            parsedResponse.text ||
-            (Array.isArray(parsedResponse) ? parsedResponse[0] : rawResponseText);
-        } else if (typeof parsedResponse === 'string') {
-          assistantReplyText = parsedResponse;
+      if (typeof response.text === 'function') {
+        rawResponseText = await response.text();
+        try {
+          parsedResponse = JSON.parse(rawResponseText);
+        } catch {
+          // Texto plano normal
         }
-      } catch {
-        // Es texto plano normal
+      } else if (typeof response.json === 'function') {
+        parsedResponse = await response.json();
+      }
+
+      let assistantReplyText = '';
+      if (parsedResponse && typeof parsedResponse === 'object') {
+        assistantReplyText =
+          parsedResponse.reply ||
+          parsedResponse.message ||
+          parsedResponse.response ||
+          parsedResponse.text ||
+          (Array.isArray(parsedResponse) ? parsedResponse[0] : rawResponseText);
+      } else if (typeof parsedResponse === 'string') {
+        assistantReplyText = parsedResponse;
+      } else {
+        assistantReplyText = rawResponseText ? rawResponseText.trim() : '';
       }
 
       if (!assistantReplyText) {

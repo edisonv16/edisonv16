@@ -72,6 +72,9 @@ describe('WhatsAppChatWidget (Chat Conversacional Embebido)', () => {
       headers: {
         get: () => 'application/json'
       },
+      text: async () => JSON.stringify({
+        reply: '¡Hola! Con gusto agendamos una llamada. ¿Te queda bien el martes a las 10 AM?'
+      }),
       json: async () => ({
         reply: '¡Hola! Con gusto agendamos una llamada. ¿Te queda bien el martes a las 10 AM?'
       })
