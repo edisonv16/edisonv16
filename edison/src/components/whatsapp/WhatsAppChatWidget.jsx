@@ -43,7 +43,7 @@ const WhatsAppChatWidget = ({ widgetConfig = Info.whatsapp } = {}) => {
           aria-labelledby="whatsapp-chat-operator-name"
         >
           {/* Cabecera del chat */}
-          <header className="whatsapp-card__header">
+          <div className="whatsapp-card__header">
             <div className="whatsapp-card__profile">
               <div className="whatsapp-card__avatar-container">
                 <img
@@ -72,7 +72,7 @@ const WhatsAppChatWidget = ({ widgetConfig = Info.whatsapp } = {}) => {
             >
               <i className="fa fa-times" aria-hidden="true" />
             </button>
-          </header>
+          </div>
 
           {/* Cuerpo y burbuja de bienvenida */}
           <div className="whatsapp-card__body">
