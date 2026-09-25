@@ -1,17 +1,19 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import WhatsAppChatWidget from './WhatsAppChatWidget';
 
-describe('WhatsAppChatWidget', () => {
-  const originalOpen = window.open;
+describe('WhatsAppChatWidget (Chat Conversacional Embebido)', () => {
+  const originalFetch = global.fetch;
 
   beforeEach(() => {
     window.dataLayer = [];
-    window.open = jest.fn();
+    window.HTMLElement.prototype.scrollIntoView = jest.fn();
+    global.fetch = jest.fn();
   });
 
   afterEach(() => {
-    window.open = originalOpen;
+    global.fetch = originalFetch;
     delete window.dataLayer;
+    jest.clearAllMocks();
   });
 
   test('debe renderizar el botón disparador con su etiqueta accesible y badge inicial', () => {
@@ -64,7 +66,17 @@ describe('WhatsAppChatWidget', () => {
     expect(textarea.value).toBe('Mensaje de prueba para agendar entrevista');
   });
 
-  test('debe disparar el evento en dataLayer y abrir WhatsApp con la URL codificada al enviar', () => {
+  test('debe enviar el mensaje al webhook de Make.com, registrar evento en dataLayer y renderizar la respuesta del asistente', async () => {
+    global.fetch.mockResolvedValueOnce({
+      ok: true,
+      headers: {
+        get: () => 'application/json'
+      },
+      json: async () => ({
+        reply: '¡Hola! Con gusto agendamos una llamada. ¿Te queda bien el martes a las 10 AM?'
+      })
+    });
+
     render(<WhatsAppChatWidget />);
 
     const triggerButton = screen.getByRole('button', { name: /abrir chat interactivo de whatsapp/i });
@@ -73,28 +85,41 @@ describe('WhatsAppChatWidget', () => {
     const textarea = screen.getByRole('textbox', { name: /mensaje a enviar:/i });
     fireEvent.change(textarea, { target: { value: 'Quiero agendar una cita técnica' } });
 
-    const submitButton = screen.getByRole('button', { name: /enviar mensaje a whatsapp y activar agendamiento/i });
+    const submitButton = screen.getByRole('button', { name: /enviar mensaje al asistente/i });
     fireEvent.click(submitButton);
 
-    // 1. Validar evento en dataLayer para Tag Manager
+    // 1. Validar que el mensaje del usuario aparece de inmediato en la conversación
+    expect(screen.getByText('Quiero agendar una cita técnica')).toBeInTheDocument();
+
+    // 2. Validar que el evento en dataLayer se disparó para Google Tag Manager / GA4
     expect(window.dataLayer).toHaveLength(1);
     expect(window.dataLayer[0]).toMatchObject({
       event: 'whatsapp_click',
       whatsapp_phone: '573185735382',
-      whatsapp_source: 'portfolio_floating_widget',
+      whatsapp_source: 'portfolio_embedded_chat',
       whatsapp_message_length: 31
     });
 
-    // 2. Validar llamada a window.open
-    expect(window.open).toHaveBeenCalledTimes(1);
-    expect(window.open).toHaveBeenCalledWith(
-      expect.stringContaining('https://wa.me/573185735382?text=Quiero%20agendar%20una%20cita%20t%C3%A9cnica'),
-      '_blank',
-      'noopener,noreferrer'
+    // 3. Validar la llamada al Webhook de Make.com
+    expect(global.fetch).toHaveBeenCalledTimes(1);
+    expect(global.fetch).toHaveBeenCalledWith(
+      'https://hook.us2.make.com/jt5r7jvtrodngsjka1atkwkrt5ol3ct7',
+      expect.objectContaining({
+        method: 'POST',
+        headers: expect.objectContaining({ 'Content-Type': 'application/json' }),
+        body: expect.stringContaining('"message":"Quiero agendar una cita técnica"')
+      })
     );
 
-    // 3. La ventana debe cerrarse tras el envío
-    expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+    // 4. Esperar y validar que la respuesta del agente de Make se renderiza en la misma ventana
+    await waitFor(() => {
+      expect(
+        screen.getByText('¡Hola! Con gusto agendamos una llamada. ¿Te queda bien el martes a las 10 AM?')
+      ).toBeInTheDocument();
+    });
+
+    // 5. El textarea se debe limpiar para continuar la conversación
+    expect(textarea.value).toBe('');
   });
 
   test('debe deshabilitar el botón de envío si el mensaje está en blanco', () => {
@@ -106,10 +131,34 @@ describe('WhatsAppChatWidget', () => {
     const textarea = screen.getByRole('textbox', { name: /mensaje a enviar:/i });
     fireEvent.change(textarea, { target: { value: '   ' } });
 
-    const submitButton = screen.getByRole('button', { name: /enviar mensaje a whatsapp y activar agendamiento/i });
+    const submitButton = screen.getByRole('button', { name: /enviar mensaje al asistente/i });
     expect(submitButton).toBeDisabled();
 
     fireEvent.click(submitButton);
-    expect(window.open).not.toHaveBeenCalled();
+    expect(global.fetch).not.toHaveBeenCalled();
+  });
+
+  test('debe mostrar mensaje de contingencia con enlace directo a WhatsApp si el webhook falla', async () => {
+    global.fetch.mockRejectedValueOnce(new Error('Network error'));
+
+    render(<WhatsAppChatWidget />);
+
+    const triggerButton = screen.getByRole('button', { name: /abrir chat interactivo de whatsapp/i });
+    fireEvent.click(triggerButton);
+
+    const textarea = screen.getByRole('textbox', { name: /mensaje a enviar:/i });
+    fireEvent.change(textarea, { target: { value: 'Hola, tengo una pregunta' } });
+
+    const submitButton = screen.getByRole('button', { name: /enviar mensaje al asistente/i });
+    fireEvent.click(submitButton);
+
+    await waitFor(() => {
+      expect(screen.getByText(/también puedes tocar aquí para continuar por whatsapp/i)).toBeInTheDocument();
+    });
+
+    const fallbackLink = screen.getByRole('link', { name: /abrir conversación directamente en whatsapp/i });
+    expect(fallbackLink).toHaveAttribute('href', expect.stringContaining('https://wa.me/573185735382'));
+    expect(fallbackLink).toHaveAttribute('target', '_blank');
+    expect(fallbackLink).toHaveAttribute('rel', 'noreferrer');
   });
 });

@@ -245,28 +245,87 @@ $whatsapp-bubble-text: #111b21;
   &__chat-flow {
     display: flex;
     flex-direction: column;
-    flex-shrink: 0;
+    gap: 10px;
+    flex: 1 1 auto;
+    min-height: 100px;
   }
 
   &__message-bubble {
-    background-color: #20242b;
-    border-left: 3px solid $whatsapp-green;
     border-radius: $radius-md;
-    padding: 12px 14px;
+    padding: 10px 12px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    word-break: break-word;
+
+    &--assistant {
+      background-color: #20242b;
+      border-left: 3px solid $whatsapp-green;
+      align-self: flex-start;
+      margin-right: 24px;
+      border-bottom-left-radius: 2px;
+    }
+
+    &--user {
+      background-color: #005c4b;
+      color: $color-white;
+      align-self: flex-end;
+      margin-left: 24px;
+      border-bottom-right-radius: 2px;
+
+      .whatsapp-card__message-text {
+        color: $color-white;
+      }
+    }
+
+    &--typing {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 14px;
+      width: fit-content;
+      background-color: #20242b;
+      border-left: 3px solid $whatsapp-green;
+      border-radius: $radius-md;
+    }
+  }
+
+  &__fallback-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 8px;
+    padding: 6px 10px;
+    background-color: $whatsapp-green;
+    color: $color-white !important;
+    border-radius: $radius-sm;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color $transition-fast;
+
+    &:hover {
+      background-color: $whatsapp-green-hover;
+      text-decoration: none;
+    }
   }
 
   &__message-text {
     margin: 0;
-    font-size: 13.5px;
+    font-size: 13px;
     line-height: 1.45;
     color: $color-slate-200;
   }
 
   &__message-meta {
     display: flex;
+    align-items: center;
     justify-content: flex-end;
+    gap: 6px;
     margin-top: 4px;
+  }
+
+  &__timestamp {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.6);
   }
 
   &__message-check {
@@ -422,3 +481,38 @@ $whatsapp-bubble-text: #111b21;
     }
   }
 }
+
+// -------------------------------------------------------------------
+// Puntos animados del indicador de escritura (Typing Dots)
+// -------------------------------------------------------------------
+.whatsapp-typing-dot {
+  width: 7px;
+  height: 7px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  animation: whatsapp-typing-bounce 1.4s infinite ease-in-out both;
+
+  &:nth-child(1) {
+    animation-delay: -0.32s;
+  }
+
+  &:nth-child(2) {
+    animation-delay: -0.16s;
+  }
+
+  &:nth-child(3) {
+    animation-delay: 0s;
+  }
+}
+
+@keyframes whatsapp-typing-bounce {
+  0%, 80%, 100% {
+    transform: scale(0.6);
+    opacity: 0.4;
+  }
+  40% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+}
+

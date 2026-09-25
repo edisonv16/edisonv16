@@ -63,12 +63,13 @@ const Info = {
     role: 'Senior Frontend Engineer & UI Architect',
     avatar: '/edisonospina.jpg',
     statusText: 'En línea',
-    welcomeMessage: '¡Hola! 👋 Gracias por visitar mi portafolio. Si buscas agendar una reunión o conversar sobre un proyecto técnico, déjame tu mensaje y continuemos en WhatsApp.',
+    welcomeMessage: '¡Hola! 👋 Gracias por visitar mi portafolio. Cuéntame sobre tu proyecto, consulta técnica o si deseas agendar una reunión.',
     defaultMessage: 'Hola Edison, estuve revisando tu portafolio web y me gustaría agendar una reunión para conversar sobre una oportunidad.',
-    placeholder: 'Escribe tu mensaje para WhatsApp...',
-    buttonTitle: 'Chatear en WhatsApp',
+    placeholder: 'Escribe tu mensaje aquí...',
+    buttonTitle: 'Asistente de Edison Vidal',
     badgeText: '1',
-    eventCustomName: 'whatsapp_click'
+    eventCustomName: 'whatsapp_click',
+    makeWebhookUrl: 'https://hook.us2.make.com/jt5r7jvtrodngsjka1atkwkrt5ol3ct7'
   }
 };
 

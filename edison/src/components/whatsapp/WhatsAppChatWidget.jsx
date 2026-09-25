@@ -1,11 +1,13 @@
+import { useRef, useEffect } from 'react';
 import Info from '../../data/Info';
 import useWhatsAppWidget from './useWhatsAppWidget';
 
 /**
- * Widget de chat flotante interactivo integrado con WhatsApp y Google Tag Manager.
+ * Widget de chat conversacional interactivo integrado con Make.com y Google Tag Manager.
+ * Permite interactuar directamente en el portafolio sin salir a WhatsApp.
  *
  * @param {Object} props Propiedades del componente.
- * @param {Object} [props.widgetConfig] Configuración opcional del widget (por defecto toma Info.whatsapp).
+ * @param {Object} [props.widgetConfig] Configuración opcional del widget.
  */
 const WhatsAppChatWidget = ({ widgetConfig = Info.whatsapp } = {}) => {
   const {
@@ -13,29 +15,43 @@ const WhatsAppChatWidget = ({ widgetConfig = Info.whatsapp } = {}) => {
     operatorName = 'Edison Vidal Ospina',
     avatar = '/edisonospina.jpg',
     statusText = 'En línea',
-    welcomeMessage = '¡Hola! 👋 Gracias por visitar mi portafolio. Si buscas agendar una reunión o conversar sobre un proyecto técnico, déjame tu mensaje y continuemos en WhatsApp.',
+    welcomeMessage = '¡Hola! 👋 Gracias por visitar mi portafolio. Cuéntame sobre tu proyecto o consulta técnica.',
     defaultMessage = 'Hola Edison, estuve revisando tu portafolio web y me gustaría agendar una reunión para conversar sobre una oportunidad.',
-    placeholder = 'Escribe tu mensaje para WhatsApp...',
+    placeholder = 'Escribe tu mensaje aquí...',
     badgeText = '1',
-    eventCustomName = 'whatsapp_click'
+    eventCustomName = 'whatsapp_click',
+    makeWebhookUrl = 'https://hook.us2.make.com/jt5r7jvtrodngsjka1atkwkrt5ol3ct7'
   } = widgetConfig || {};
 
   const {
     isChatOpen,
     hasUnreadBadge,
-    messageText,
+    inputText,
+    messages,
+    isTyping,
     toggleChat,
     closeChat,
-    handleMessageChange,
+    handleInputChange,
     sendMessage
   } = useWhatsAppWidget({
     phoneNumber,
+    welcomeMessage,
     initialMessage: defaultMessage,
-    eventCustomName
+    eventCustomName,
+    makeWebhookUrl
   });
 
+  const messagesEndReference = useRef(null);
+
+  // Auto-scroll al final cuando hay nuevos mensajes o cambia el estado de escritura
+  useEffect(() => {
+    if (isChatOpen && messagesEndReference.current) {
+      messagesEndReference.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [isChatOpen, messages, isTyping]);
+
   return (
-    <aside className="whatsapp-widget" aria-label="Asistente de contacto vía WhatsApp">
+    <aside className="whatsapp-widget" aria-label="Asistente de contacto interactivo">
       {isChatOpen && (
         <dialog
           className="whatsapp-card"
@@ -60,7 +76,7 @@ const WhatsAppChatWidget = ({ widgetConfig = Info.whatsapp } = {}) => {
                   {operatorName}
                 </h3>
                 <span className="whatsapp-card__status-text">
-                  {statusText}
+                  {isTyping ? 'Escribiendo respuesta...' : statusText}
                 </span>
               </div>
             </div>
@@ -74,22 +90,61 @@ const WhatsAppChatWidget = ({ widgetConfig = Info.whatsapp } = {}) => {
             </button>
           </div>
 
-          {/* Cuerpo y burbuja de bienvenida */}
+          {/* Cuerpo y flujo de mensajes conversacionales */}
           <div className="whatsapp-card__body">
-            <div className="whatsapp-card__chat-flow">
-              <div className="whatsapp-card__message-bubble">
-                <p className="whatsapp-card__message-text">
-                  {welcomeMessage}
-                </p>
-                <div className="whatsapp-card__message-meta">
-                  <span className="whatsapp-card__message-check" aria-hidden="true">
-                    ✓✓
-                  </span>
+            <div className="whatsapp-card__chat-flow" role="log" aria-live="polite">
+              {messages.map((messageItem) => {
+                const isUser = messageItem.sender === 'user';
+                return (
+                  <div
+                    key={messageItem.id}
+                    className={`whatsapp-card__message-bubble ${
+                      isUser
+                        ? 'whatsapp-card__message-bubble--user'
+                        : 'whatsapp-card__message-bubble--assistant'
+                    }`}
+                  >
+                    <p className="whatsapp-card__message-text">{messageItem.text}</p>
+
+                    {messageItem.fallbackUrl && (
+                      <a
+                        href={messageItem.fallbackUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="whatsapp-card__fallback-link"
+                        aria-label="Abrir conversación directamente en WhatsApp"
+                      >
+                        <i className="fa fa-whatsapp" aria-hidden="true" />
+                        <span>Abrir WhatsApp directo</span>
+                      </a>
+                    )}
+
+                    <div className="whatsapp-card__message-meta">
+                      <span className="whatsapp-card__timestamp">
+                        {messageItem.timestamp}
+                      </span>
+                      <span className="whatsapp-card__message-check" aria-hidden="true">
+                        {isUser ? '✓' : '✓✓'}
+                      </span>
+                    </div>
+                  </div>
+                );
+              })}
+
+              {isTyping && (
+                <div
+                  className="whatsapp-card__message-bubble whatsapp-card__message-bubble--assistant whatsapp-card__message-bubble--typing"
+                  aria-label="Edison Vidal está escribiendo una respuesta"
+                >
+                  <span className="whatsapp-typing-dot" />
+                  <span className="whatsapp-typing-dot" />
+                  <span className="whatsapp-typing-dot" />
                 </div>
-              </div>
+              )}
+              <div ref={messagesEndReference} />
             </div>
 
-            {/* Formulario editable para envío personalizado */}
+            {/* Formulario interactivo para enviar mensajes al bot/agente */}
             <form onSubmit={sendMessage} className="whatsapp-card__form">
               <label htmlFor="whatsapp-user-message-input" className="whatsapp-card__input-label">
                 Mensaje a enviar:
@@ -98,20 +153,21 @@ const WhatsAppChatWidget = ({ widgetConfig = Info.whatsapp } = {}) => {
                 id="whatsapp-user-message-input"
                 name="whatsappMessage"
                 className="whatsapp-card__textarea"
-                rows={3}
-                value={messageText}
-                onChange={handleMessageChange}
+                rows={2}
+                value={inputText}
+                onChange={handleInputChange}
                 placeholder={placeholder}
                 maxLength={500}
+                disabled={isTyping}
                 required
               />
               <button
                 type="submit"
                 className="whatsapp-card__send-btn"
-                aria-label="Enviar mensaje a WhatsApp y activar agendamiento"
-                disabled={!messageText.trim()}
+                aria-label="Enviar mensaje al asistente"
+                disabled={!inputText.trim() || isTyping}
               >
-                <span>Enviar a WhatsApp</span>
+                <span>{isTyping ? 'Enviando...' : 'Enviar mensaje'}</span>
                 <i className="fa fa-paper-plane" aria-hidden="true" />
               </button>
             </form>
