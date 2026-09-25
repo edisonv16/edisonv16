@@ -84,19 +84,25 @@ export const useWhatsAppWidget = ({
 
   const sendMessage = useCallback(
     async (eventOrMessageText = null) => {
-      let messageToSend = '';
+      let inputMessage = '';
       if (typeof eventOrMessageText === 'string') {
-        messageToSend = eventOrMessageText.trim();
+        inputMessage = eventOrMessageText;
       } else {
         if (eventOrMessageText && typeof eventOrMessageText.preventDefault === 'function') {
           eventOrMessageText.preventDefault();
         }
-        messageToSend = inputText.trim();
+        inputMessage = inputText;
       }
 
-      if (!messageToSend || isTyping) {
+      if (!inputMessage || !inputMessage.trim()) {
+        return; // Evita enviar mensajes vacíos al webhook
+      }
+
+      if (isTyping) {
         return;
       }
+
+      const messageToSend = inputMessage.trim();
 
       const userMessageId = `user-msg-${Date.now()}`;
       const userTimestamp = getFormattedTimestamp();

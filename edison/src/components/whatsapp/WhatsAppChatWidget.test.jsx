@@ -141,6 +141,42 @@ describe('WhatsAppChatWidget (Chat Conversacional Embebido)', () => {
     expect(global.fetch).not.toHaveBeenCalled();
   });
 
+  test('evita enviar mensajes vacíos al presionar Enter en el textarea', () => {
+    render(<WhatsAppChatWidget />);
+
+    const triggerButton = screen.getByRole('button', { name: /abrir chat interactivo de whatsapp/i });
+    fireEvent.click(triggerButton);
+
+    const textarea = screen.getByRole('textbox', { name: /mensaje a enviar:/i });
+    fireEvent.change(textarea, { target: { value: '   ' } });
+
+    fireEvent.keyDown(textarea, { key: 'Enter', code: 'Enter', shiftKey: false });
+    expect(global.fetch).not.toHaveBeenCalled();
+  });
+
+  test('permite enviar mensaje al presionar Enter en el textarea cuando tiene contenido', async () => {
+    global.fetch.mockResolvedValueOnce({
+      ok: true,
+      text: async () => JSON.stringify({ reply: 'Respuesta al Enter' }),
+      json: async () => ({ reply: 'Respuesta al Enter' })
+    });
+
+    render(<WhatsAppChatWidget />);
+
+    const triggerButton = screen.getByRole('button', { name: /abrir chat interactivo de whatsapp/i });
+    fireEvent.click(triggerButton);
+
+    const textarea = screen.getByRole('textbox', { name: /mensaje a enviar:/i });
+    fireEvent.change(textarea, { target: { value: 'Mensaje enviado con tecla Enter' } });
+
+    fireEvent.keyDown(textarea, { key: 'Enter', code: 'Enter', shiftKey: false });
+    expect(global.fetch).toHaveBeenCalledTimes(1);
+
+    await waitFor(() => {
+      expect(screen.getByText('Respuesta al Enter')).toBeInTheDocument();
+    });
+  });
+
   test('debe mostrar mensaje de contingencia con enlace directo a WhatsApp si el webhook falla', async () => {
     global.fetch.mockRejectedValueOnce(new Error('Network error'));
 

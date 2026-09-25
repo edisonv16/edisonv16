@@ -80,6 +80,16 @@ const WhatsAppChatWidget = ({ widgetConfig = Info.whatsapp } = {}) => {
     }
   }, [isChatOpen, messages, isTyping]);
 
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter' && !event.shiftKey) {
+      event.preventDefault();
+      if (!inputText.trim()) {
+        return; // Evita enviar mensajes vacíos al webhook
+      }
+      sendMessage();
+    }
+  };
+
   return (
     <aside className="whatsapp-widget" aria-label="Asistente de contacto interactivo">
       {isChatOpen && (
@@ -210,6 +220,7 @@ const WhatsAppChatWidget = ({ widgetConfig = Info.whatsapp } = {}) => {
                 rows={2}
                 value={inputText}
                 onChange={handleInputChange}
+                onKeyDown={handleKeyDown}
                 placeholder={placeholder}
                 maxLength={500}
                 disabled={isTyping}
