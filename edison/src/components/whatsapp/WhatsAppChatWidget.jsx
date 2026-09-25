@@ -3,6 +3,34 @@ import Info from '../../data/Info';
 import useWhatsAppWidget from './useWhatsAppWidget';
 
 /**
+ * Renderiza el contenido del mensaje dando formato de énfasis a texto entre asteriscos dobles (**texto**).
+ *
+ * @param {string} messageContent Contenido del mensaje.
+ * @returns {React.ReactNode} Nodos React renderizables.
+ */
+const renderMessageContent = (messageContent) => {
+  if (!messageContent) {
+    return null;
+  }
+  if (!messageContent.includes('**')) {
+    return messageContent;
+  }
+
+  const contentParts = messageContent.split(/(\*\*[^*]+\*\*)/g);
+  return contentParts.map((contentChunk, chunkIndex) => {
+    if (contentChunk.startsWith('**') && contentChunk.endsWith('**')) {
+      const boldText = contentChunk.slice(2, -2);
+      return (
+        <strong key={`bold-chunk-${chunkIndex}`} className="whatsapp-card__text-bold">
+          {boldText}
+        </strong>
+      );
+    }
+    return contentChunk;
+  });
+};
+
+/**
  * Widget de chat conversacional interactivo integrado con Make.com y Google Tag Manager.
  * Permite interactuar directamente en el portafolio sin salir a WhatsApp.
  *
@@ -104,7 +132,9 @@ const WhatsAppChatWidget = ({ widgetConfig = Info.whatsapp } = {}) => {
                         : 'whatsapp-card__message-bubble--assistant'
                     }`}
                   >
-                    <p className="whatsapp-card__message-text">{messageItem.text}</p>
+                    <p className="whatsapp-card__message-text">
+                      {renderMessageContent(messageItem.text)}
+                    </p>
 
                     {messageItem.fallbackUrl && (
                       <a

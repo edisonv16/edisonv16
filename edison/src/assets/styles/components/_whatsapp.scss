@@ -312,8 +312,15 @@ $whatsapp-bubble-text: #111b21;
   &__message-text {
     margin: 0;
     font-size: 13px;
-    line-height: 1.45;
+    line-height: 1.5;
     color: $color-slate-200;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
+  &__text-bold {
+    font-weight: 700;
+    color: #ffffff;
   }
 
   &__message-meta {

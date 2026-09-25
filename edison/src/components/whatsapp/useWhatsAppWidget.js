@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react';
+import { extractAssistantReply } from './chatResponseParser';
 
 /**
  * Genera la hora formateada para los mensajes (HH:mm).
@@ -124,25 +125,13 @@ export const useWhatsAppWidget = ({
         try {
           parsedResponse = JSON.parse(rawResponseText);
         } catch {
-          // Texto plano normal
+          // Si no es JSON estándar se procesa de forma resiliente con extractAssistantReply
         }
       } else if (typeof response.json === 'function') {
         parsedResponse = await response.json();
       }
 
-      let assistantReplyText = '';
-      if (parsedResponse && typeof parsedResponse === 'object') {
-        assistantReplyText =
-          parsedResponse.reply ||
-          parsedResponse.message ||
-          parsedResponse.response ||
-          parsedResponse.text ||
-          (Array.isArray(parsedResponse) ? parsedResponse[0] : rawResponseText);
-      } else if (typeof parsedResponse === 'string') {
-        assistantReplyText = parsedResponse;
-      } else {
-        assistantReplyText = rawResponseText ? rawResponseText.trim() : '';
-      }
+      let assistantReplyText = extractAssistantReply(rawResponseText, parsedResponse);
 
       if (!assistantReplyText) {
         assistantReplyText = '¡He recibido tu mensaje! Pronto me comunicaré contigo.';
