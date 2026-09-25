@@ -70,6 +70,15 @@ $whatsapp-bubble-text: #111b21;
     transition: transform $transition-spring;
   }
 
+  &__close-icon {
+    font-size: 24px;
+    color: $color-white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+  }
+
   &__badge {
     position: absolute;
     top: -4px;
@@ -105,13 +114,17 @@ $whatsapp-bubble-text: #111b21;
 // Tarjeta Emergente del Chat (Modal Flotante)
 // -------------------------------------------------------------------
 .whatsapp-card {
-  position: absolute;
-  bottom: 74px;
-  right: 0;
+  position: fixed;
+  inset: auto 28px 98px auto;
+  top: auto;
+  left: auto;
+  right: 28px;
+  bottom: 98px;
   margin: 0;
   padding: 0;
   width: 360px;
   max-width: calc(100vw - 36px);
+  max-height: calc(100dvh - 120px);
   background-color: $color-dark-surface;
   border-radius: $radius-lg;
   box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
@@ -119,8 +132,15 @@ $whatsapp-bubble-text: #111b21;
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  z-index: 1051;
   animation: whatsapp-card-enter 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   transform-origin: bottom right;
+  outline: none;
+
+  &::backdrop {
+    display: none;
+    background: transparent;
+  }
 
   &__header {
     background: linear-gradient(135deg, $whatsapp-header-bg 0%, $whatsapp-header-dark 100%);
@@ -339,10 +359,13 @@ $whatsapp-bubble-text: #111b21;
 
   .whatsapp-card {
     position: fixed;
+    inset: auto 16px 86px 16px;
+    top: auto;
     right: 16px;
     left: 16px;
     bottom: 86px;
     width: auto;
     max-width: none;
+    max-height: calc(100dvh - 110px);
   }
 }
